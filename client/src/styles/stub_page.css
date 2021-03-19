@@ -1,0 +1,15 @@
+.stub_container{
+    width: 100%;
+    /*background-image: url("/images/backgrounds?imagepath=stub_back.jpg");*/
+    background-position: 0 -50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.stub_container h1{
+    color: var(--xenomorph-2);
+    display: inline-block;
+}
+
+

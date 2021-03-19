@@ -1,0 +1,309 @@
+@import "colors.css";
+@import "fonts.css";
+
+/*catalog navigation component*/
+.catalog_header {
+    width: 100%;
+    background-color: var(--xenomorph-3);
+}
+
+.catalog_header.catalog_header__fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.catalog_header_block {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 50px;
+    background-color: var(--xenomorph-3);
+    transition: all 0.4s ease 0s;
+}
+
+.catalog_header_block__show {
+    left: 0;
+    z-index: 5;
+}
+
+.catalog_header .catalog_container {
+    width: 94%;
+    margin: 0 3%;
+}
+
+.catalog_container_body {
+    position: relative;
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.catalog_header .catalog_nav_list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1 1 95%;
+}
+
+.catalog_button {
+    box-sizing: border-box;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    height: 40px;
+    width: 110px;
+    padding: 0.3em;
+    border: 1px rgba(29, 47, 60, 0.42) solid;
+    border-radius: 4px;
+
+    background-color: var(--xenomorph-2);
+    color: #fff;
+    text-align: center;
+    font: bold 14px Helvetica;
+    cursor: pointer;
+
+    -webkit-transition: background-color 0.1s linear;
+    -moz-transition: background-color 0.1s linear;
+    -o-transition: background-color 0.1s linear;
+    transition: background-color 0.1s linear;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.catalog_button:hover, .catalog_button:active {
+    background: var(--xenomorph-6);
+}
+
+.catalog_button span {
+    position: relative;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.arrow img {
+    padding-bottom: 3px;
+    height: 1em;
+    width: 1em;
+    transform: rotate(180deg);
+}
+
+.catalog_button__active {
+    flex-direction: row-reverse;
+    z-index: 6;
+}
+
+.catalog_button__active .arrow img {
+    transform: rotate(0deg);
+    padding-bottom: 0;
+    padding-top: 3px;
+}
+
+.header_logo {
+    display: block;
+    flex: 0 0 60px;
+}
+
+.header_logo__hidden {
+    display: none;
+    flex: 0 0 60px;
+}
+
+.catalog_link.hide_label,
+.catalog_item input,
+.catalog_header .links_block {
+    display: none;
+}
+
+@media (max-width: 650px) {
+    .catalog_header .links_block {
+        display: flex;
+    }
+
+    .catalog_header .catalog_container_body {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 767px) {
+    .catalog_container_body {
+        height: 50px;
+        justify-content: space-between;
+    }
+
+    .catalog_button {
+        display: flex;
+    }
+
+    .header_logo {
+        display: flex;
+        flex: 0 0 60px;
+    }
+
+    .header_logo img {
+        max-width: 130px;
+    }
+
+    .catalog_header .catalog_nav_list {
+        position: fixed;
+        display: block;
+        box-sizing: border-box;
+        top: 50px;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: var(--xenomorph-3);
+        transition: all 0.4s ease 0s;
+    }
+
+    .catalog_nav_list.active {
+        left: 0;
+        top: 50px;
+        overflow: scroll;
+    }
+
+    .catalog_nav_list .catalog_item label {
+        color: #ffffff;
+        font-size: 0.8rem;
+    }
+
+    .catalog_nav_list .catalog_item {
+        display: block;
+        position: relative;
+        padding: 5px 20px;
+        margin-left: 15px;
+        width: 140px;
+    }
+
+    .catalog_item .submenu-list {
+        width: 200%;
+        display: none;
+        position: static;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .catalog_nav_list .catalog_link:focus {
+        cursor: pointer;
+        color: #fff;
+        background-color: var(--xenomorph-2);
+    }
+
+    .catalog_item input[id^="link"]:checked + .submenu-list {
+        border-top: 2px solid var(--xenomorph-2);
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .catalog_link.hide_href {
+        display: none;
+    }
+
+    .catalog_item .catalog_link.hide_label {
+        display: block;
+        padding: 0.5em;
+    }
+
+    .catalog_item:last-child:hover > .submenu-list {
+        display: none;
+    }
+
+    .submenu-list > li {
+        position: static;
+        margin-left: 20px;
+        border-radius: 5px;
+    }
+
+    .submenu-list > li > a {
+        font-size: 0.7rem;
+    }
+}
+
+.catalog_item {
+    list-style: none;
+}
+
+.catalog_item:hover > ul {
+    opacity: 1;
+    visibility: visible;
+}
+
+.catalog_link {
+    display: inline-block;
+    font-weight: bold;
+    max-width: 120px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: uppercase;
+    padding: 1em 1.5em;
+    transition: all 300ms ease;
+}
+
+.catalog_link:hover {
+    cursor: pointer;
+    background-color: var(--xenomorph-2);
+    color: #fff;
+}
+
+.catalog_container_body .block_item_link:hover {
+    background: var(--xenomorph-2);
+}
+
+.submenu-list {
+    list-style: none;
+    position: absolute;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.submenu-list > li {
+    width: 150%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    background-color: var(--xenomorph-3);
+    padding: 0.5em 0.3em;
+}
+
+.submenu-list > li > a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.submenu-list > li:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--xenomorph-2);
+}
+
+/*@media (min-width: 767px) {*/
+/*    .catalog_item:last-child:hover > .submenu-list {*/
+/*        position: absolute;*/
+/*        right: 5%;*/
+/*    }*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

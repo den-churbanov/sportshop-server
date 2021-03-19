@@ -1,0 +1,13 @@
+
+.hover-image-8 a {
+    display: inline-block;
+    background: #0083ff;
+    line-height: 0;
+}
+.hover-image-8 a img {
+    transition: filter 0.5s linear;
+    filter: brightness(2) grayscale(1) opacity(0.5);
+}
+.hover-image-8 a:hover img {
+    filter: none;
+}
