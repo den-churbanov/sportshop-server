@@ -4,13 +4,21 @@ import {CatalogNavigationItem} from "./CatalogNavigationItem";
 import logo from '../images/logo-long-transper.png';
 import arrow from '../images/arrow.png';
 import {LinksBlock} from "./LinksBlock";
-import {useNavigation} from "../../hooks/navigation.hook";
+import {useDispatch, useSelector} from "react-redux";
+import  {fetchSections} from '../../redux/sectionsSlice'
 
 export const CatalogNavigation = () => {
     const [menuState, setState] = useState({
         mobileVisible: false,
         fixed: false
     });
+    const dispatch = useDispatch();
+
+    useEffect(() => dispatch(fetchSections()),
+        []);
+
+    const items = useSelector(state => state.reducer.sections);
+    console.log(items)
 
     window.onscroll = () => {
         if (window.pageYOffset > 140 & !menuState.fixed) {
@@ -67,8 +75,9 @@ export const CatalogNavigation = () => {
                         <img src={logo} alt="На главную"/>
                     </a>
                     <nav className={`catalog_nav_list ${menuState.mobileVisible ? 'active' : ''}`}>
-                        {menuItems.map((idx, item) => <CatalogNavigationItem text={item.name} id={item.id}/>
-                        )}
+                        {items ? items.map(( item, idx) => {
+                            return <CatalogNavigationItem text={item.name} id = {item.id} key={idx}/>
+                        }) : ""}
                     </nav>
                     <LinksBlock id={2}/>
                 </div>

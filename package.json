@@ -21,9 +21,7 @@
     "express-validator": "^6.9.2",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
-    "path": "^0.12.7",
-    "react-redux": "^7.2.2",
-    "redux": "^4.0.5"
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
