@@ -1,28 +1,28 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import {GET_SECTIONS} from './actionTypes'
+import {createSlice} from '@reduxjs/toolkit'
 
-export const fetchSections = createAsyncThunk(
-    GET_SECTIONS,
-    async (data, thunkAPI) => {
+export const fetchSections = () => {
+    return async dispatch => {
         const response = await fetch(
             'api/catalog/sections',
-            {method:'GET',
-                })
+            {
+                method: 'GET',
+            })
         const items = await response.json();
-        return items
+        dispatch(addSections(items))
     }
-)
+}
 
 export const sectionsSlice = createSlice({
     name: 'sections',
     initialState: {
-        sections: [],
+        items: []
     },
-    extraReducers:{
-        [fetchSections.fulfilled]: (state, action) => {
-            state.sections = action.payload
-        }
+    reducers: {
+        addSections: (state, action) => {
+            state.items = action.payload
+        },
     }
 })
 
 export default sectionsSlice.reducer
+export const {addSections} = sectionsSlice.actions

@@ -5,7 +5,7 @@ import logo from '../images/logo-long-transper.png';
 import arrow from '../images/arrow.png';
 import {LinksBlock} from "./LinksBlock";
 import {useDispatch, useSelector} from "react-redux";
-import  {fetchSections} from '../../redux/sectionsSlice'
+import {fetchSections} from '../../redux/sectionsSlice'
 
 export const CatalogNavigation = () => {
     const [menuState, setState] = useState({
@@ -14,10 +14,11 @@ export const CatalogNavigation = () => {
     });
     const dispatch = useDispatch();
 
-    useEffect(() => dispatch(fetchSections()),
-        []);
+    useEffect(() =>
+        dispatch(fetchSections()
+        ), []);
 
-    const items = useSelector(state => state.reducer.sections);
+    const items = useSelector(state => state.sections.items);
     console.log(items)
 
     window.onscroll = () => {
@@ -75,8 +76,8 @@ export const CatalogNavigation = () => {
                         <img src={logo} alt="На главную"/>
                     </a>
                     <nav className={`catalog_nav_list ${menuState.mobileVisible ? 'active' : ''}`}>
-                        {items ? items.map(( item, idx) => {
-                            return <CatalogNavigationItem text={item.name} id = {item.id} key={idx}/>
+                        {items ? items.map((item, idx) => {
+                            return <CatalogNavigationItem text={item.name} id={item.id} key={idx}/>
                         }) : ""}
                     </nav>
                     <LinksBlock id={2}/>
