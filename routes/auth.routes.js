@@ -14,7 +14,8 @@ router.post(
 );
 
 // api/auth/signin
-router.post('/signin',
+router.post(
+    '/signin',
     [
         check('login', 'Некорректный email').isEmail(),
         check('password', 'Введите пароль').exists(),

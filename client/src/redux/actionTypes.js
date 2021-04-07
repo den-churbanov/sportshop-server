@@ -1,1 +1,2 @@
-export const GET_SECTIONS = 'sections'
+export const FETCH_SECTIONS = 'FETCH_SECTIONS'
+export const FETCH_SUB_SECTIONS = 'FETCH_SUB_SECTIONS'

@@ -10,6 +10,7 @@ import store from '../src/redux/configureStore';
 function App() {
     const {token, login, logout, userID} = useAuth();
     const isAuthenticated = !!token;
+
     return (
         <Provider store={store}>
             <AuthContext.Provider value={

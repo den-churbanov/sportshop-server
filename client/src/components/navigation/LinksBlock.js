@@ -5,7 +5,8 @@ import basket from "../images/basket.png";
 import {AuthContext} from "../../AuthContext";
 
 export const LinksBlock = ({id}) => {
-    const {logout} = useContext(AuthContext);
+    const {logout} = useContext(AuthContext)
+
     return (
         <div className="links_block">
             <div className="links_block__item">

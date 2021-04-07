@@ -1,15 +1,17 @@
 const {Router} = require('express');
-const {getSections, getSubSections} = require('../controllers/catalog_controller');
+const controller = require('../controllers/catalog_controller');
 const router = Router();
 
 // api/catalog/sections
 router.get(
     '/sections',
-    getSections);
+    controller.getSections);
 
 // api/catalog/subsections
-router.get(
+router.post(
     '/subsections',
-    getSubSections);
+    controller.getSubSections);
 
 module.exports = router;
+
+

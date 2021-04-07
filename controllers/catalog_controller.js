@@ -2,7 +2,7 @@ const model = require('../models/catalog_model');
 
 const getSections = async (req, res) => {
     try {
-        console.log('getSections')
+        console.log('getSections', req)
         model.getSections(data => {
                 res.status(200).json(data);
             },
@@ -15,8 +15,9 @@ const getSections = async (req, res) => {
     }
 }
 
-const getSubSections = (id ,req, res) => {
+const getSubSections = (req, res) => {
     try {
+        const {id} = req.body
         console.log(`getSubsections with id = ${id}`)
         model.getSubsections(id,
             data => {

@@ -1,5 +1,9 @@
 @import "colors.css";
 
+::-webkit-scrollbar {
+    width: 0;
+}
+
 body{
     width: 100vw;
     overflow-x: hidden;
