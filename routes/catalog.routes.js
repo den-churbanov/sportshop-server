@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const controller = require('../controllers/catalog_controller');
+const controller = require('../controllers/catalog.controller');
 const router = Router();
 
 // api/catalog/sections

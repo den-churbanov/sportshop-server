@@ -1,7 +1,7 @@
 const connection = require('../database');
 
 const signin = (login, dbFunction, response, reject) => {
-    console.log(`SELECT site_database.${dbFunction}('${login}')`);
+//    console.log(`SELECT site_database.${dbFunction}('${login}')`);
     connection.query(`SELECT site_database.${dbFunction}('${login}')`, (err, results)=>{
         if(err){
             console.log('MySQL ERROR on user_model.signin:', err);
@@ -16,6 +16,7 @@ const signin = (login, dbFunction, response, reject) => {
 }
 
 const signup = (lastname, firstname, patronymic, login, hashedPass, response, reject) => {
+//    console.log(`SELECT site_database.register_new_user('${lastname}','${firstname}','${patronymic}','${login}','${hashedPass}')`);
     connection.query(`SELECT site_database.register_new_user('${lastname}','${firstname}','${patronymic}','${login}','${hashedPass}');`,
         (err, results) => {
             if(err){

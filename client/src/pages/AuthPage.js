@@ -21,9 +21,9 @@ export const AuthPage = () => {
     const {request, loading, error, clearError, success, clearSuccess} = useHttp();
 
     useEffect(() => {
-        if(error)
+        if (error)
             setTimeout(() => clearError(), 3000);
-        if(success)
+        if (success)
             setTimeout(() => clearSuccess(), 3000);
     }, [error, success, clearError, clearSuccess]);
 
@@ -38,7 +38,8 @@ export const AuthPage = () => {
     const registerHandler = async () => {
         try {
             await request('/api/auth/signup', 'POST', {...data});
-        } catch (e) {}
+        } catch (e) {
+        }
     }
 
     const loginHandler = async () => {
@@ -47,13 +48,14 @@ export const AuthPage = () => {
             const password = data.password;
             const result = await request('/api/auth/signin', 'POST', {login, password});
             auth.login(result.token, result.userID)
-        } catch (e) {}
+        } catch (e) {
+        }
     }
 
     const handleUserInput = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setData(prevData =>{
+        setData(prevData => {
             return {...prevData, [name]: value}
         });
     }
@@ -95,30 +97,37 @@ export const AuthPage = () => {
                            onChange={handleUserInput}
                            name={inputNames.password}
                            placeholder="Пароль"/>
-                    <input type="text" className={pageState.type === 'login' ? 'hidden' : ''}
-                           onChange={handleUserInput}
-                           name={inputNames.firstname}
-                           placeholder="Имя"/>
-                    <input type="text" className={pageState.type === 'login' ? 'hidden' : ''}
-                           onChange={handleUserInput}
-                           name={inputNames.lastname}
-                           placeholder="Фамилия"/>
-                    <input type="text" className={pageState.type === 'login' ? 'hidden' : ''}
-                           onChange={handleUserInput}
-                           name={inputNames.patronymic}
-                           placeholder="Отчество"/>
+                    {
+                        pageState.type === 'register' &&
+                        <>
+                            <input type="text"
+                                   onChange={handleUserInput}
+                                   name={inputNames.firstname}
+                                   placeholder="Имя"/>
+                            <input type="text"
+                                   onChange={handleUserInput}
+                                   name={inputNames.lastname}
+                                   placeholder="Фамилия"/>
+                            <input type="text"
+                                   onChange={handleUserInput}
+                                   name={inputNames.patronymic}
+                                   placeholder="Отчество"/>
+                        </>
+                    }
                     <button className="submit_button"
                             disabled={loading}
                             onClick={pageState.type === 'login' ? loginHandler : registerHandler}>
                         {pageState.type === 'login' ? 'Войти' : 'Зарегистрироваться'}
                     </button>
                 </form>
-                <div className={`message_block ${error ? 'error': success ? 'success': ' hidden'} `}>
-                    <span>
-                        {error? error: ''}
-                        {success? success: ''}
-                    </span>
-                </div>
+                {(error || success) &&
+                    <div className={`message_block ${error ? 'error' : 'success'} `}>
+                        <span>
+                            {error ? error : ''}
+                            {success ? success : ''}
+                        </span>
+                    </div>
+                }
             </div>
         </div>
     );

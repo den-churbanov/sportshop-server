@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/stub_page.css'
+import '../styles/stub-page.css'
 
 export const StubPage = () => {
     return(

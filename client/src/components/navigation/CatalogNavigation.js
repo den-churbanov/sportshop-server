@@ -6,6 +6,7 @@ import arrow from '../images/arrow.png';
 import {LinksBlock} from "./LinksBlock";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchSections} from "../../redux/actions";
+import {Link} from "react-router-dom";
 
 export const CatalogNavigation = () => {
     const [menuState, setState] = useState({
@@ -62,20 +63,20 @@ export const CatalogNavigation = () => {
 
     return (
         <header
-            className={menuState.fixed || menuState.mobileVisible ? 'catalog_header catalog_header__fixed' : 'catalog_header'}>
-            <div className={`catalog_header_block ${menuState.mobileVisible ? 'catalog_header_block__show' : ''}`}/>
+            className={menuState.fixed || menuState.mobileVisible ? 'catalog_header fixed' : 'catalog_header'}>
+            <div className={`catalog_header_block ${menuState.mobileVisible ? 'show' : ''}`}/>
             <div className="catalog_container">
                 <div className="catalog_container_body">
-                    <div className={`catalog_button ${menuState.mobileVisible ? 'catalog_button__active' : ''}`}
+                    <div className={`catalog_button ${menuState.mobileVisible ? 'active' : ''}`}
                          onClick={toggleMenu}>
                         <span>{menuState.mobileVisible ? "Назад" : "Каталог"}</span>
                         <div className="arrow">
                             <img src={arrow} alt=""/>
                         </div>
                     </div>
-                    <a href="/main" className={`header_logo__hidden ${menuState.fixed ? 'header_logo' : ''}`}>
+                    <Link to="/main" className={`header_logo__hidden ${menuState.fixed ? 'header_logo' : ''}`}>
                         <img src={logo} alt="На главную"/>
-                    </a>
+                    </Link>
                     <nav className={`catalog_nav_list ${menuState.mobileVisible ? 'active' : ''}`}>
                         {items ? items.map((item, idx) => {
                             return <CatalogNavigationItem text={item.name} id={item.id} idx = {idx} key={idx}/>

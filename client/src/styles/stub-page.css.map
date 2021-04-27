@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,eAAgB;EACZ,KAAK,EAAE,IAAI;EACX,yEAAyE;EACzE,mBAAmB,EAAE,OAAO;EAC5B,iBAAiB,EAAE,SAAS;EAC5B,eAAe,EAAE,KAAK;EACtB,UAAU,EAAE,MAAM;EAElB,kBAAG;IACC,KAAK,EAAE,kBAAkB;IACzB,OAAO,EAAE,YAAY",
+"sources": ["stub-page.scss"],
+"names": [],
+"file": "stub-page.css"
+}

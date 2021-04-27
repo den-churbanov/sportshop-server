@@ -1,0 +1,19 @@
+@import "css/colors.css";
+
+body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background-color: var(--xenomorph-5);
+    
+    .content-container {
+        flex: 1 1 auto;
+    }
+}

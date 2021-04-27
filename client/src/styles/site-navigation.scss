@@ -1,0 +1,217 @@
+@import "css/colors.css";
+@import "css/fonts.css";
+
+/*site navigation component*/
+
+.site_navigation_header {
+    width: 100%;
+    background-color: var(--xenomorph-2);
+    
+    &.site_navigation__fixed {
+        position: fixed;
+        z-index: 10;
+    }
+    
+    .site_header_block {
+        position: absolute;
+        text-align: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background-color: var(--xenomorph-2);
+        z-index: 6;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        
+        &.site_header_block_show {
+            display: flex;
+        }
+        
+        h4 {
+            color: var(--xenomorph-3)
+        }
+    }
+    
+    .navigation_container {
+        position: relative;
+        display: block;
+        margin: 0 4%;
+        width: 92%;
+    }
+}
+
+.site_navigation_header_body {
+    position: relative;
+    display: flex;
+    height: 55px;
+    justify-content: space-around;
+    align-items: center;
+    
+    .search-container {
+        display: none;
+    }
+    
+    .header_burger {
+        display: none;
+        
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    
+    .site_header_list {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: stretch;
+        flex: 1 1 85%;
+    }
+}
+
+/*buttons*/
+.nav_item {
+    flex-grow: 1;
+    flex-shrink: 1;
+    cursor: pointer;
+    text-align: center;
+}
+
+.nav_link {
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--xenomorph-3);
+    text-transform: uppercase;
+    padding: 0.5em 0.8em;
+    border: 2px solid var(--xenomorph-3);
+    transition: all 300ms ease;
+    box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.2);
+    
+    &:hover {
+        border: 2px solid var(--xenomorph-2);
+        color: white;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .site_navigation_header {
+        
+        .navigation_container {
+            
+            .site_navigation_header_body {
+                justify-content: space-between;
+                
+                .search-container {
+                    display: flex;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .site_navigation_header_body {
+        position: relative;
+        height: 50px;
+        justify-content: flex-end;
+        
+        .header_burger {
+            display: block;
+            position: relative;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            
+            span,
+            &::before,
+            &::after {
+                position: absolute;
+                content: '';
+                width: 70%;
+                left: 15%;
+                height: 2px;
+                background-color: #fff;
+            }
+            
+            span {
+                top: 49%;
+            }
+            
+            &::before,
+            &::after {
+                display: block;
+                transition: 0.2s;
+            }
+            
+            &::before {
+                top: 29%;
+            }
+            
+            &::after {
+                bottom: 23%;
+            }
+            
+            &.header_burger_active {
+                z-index: 7;
+                background-color: var(--xenomorph-3);
+                
+                span {
+                    height: 0;
+                    left: 8%;
+                }
+                
+                &::before {
+                    transform-origin: 90%;
+                    left: 8%;
+                    transform: rotate(-45deg);
+                }
+                
+                &::after {
+                    transform-origin: 90%;
+                    left: 8%;
+                    transform: rotate(45deg);
+                }
+                
+            }
+            
+        }
+        
+        .site_header_list {
+            display: block;
+            box-sizing: border-box;
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            overflow: auto;
+            background-color: var(--xenomorph-2);
+            transition: all 0.4s ease 0s;
+            
+            &.active {
+                z-index: 6;
+                top: 50px;
+                overflow: hidden;
+            }
+        }
+    }
+    
+    .nav_link {
+        width: 100%;
+        font-size: 0.6rem;
+        
+        &:hover {
+            border: 2px solid #fff;
+        }
+    }
+    
+    .nav_item {
+        display: block;
+        padding: 5px 0;
+    }
+}

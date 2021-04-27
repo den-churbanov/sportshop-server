@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const bCrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
-const model = require('../models/user_model');
+const model = require('../models/user.model');
 
 const signup = async (req, res) => {
     try {
@@ -32,8 +32,10 @@ const signup = async (req, res) => {
             }
         );
     } catch (e) {
-        console.log('Ошибка', e.message)
-        res.status(500).json("На сервере произошла ошибка, попробуйте снова");
+        return res.status(500).json({
+            errorMsg: e.message,
+            message: "На сервере произошла ошибка, попробуйте снова"
+        });
     }
 };
 
@@ -81,7 +83,10 @@ const signin = async (req, res) => {
                 throw error;
             });
     } catch (e) {
-        res.status(500).json("На сервере произошла ошибка, попробуйте снова");
+        return res.status(500).json({
+            errorMsg: e.message,
+            message: "На сервере произошла ошибка, попробуйте снова"
+        });
     }
 }
 

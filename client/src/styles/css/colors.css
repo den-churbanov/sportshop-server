@@ -1,11 +1,11 @@
-:root {
+:root{
     --xenomorph-1: #202020;
     --xenomorph-2: #2c3e50;
     --xenomorph-3: #00d5dc;
     --xenomorph-4: #bdc3c7;
     --xenomorph-5: #f3f7f8;
     --xenomorph-6: #006885;
-    /*--logo-color: #00adb4;*/
+//--logo-color: #00adb4;
     --input-color: #f0f0f0;
     --input-border-color: #ececec;
 }

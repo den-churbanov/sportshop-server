@@ -1,10 +1,11 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import '../styles/brands.css';
 
 export const BrandBlock = (item) => {
     return (
         <div className="brand-block">
-            <a href={}>
+            <Link to = {}>
                 <div className="brand-hover">
 
                 </div>
@@ -14,7 +15,7 @@ export const BrandBlock = (item) => {
                 <div className="brand-img">
                     <img src={}/>
                 </div>
-            </a>
+            </Link>
         </div>
     );
 }

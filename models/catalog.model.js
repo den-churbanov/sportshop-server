@@ -2,7 +2,7 @@
 const connection = require('../database');
 
 const getSections = (response, reject) => {
-    console.log('call site_database.select_all_section();');
+    // console.log('call site_database.select_all_section();');
     connection.query('call site_database.select_all_section();', (err, results)=>{
         if(err){
             console.log('MySQL ERROR on catalog_model.getSections:', err);
@@ -17,7 +17,7 @@ const getSections = (response, reject) => {
 }
 
 const getSubsections = (id, response, reject) => {
-    console.log(`call site_database.select_subsections(${id});`);
+    // console.log(`call site_database.select_subsections(${id});`);
     connection.query(`call site_database.select_subsections(${id});`, (err, results)=>{
         if(err){
             console.log('MySQL ERROR on catalog_model.getSubsections:', err);

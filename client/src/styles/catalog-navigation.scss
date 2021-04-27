@@ -1,0 +1,316 @@
+@import "css/colors.css";
+@import "css/fonts.css";
+
+/*catalog navigation component*/
+.catalog_header {
+    width: 100%;
+    background-color: var(--xenomorph-3);
+    
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    
+    .catalog_container {
+        width: 90%;
+        margin: 0 4%;
+    }
+    
+    .catalog_nav_list {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex: 1 1 95%;
+    }
+}
+
+.catalog_header_block {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 50px;
+    background-color: var(--xenomorph-3);
+    transition: all 0.4s ease 0s;
+    
+    &.show {
+        left: 0;
+        z-index: 5;
+    }
+}
+
+.catalog_container_body {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.catalog_button {
+    box-sizing: border-box;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    height: 40px;
+    width: 110px;
+    padding: 0.3em;
+    border: 1px rgba(29, 47, 60, 0.42) solid;
+    border-radius: 4px;
+    
+    background-color: var(--xenomorph-2);
+    color: #fff;
+    text-align: center;
+    font: bold 14px Helvetica;
+    cursor: pointer;
+    
+    -webkit-transition: background-color 0.1s linear;
+    -moz-transition: background-color 0.1s linear;
+    -o-transition: background-color 0.1s linear;
+    transition: background-color 0.1s linear;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    
+    &:hover, &:active {
+        background: var(--xenomorph-6);
+    }
+    
+    span {
+        position: relative;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    
+    &.active {
+        flex-direction: row-reverse;
+        z-index: 6;
+    
+        .arrow img {
+            transform: rotate(0deg);
+            padding-bottom: 0;
+            padding-top: 3px;
+        }
+    }
+}
+
+.arrow img {
+    padding-bottom: 3px;
+    height: 1em;
+    width: 1em;
+    transform: rotate(180deg);
+}
+
+.header_logo {
+    display: block;
+    flex: 0 0 60px;
+}
+
+.header_logo__hidden {
+    display: none;
+    flex: 0 0 60px;
+}
+
+.catalog_link.hide_label,
+.catalog_item input,
+.catalog_header .links_block {
+    display: none;
+}
+
+@media (max-width: 650px) {
+    .catalog_header {
+        .links_block {
+            display: flex;
+        }
+    
+        .catalog_container_body {
+            justify-content: space-between;
+        }
+    }
+}
+
+@media (max-width: 780px) {
+    .catalog_container_body {
+        height: 50px;
+        justify-content: space-between;
+    }
+    
+    .catalog_button {
+        display: flex;
+    }
+    
+    .header_logo {
+        display: flex;
+        flex: 0 0 60px;
+    
+        img {
+            max-width: 130px;
+        }
+    }
+    
+    .catalog_header .catalog_nav_list {
+        position: fixed;
+        display: block;
+        box-sizing: border-box;
+        top: 50px;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: var(--xenomorph-3);
+        transition: all 0.4s ease 0s;
+        
+        &.active {
+            left: 0;
+            top: 50px;
+            overflow: scroll;
+        }
+    
+        .catalog_item {
+            display: block;
+            position: relative;
+            margin-left: 1em;
+            width: 100%;
+    
+            &:last-child:hover > .submenu-list {
+                display: none;
+            }
+            
+            input[id^="link"]:checked + .submenu-list {
+                border-top: 2px solid var(--xenomorph-2);
+                display: block;
+                opacity: 1;
+                visibility: visible;
+            }
+    
+            .submenu-list {
+                width: 50%;
+                display: none;
+                position: static;
+                opacity: 0;
+                visibility: hidden;
+            }
+    
+            label {
+                font-size: 0.6em;
+            }
+        }
+    
+        .catalog_link{
+            &:focus {
+                cursor: pointer;
+                color: #fff;
+                background-color: var(--xenomorph-2);
+            }
+        
+            &.hide_href {
+                display: none;
+            }
+            
+            &.hide_label {
+                display: block;
+                padding: 1em 0.5em;
+            }
+        }
+    }
+    
+    .submenu-list > li {
+        position: static;
+        margin-left: 20px;
+        border-radius: 5px;
+        
+        &> a {
+            font-size: 0.6rem;
+            text-align: left;
+        }
+    }
+    
+}
+
+.catalog_item {
+    list-style: none;
+    
+    &:hover > ul {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.catalog_link {
+    display: inline-block;
+    font-weight: bold;
+    max-width: 120px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: uppercase;
+    padding: 1em 1.2em;
+    transition: all 300ms ease;
+    
+    &:hover {
+        cursor: pointer;
+        background-color: var(--xenomorph-2);
+        color: #fff;
+    }
+}
+
+.catalog_container_body .block_item_link:hover {
+    background: var(--xenomorph-2);
+}
+
+.submenu-list {
+    width: 100vw;
+    padding: 0.1em;
+    background-color: var(--xenomorph-3);
+    list-style: none;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    
+    &> li {
+        width: auto;
+        min-width: 200px;
+        height: auto;
+        display: block;
+        text-align: center;
+        align-items: center;
+        background-color: var(--xenomorph-3);
+        
+        & :hover {
+            cursor: pointer;
+            color: #fff;
+            background-color: var(--xenomorph-2);
+        }
+        
+        &> a {
+            display: block;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-color);
+            border-radius: 2px;
+            padding: 1em 0.5em;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

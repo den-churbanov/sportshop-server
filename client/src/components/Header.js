@@ -3,6 +3,7 @@ import '../styles/header.css';
 import logo from './images/logo-transparence.png';
 import {Search} from "./navigation/Search";
 import {LinksBlock} from "./navigation/LinksBlock";
+import {Link} from "react-router-dom";
 
 export const Header = () => {
     const [headerState, setState] = useState({visible: true})
@@ -26,13 +27,13 @@ export const Header = () => {
     }
 
     return (
-        <header className={headerState.visible ? 'header-top' : 'header-top header_top_hide'}>
+        <header className={headerState.visible ? 'header-top' : 'header-top hide'}>
             <div className="container">
                 <div className="header-content">
                     <div className="img-wrapper">
-                        <a href="/main">
+                        <Link to="/main">
                             <img src={logo} alt="На главную"/>
-                        </a>
+                        </Link>
                     </div>
                     <Search/>
                     <div className="header-contacts">

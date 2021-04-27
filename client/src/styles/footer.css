@@ -1,8 +1,8 @@
-@import "colors.css";
-@import "fonts.css";
+@import url(css/colors.css);
+@import url(css/fonts.css);
+.footer {
+  width: 100%;
+  height: 200px;
+  background-color: var(--xenomorph-3); }
 
-.footer{
-    width: 100%;
-    height: 200px;
-    background-color: var(--xenomorph-3);
-}
+/*# sourceMappingURL=footer.css.map */

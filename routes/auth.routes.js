@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const controller = require('../controllers/authorization_controller');
+const controller = require('../controllers/authorization.controller');
 const {check} = require('express-validator');
 const router = Router();
 
@@ -9,6 +9,9 @@ router.post(
     [
         check('login', 'Некорректный email').isEmail(),
         check('password', 'Минимальная длина пароля 6 символов').isLength({min: 6}),
+        check('firstname', 'Введите имя').exists({checkNull: true, checkFalsy: true}),
+        check('lastname', 'Введите фамилию').exists({checkNull: true, checkFalsy: true}),
+        check('patronymic', 'Введите отчество').exists({checkNull: true, checkFalsy: true}),
     ],
     controller.signup
 );
@@ -18,7 +21,7 @@ router.post(
     '/signin',
     [
         check('login', 'Некорректный email').isEmail(),
-        check('password', 'Введите пароль').exists(),
+        check('password', 'Введите пароль').exists({checkNull: true, checkFalsy: true}),
     ],
     controller.signin
     );
