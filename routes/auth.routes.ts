@@ -1,9 +1,10 @@
-const {Router} = require('express');
-const controller = require('../controllers/authorization.controller');
-const {check} = require('express-validator');
-const router = Router();
+const {Router} = require('express')
+// @ts-ignore
+const controller = require('../controllers/authorization.controller')
+const {check} = require('express-validator')
+const router = Router()
 
-// api/auth/signup
+// api/auth/signups
 router.post(
     '/signup',
     [
@@ -14,7 +15,7 @@ router.post(
         check('patronymic', 'Введите отчество').exists({checkNull: true, checkFalsy: true}),
     ],
     controller.signup
-);
+)
 
 // api/auth/signin
 router.post(
@@ -24,6 +25,6 @@ router.post(
         check('password', 'Введите пароль').exists({checkNull: true, checkFalsy: true}),
     ],
     controller.signin
-    );
+    )
 
-module.exports = router;
+module.exports = router

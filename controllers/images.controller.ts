@@ -4,7 +4,7 @@ const getProductsImage = async (req, res) => {
     await getImages(req,res,'/images/products')
 }
 
-function getImages(req, res, route) {
+function getImages(req, res, route: string) {
     try {
         const {imagepath} = req.body;
         console.log(path.join(__dirname, route, imagepath))
@@ -13,7 +13,7 @@ function getImages(req, res, route) {
         });
     } catch (e) {
         console.log('Ошибка', e.message)
-        res.status(500).json("На сервере произошла ошибка, попробуйте снова");
+        res.status(500).json('На сервере произошла ошибка, попробуйте снова');
     }
 }
 
