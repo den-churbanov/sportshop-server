@@ -44,10 +44,10 @@ export const CatalogNavigation = () => {
 
     const lockBodyScroll = () => {
         if (menuState.mobileVisible === false) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflowY = 'hidden';
         }
         else {
-            document.body.style.overflow = 'scroll';
+            document.body.style.overflowY = 'scroll';
         }
     }
 
@@ -79,7 +79,7 @@ export const CatalogNavigation = () => {
                     </Link>
                     <nav className={`catalog_nav_list ${menuState.mobileVisible ? 'active' : ''}`}>
                         {items ? items.map((item, idx) => {
-                            return <CatalogNavigationItem text={item.name} id={item.id} idx = {idx} key={idx}/>
+                            return <CatalogNavigationItem text={item.title} id={item.id} idx = {idx} key={idx}/>
                         }) : ""}
                     </nav>
                     <LinksBlock id={2}/>

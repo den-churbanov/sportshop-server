@@ -32,4 +32,19 @@ const getSubSections = (req, res) => {
     }
 }
 
-module.exports = {getSections, getSubSections};
+const getBrands = (req, res) => {
+    try {
+        model.getBrands(
+            data => {
+                res.status(200).json(data);
+            },
+            error => {
+                throw error;
+            });
+    } catch (e) {
+        console.log('Ошибка', e.message)
+        res.status(500).json("На сервере произошла ошибка, попробуйте снова");
+    }
+}
+
+module.exports = {getSections, getSubSections, getBrands};

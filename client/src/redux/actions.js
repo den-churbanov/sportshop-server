@@ -1,4 +1,4 @@
-import {FETCH_SECTIONS, FETCH_SUB_SECTIONS} from "./actionTypes";
+import {FETCH_SECTIONS, FETCH_SUB_SECTIONS, ADD_BRANDS} from "./actionTypes";
 
 /***
  * fetch sections request
@@ -25,6 +25,13 @@ export function fetchSections() {
         const items = await response.json();
         items.forEach(item =>{item.subsections = undefined})
         dispatch({type: FETCH_SECTIONS, payload: items})
+    }
+}
+
+export function addBrands(brands) {
+    return {
+        type: ADD_BRANDS,
+        payload: brands
     }
 }
 

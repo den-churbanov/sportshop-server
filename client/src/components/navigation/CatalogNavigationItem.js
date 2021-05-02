@@ -15,12 +15,12 @@ export const CatalogNavigationItem = ({text, id, idx}) => {
 
     return (
         <li className="catalog_item">
-            <Link className="catalog_link hide_href">{text}</Link>
+            <Link to= {'/'} className="catalog_link hide_href">{text}</Link>
             <label htmlFor={`link-${id}`} className="catalog_link hide_label">{text}</label>
             <input type="checkbox" id={`link-${id}`}/>
             <ul className="submenu-list">
                 {subItems? subItems.map((item, idx) => {
-                    return <li key={idx}><Link to={"/"}>{item.name}</Link></li>;
+                    return <li key={idx}><Link to={'/'}>{item.title}</Link></li>;
                 }): ""
                 }
             </ul>

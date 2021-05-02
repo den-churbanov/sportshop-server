@@ -1,8 +1,28 @@
 @import url(css/colors.css);
 @import url(css/fonts.css);
-.footer {
+footer.footer {
   width: 100%;
-  height: 200px;
+  height: auto;
   background-color: var(--xenomorph-3); }
+  footer.footer .footer__container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap; }
+    footer.footer .footer__container .footer__column {
+      padding: .4rem 1rem; }
+      footer.footer .footer__container .footer__column ul.footer__link_list {
+        list-style: none; }
+        footer.footer .footer__container .footer__column ul.footer__link_list li {
+          display: flex; }
+        footer.footer .footer__container .footer__column ul.footer__link_list a {
+          text-decoration: none;
+          padding-top: .3rem;
+          color: var(--text-color);
+          transition: color .22s; }
+          footer.footer .footer__container .footer__column ul.footer__link_list a:hover {
+            color: #fff; }
 
 /*# sourceMappingURL=footer.css.map */

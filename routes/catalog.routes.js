@@ -7,6 +7,10 @@ router.get(
     '/sections',
     controller.getSections);
 
+router.get(
+    '/brands',
+    controller.getBrands);
+
 // api/catalog/subsections
 router.post(
     '/subsections',

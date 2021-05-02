@@ -16,7 +16,7 @@ export const LinksBlock = ({id}) => {
                     <input type="checkbox" id={`link_label-${id}`}/>
                     <div className="submenu_block">
                         <Link className="submenu_block__button" to="/profile">В личный кабинет</Link>
-                        <Link className="submenu_block__button" onClick={logout}>Выйти</Link>
+                        <a className="submenu_block__button" onClick={logout}>Выйти</a>
                     </div>
                 </label>
             </div>

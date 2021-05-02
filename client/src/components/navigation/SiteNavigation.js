@@ -1,27 +1,20 @@
-import React, {useState} from 'react';
-import '../../styles/site-navigation.css';
-import {SiteNavigationItem} from "./SiteNavigationItem";
-import {Search} from "./Search";
+import React, {useState} from 'react'
+import '../../styles/site-navigation.css'
+import {SiteNavigationItem} from './SiteNavigationItem'
+import {Search} from './Search'
+import {SiteNavigationLinks} from './SiteNavigationLinks'
 
 export const SiteNavigation = () => {
     const [menuState, setState] = useState({
         mobileVisible: false
     });
 
-    const linksNames = ['Наши магазины',
-                        'Доставка и оплата',
-                        'Возврат и обмен',
-                        'Оптовым клиентам',
-                        'Размерная сетка',
-                        'Нанесение на форму',
-                        'Наши вакансии'];
-
     const lockBodyScroll = () => {
         if (menuState.mobileVisible === false) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflowY = 'hidden'
         }
         else {
-            document.body.style.overflow = 'scroll';
+            document.body.style.overflowY = 'scroll'
         }
     }
 
@@ -32,7 +25,7 @@ export const SiteNavigation = () => {
                 ...prevState,
                 mobileVisible: !prevState.mobileVisible
             }
-        });
+        })
     }
 
     return (
@@ -49,8 +42,8 @@ export const SiteNavigation = () => {
                         <span/>
                     </div>
                     <nav className={`site_header_list ${menuState.mobileVisible ? 'active ' : ''}`}>
-                        {linksNames.map((name, index) =>{
-                            return <SiteNavigationItem text={name} key = {index} link="/stub"/>
+                        {SiteNavigationLinks.map((item, index) =>{
+                            return <SiteNavigationItem text={item.title} key = {index} link={item.link}/>
                         })}
                     </nav>
                 </div>
