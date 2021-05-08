@@ -1,8 +1,8 @@
-/*auth-form*/
-/*footer*/
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/*footer*/
 :root {
-  font-size: calc(22px + 5 * (100vw / 1280)); }
+  font-size: calc(22px + 5 * (100vw / 1280));
+  color: #323232; }
 
 @media (max-width: 767px) {
   :root {
@@ -28,34 +28,11 @@ input[type="button"] {
 input[type="text"], span {
   font-size: 0.55rem; }
 
-a, h1, h2, h3, h4, h5, h6, p, li, span {
+a, h1, h2, h3, h4, h5, h6, p, li {
   font-family: 'PT Sans', sans-serif; }
 
 a {
   font-size: 0.5rem;
   font-weight: bold !important; }
 
-:focus, :active {
-  outline: none; }
-
-div, button, a {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-
-input::-ms-clear {
-  display: none; }
-
-body {
-  width: 100vw;
-  overflow-x: hidden; }
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100vh;
-  height: auto;
-  background-color: #f3f7f8; }
-  .wrapper .content-container {
-    flex: 1 1 auto; }
-
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=fonts.css.map */

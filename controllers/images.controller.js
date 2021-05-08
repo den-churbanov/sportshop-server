@@ -1,7 +1,7 @@
 const path = require('path');
 
 const getProductsImage = async (req, res) => {
-    await getImages(req,res,'/images/products')
+    await getImages(req, res, '/images/products')
 }
 
 function getImages(req, res, route) {

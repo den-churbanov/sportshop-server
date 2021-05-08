@@ -4,6 +4,6 @@ import {rootReducer} from "./rootReducer";
 
 export default configureStore({
     reducer: rootReducer,
-    middleware: [reduxLogger, ...getDefaultMiddleware()],
+    middleware: [...getDefaultMiddleware()], //reduxLogger
     devTools: process.env.NODE_ENV === 'development',
 });

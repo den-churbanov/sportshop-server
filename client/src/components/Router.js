@@ -10,6 +10,7 @@ import {WrapperPage} from "../pages/WrapperPage";
 import {StubPage} from "../pages/StubPage";
 
 export const Routes = ({isAuthenticated}) => {
+
     if (isAuthenticated) {
         return (
             <WrapperPage>
@@ -17,7 +18,7 @@ export const Routes = ({isAuthenticated}) => {
                     <Route exact path="/" component={LandingPage}/>
                     <Route exact path="/main" component={LandingPage}/>
                     <Route exact path="/profile" component={ProfilePage}/>
-                    <Route exact path="/catalog" component={CatalogPage}/>
+                    <Route path="/catalog" component={CatalogPage}/>
                     <Route exact path="/basket" component={BasketPage}/>
                     <Route exact path="/product" component={ProductPage}/>
                     <Route exact path="/stub" component={StubPage}/>
@@ -26,11 +27,11 @@ export const Routes = ({isAuthenticated}) => {
             </WrapperPage>
         );
     }
+
     return (
         <Router>
             <Switch>
                 <Route exact path="/authorization" component={AuthPage}/>
-                <Redirect to="/authorization"/>
             </Switch>
         </Router>
     );

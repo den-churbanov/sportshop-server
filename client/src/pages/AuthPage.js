@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import '../styles/auth-page.css';
-import logo from '../components/images/white-logo.jpg'
+import logo from '../images/white-logo.jpg'
 import {useHttp} from "../hooks/http.hook";
 import {AuthContext} from "../AuthContext";
 

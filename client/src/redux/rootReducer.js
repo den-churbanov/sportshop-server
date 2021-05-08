@@ -1,8 +1,8 @@
 import {combineReducers} from "redux";
-import {sectionsReducer} from "./sectionsReducer";
-import {brandsReducer} from "./brandsReducer";
+import {brandsReducer, sectionsReducer, sportTypesReducer} from "./catalogReducer";
 
-export const rootReducer =  combineReducers({
+export const rootReducer = combineReducers({
     sections: sectionsReducer,
-    brands: brandsReducer
+    brands: brandsReducer,
+    sport_types: sportTypesReducer
 });

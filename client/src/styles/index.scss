@@ -1,4 +1,16 @@
-@import "css/colors.css";
+@import "colors.scss";
+@import "fonts.scss";
+
+:focus, :active {
+    outline: none;
+}
+div, button, a{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input::-ms-clear {
+    display: none;
+}
 
 body {
     width: 100vw;
@@ -11,7 +23,7 @@ body {
     width: 100%;
     min-height: 100vh;
     height: auto;
-    background-color: var(--xenomorph-5);
+    background-color: $xenomorph-5;
     
     .content-container {
         flex: 1 1 auto;

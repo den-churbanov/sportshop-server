@@ -1,0 +1,95 @@
+@import "colors.scss";
+
+%btn{
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 140px;
+    color: #fff;
+    border-radius: 6px;
+    border: 1px solid $xenomorph-2;
+    border: 1px rgba(29, 47, 60, 0.42) solid;
+    padding: 0.6em 1em;
+    text-align: center;
+    font: bold 14px Arial, Helvetica;
+    letter-spacing: 0.03rem;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+    background-color: $xenomorph-6;
+    outline: none;
+    cursor: pointer;
+    
+    -webkit-transition: background-color 0.1s linear;
+    -moz-transition: background-color 0.1s linear;
+    -o-transition: background-color 0.1s linear;
+    transition: background-color 0.1s linear;
+    
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    @media screen and (min-width: 768px){
+        &:hover{
+            background: $xenomorph-2;
+        }
+    }
+    &:active{
+        background: $xenomorph-2;
+    }
+}
+
+%btn-red{
+    @extend %btn;
+    border: 1px solid $button-red;
+    background-color: $button-red;
+    
+    @media screen and (min-width: 768px){
+        &:hover{
+            background: $button-red-hover;
+        }
+    }
+    
+    &:active{
+        background: $button-red-hover;
+    }
+}
+
+%input{
+    display: inline-block;
+    appearance: none;
+    outline: none;
+    background-color: $input-color;
+    font: 14px "PT Sans", Helvetica, sans-serif;
+    border-radius: 5px;
+    border: 1px solid $input-border-color;
+    padding: 0.45em 0.3em;
+}
+
+.message_block{
+    display: inline-block;
+    margin-top: 5px;
+    box-sizing: border-box;
+    padding: 15px 15px;
+    border-radius: 6px;
+    width: inherit;
+    min-width: inherit;
+    height: auto;
+    text-align: center;
+    
+    &.error{
+        border: 2px solid rgba(255, 0, 0, 0.67);
+        background: rgb(180, 0, 0);
+        background: rgba(255, 0, 0, 0.3);
+    }
+    
+    &.success{
+        border: 2px solid rgba(0, 217, 11, 0.81);
+        background: rgb(0, 255, 0);
+        background: rgba(0, 255, 0, 0.3);
+    }
+    
+    span{
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        color: #ffffff;
+        font-family: "PT Sans", Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+    }
+}

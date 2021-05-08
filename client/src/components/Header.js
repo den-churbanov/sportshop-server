@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import '../styles/header.css';
-import logo from './images/logo-transparence.png';
+import logo from '../images/logo-transparence.png';
 import {Search} from "./navigation/Search";
 import {LinksBlock} from "./navigation/LinksBlock";
 import {Link} from "react-router-dom";

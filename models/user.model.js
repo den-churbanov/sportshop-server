@@ -1,34 +1,7 @@
-const connection = require('../database');
+const {getRequestFunctionCreator} = require('./models.request.creators')
 
-const signin = (login, dbFunction, response, reject) => {
-//    console.log(`SELECT site_database.${dbFunction}('${login}')`);
-    connection.query(`SELECT site_database.${dbFunction}('${login}')`, (err, results)=>{
-        if(err){
-            console.log('MySQL ERROR on user_model.signin:', err);
-            return reject(err);
-        }
-        let data = new Array();
-        for(let key in results[0]){
-            data.push(results[0][key]);
-        }
-        return response({data});
-    });
-}
+const check_signin = getRequestFunctionCreator('check_login_user_exists')
+const signin = getRequestFunctionCreator('get_password_by_login')
+const signup = getRequestFunctionCreator('register_new_user')
 
-const signup = (lastname, firstname, patronymic, login, hashedPass, response, reject) => {
-//    console.log(`SELECT site_database.register_new_user('${lastname}','${firstname}','${patronymic}','${login}','${hashedPass}')`);
-    connection.query(`SELECT site_database.register_new_user('${lastname}','${firstname}','${patronymic}','${login}','${hashedPass}');`,
-        (err, results) => {
-            if(err){
-                console.log('MySQL ERROR on user_model.signup:', err);
-                return reject(err);
-            }
-            let data = new Array();
-            for(let key in results[0]){
-                data.push(results[0][key]);
-            }
-            return response({data});
-        });
-}
-
-module.exports = {signup, signin};
+module.exports = {signup, signin, check_signin}

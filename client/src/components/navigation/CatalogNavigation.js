@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import '../../styles/catalog-navigation.css';
-import {CatalogNavigationItem} from "./CatalogNavigationItem";
-import logo from '../images/logo-long-transper.png';
-import arrow from '../images/arrow.png';
-import {LinksBlock} from "./LinksBlock";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchSections} from "../../redux/actions";
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {CatalogNavigationItem} from "./CatalogNavigationItem";
+import {LinksBlock} from "./LinksBlock";
+import {fetchSections} from "../../redux/actions";
+import '../../styles/catalog-navigation.css';
+import logo from '../../images/logo-long-transper.png';
+import arrow from '../../images/arrow.png';
 
 export const CatalogNavigation = () => {
     const [menuState, setState] = useState({
@@ -32,7 +32,7 @@ export const CatalogNavigation = () => {
                 }
             });
         }
-        else if (window.pageYOffset === 0 & menuState.fixed) {
+        else if (window.pageYOffset < 140 & menuState.fixed) {
             setState(prevState => {
                 return {
                     ...prevState,

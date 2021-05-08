@@ -1,16 +1,17 @@
-@import url(css/colors.css);
-@import url(css/fonts.css);
+/*auth-form*/
+/*footer*/
 /*catalog navigation component*/
 .catalog_header {
   width: 100%;
-  background-color: var(--xenomorph-3); }
+  background-color: #00d5dc; }
   .catalog_header.fixed {
     position: fixed;
     top: 0;
     left: 0; }
   .catalog_header .catalog_container {
     width: 90%;
-    margin: 0 4%; }
+    margin: 0 4%;
+    padding: 0.1em; }
   .catalog_header .catalog_nav_list {
     display: flex;
     align-items: center;
@@ -24,7 +25,7 @@
   left: -100%;
   width: 100%;
   height: 50px;
-  background-color: var(--xenomorph-3);
+  background-color: #00d5dc;
   transition: all 0.4s ease 0s; }
   .catalog_header_block.show {
     left: 0;
@@ -46,7 +47,7 @@
   padding: 0.3em;
   border: 1px rgba(29, 47, 60, 0.42) solid;
   border-radius: 4px;
-  background-color: var(--xenomorph-2);
+  background-color: #2c3e50;
   color: #fff;
   text-align: center;
   font: bold 14px Helvetica;
@@ -59,7 +60,7 @@
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08); }
   .catalog_button:hover, .catalog_button:active {
-    background: var(--xenomorph-6); }
+    background: #006885; }
   .catalog_button span {
     position: relative;
     color: #fff;
@@ -120,7 +121,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: var(--xenomorph-3);
+    background-color: #00d5dc;
     transition: all 0.4s ease 0s; }
     .catalog_header .catalog_nav_list.active {
       left: 0;
@@ -134,7 +135,7 @@
       .catalog_header .catalog_nav_list .catalog_item:last-child:hover > .submenu-list {
         display: none; }
       .catalog_header .catalog_nav_list .catalog_item input[id^="link"]:checked + .submenu-list {
-        border-top: 2px solid var(--xenomorph-2);
+        border-top: 2px solid #2c3e50;
         display: block;
         opacity: 1;
         visibility: visible; }
@@ -149,7 +150,7 @@
     .catalog_header .catalog_nav_list .catalog_link:focus {
       cursor: pointer;
       color: #fff;
-      background-color: var(--xenomorph-2); }
+      background-color: #2c3e50; }
     .catalog_header .catalog_nav_list .catalog_link.hide_href {
       display: none; }
     .catalog_header .catalog_nav_list .catalog_link.hide_label {
@@ -175,22 +176,22 @@
   max-width: 120px;
   border-radius: 2px;
   text-decoration: none;
-  color: var(--text-color);
+  color: #323232;
   text-transform: uppercase;
   padding: 1em 1.2em;
   transition: all 300ms ease; }
   .catalog_link:hover {
     cursor: pointer;
-    background-color: var(--xenomorph-2);
+    background-color: #2c3e50;
     color: #fff; }
 
 .catalog_container_body .block_item_link:hover {
-  background: var(--xenomorph-2); }
+  background: #2c3e50; }
 
 .submenu-list {
   width: 100vw;
   padding: 0.1em;
-  background-color: var(--xenomorph-3);
+  background-color: #00d5dc;
   list-style: none;
   position: absolute;
   left: 0;
@@ -207,16 +208,16 @@
     display: block;
     text-align: center;
     align-items: center;
-    background-color: var(--xenomorph-3); }
+    background-color: #00d5dc; }
     .submenu-list > li :hover {
       cursor: pointer;
       color: #fff;
-      background-color: var(--xenomorph-2); }
+      background-color: #2c3e50; }
     .submenu-list > li > a {
       display: block;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--text-color);
+      color: #323232;
       border-radius: 2px;
       padding: 1em 0.5em; }
 

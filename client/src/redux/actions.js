@@ -1,4 +1,4 @@
-import {FETCH_SECTIONS, FETCH_SUB_SECTIONS, ADD_BRANDS} from "./actionTypes";
+import {FETCH_SECTIONS, FETCH_SUB_SECTIONS, ADD_BRANDS, ADD_SPORT_TYPES} from "./actionTypes";
 
 /***
  * fetch sections request
@@ -32,6 +32,13 @@ export function addBrands(brands) {
     return {
         type: ADD_BRANDS,
         payload: brands
+    }
+}
+
+export function addSportTypes(types) {
+    return {
+        type: ADD_SPORT_TYPES,
+        payload: types
     }
 }
 

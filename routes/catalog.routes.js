@@ -7,14 +7,20 @@ router.get(
     '/sections',
     controller.getSections);
 
-router.get(
-    '/brands',
-    controller.getBrands);
-
 // api/catalog/subsections
 router.post(
     '/subsections',
     controller.getSubSections);
+
+// api/catalog/brands
+router.get(
+    '/brands',
+    controller.getBrands);
+
+// api/catalog/sport_types
+router.get(
+    '/sport_types',
+    controller.getSportTypes);
 
 module.exports = router;
 

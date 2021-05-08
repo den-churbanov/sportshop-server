@@ -1,12 +1,11 @@
-@import "css/colors.css";
-@import "css/fonts.css";
+@import "colors.scss";
 
 /*Header component*/
 .header-top {
     width: 100%;
     height: 80px;
     top: 0;
-    background-color: var(--xenomorph-2);
+    background-color: $xenomorph-2;
     
     .container {
         display: block;
@@ -62,7 +61,7 @@
         appearance: none;
         width: 80%;
         outline: none;
-        background-color: var(--input-color);
+        background-color: $input-color;
         border-radius: 6px 0 0 6px;
         border: 1px solid #ececec;
         padding: 0.6em;
@@ -82,8 +81,8 @@
         width: 20%;
         text-align: center;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-        background-color: var(--xenomorph-3);
-        border: 1px solid var(--xenomorph-4);
+        background-color: $xenomorph-3;
+        border: 1px solid $xenomorph-4;
         cursor: pointer;
         
         -webkit-transition: background-color 0.1s linear;
@@ -96,7 +95,7 @@
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
         
         &:hover {
-            background-color: var(--xenomorph-6);
+            background-color: $xenomorph-6;
         }
         
         img {
@@ -138,7 +137,7 @@
             &:after {
                 display: block;
                 content: "";
-                background-color: var(--xenomorph-3);
+                background-color: $xenomorph-3;
                 height: 2px;
                 width: 0%;
                 left: 50%;
@@ -152,7 +151,7 @@
             }
             
             &:hover {
-                color: var(--xenomorph-3);
+                color: $xenomorph-3;
             }
             
             &:hover:after,
@@ -164,53 +163,50 @@
 }
 
 /*Блок ссылки корзины и профиль*/
-.links_block {
-    align-self: center;
-    align-items: center;
-    max-width: 90px;
-    min-width: 80px;
-    width: 20%;
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-}
 
 .links_block__item {
-    display: flex;
-    align-items: center;
     box-sizing: border-box;
-    width: 40%;
-    text-align: center;
+    display: inline-block;
+    margin: 0.2rem;
     
     :hover .submenu_block {
         display: block;
     }
 }
 
-label.links_block__item__link {
-    line-height: 1;
-}
-
 .links_block__item__link {
-    width: 100%;
-    display: block;
+    display: flex;
+    height: 1rem;
+    width: 1rem;
+    padding: 0.15rem;
     border-radius: 50%;
+    cursor: pointer;
+    background-color: $xenomorph-3;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all ease 0.2s;
     position: relative;
     
     &:hover {
-        background-color: var(--xenomorph-3);
+        background-color: $xenomorph-2;
+        
+        svg{
+            fill: $xenomorph-3;
+        }
     }
     
     input[type="checkbox"] {
         display: none;
     }
     
-    img {
-        margin-top: 12%;
-        width: 80%;
-        height: 80%;
+    svg {
+        width: 95%;
+        height: auto;
+        margin: auto;
+        fill: $xenomorph-5;
     }
-    input[id^="link_label"]:checked > .submenu_block{
+    
+    input[id^="link_label"]:checked > .submenu_block {
         display: block;
     }
 }
@@ -223,30 +219,30 @@ label.links_block__item__link {
     top: 98%;
     right: 0%;
     width: 11%;
-    min-width: 120px;
-    background: var(--xenomorph-3);
+    min-width: 130px;
+    background: $xenomorph-3;
     z-index: 1;
     
     a {
-        color: var(--xenomorph-5);
+        color: $xenomorph-5;
         text-decoration: none;
     }
     
     .submenu_block__button {
         box-sizing: border-box;
         border-radius: 6px;
-        padding: 0.6em;
+        padding: 0.5em;
         display: block;
         text-align: left;
         
         &:hover {
-            background: var(--xenomorph-5);
-            color: var(--xenomorph-2);
+            background: $xenomorph-5;
+            color: $xenomorph-2;
         }
-    
+        
         &:last-child:hover {
             background: #fd5454;
-            color: var(--xenomorph-5);
+            color: $xenomorph-5;
         }
     }
 }
@@ -257,11 +253,17 @@ label.links_block__item__link {
     }
     
     .submenu_block {
-        background: var(--xenomorph-2);
+        background: $xenomorph-2;
     }
     
-    .links_block__item__link:hover {
-        background: var(--xenomorph-2);
+    .links_block__item__link {
+        background: $xenomorph-2;
+        
+        &:hover{
+            svg{
+                fill: $xenomorph-5;
+            }
+        }
     }
     
     .header-content {
