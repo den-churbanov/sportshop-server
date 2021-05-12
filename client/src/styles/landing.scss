@@ -1,12 +1,233 @@
-.hover-image-8 a {
-    display: inline-block;
-    background: #0083ff;
-    line-height: 0;
+@import "colors.scss";
+
+//слайдер
+div.landing_container {
+    box-sizing: border-box;
+    width: 100%;
+    background: $xenomorph-5;
+    min-height: 500px;
+    padding: 0 0.5em;
+    
+    section.special-offer-section {
+        padding: 0.5em 0;
+        
+        .slider {
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            height: calc(0.36 * 100vw);
+        }
+        
+        .dots-container {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            bottom: 0.3rem;
+            width: 12%;
+            left: 44%;
+            
+            .dot {
+                position: relative;
+                width: 0.6rem;
+                height: 0.6rem;
+                border-radius: 50%;
+                background: $xenomorph-4;
+                
+                
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: 60%;
+                    height: 60%;
+                    border-radius: 50%;
+                    left: 20%;
+                    top: 20%;
+                    background-color: $xenomorph-2;
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+                    opacity: 0;
+                    -webkit-transition: all 0.2s ease;
+                    transition: all 0.2s ease;
+                }
+                
+                &.active {
+                    &::after {
+                        opacity: 1;
+                        -webkit-transform: scale(1);
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+        
+        .slider-item {
+            position: absolute;
+            box-sizing: border-box;
+            width: 100%;
+            transition: all 0.5s linear;
+            color: #fff;
+            
+            img {
+                width: 100%;
+            }
+        }
+        
+        .slider-item {
+            transform: translateX(0%);
+        }
+        
+        .slider-item-prev {
+            transform: translateX(-100%);
+        }
+        
+        .slider-item-next {
+            transform: translateX(100%);
+        }
+        
+        
+        .slider-button {
+            position: absolute;
+            width: 1.6rem;
+            height: 1.6rem;
+            top: calc(50% - 0.8rem);
+            border-radius: 50%;
+            z-index: 1;
+            cursor: pointer;
+            
+            @media screen and (max-width: 768px) {
+                display: none;
+            }
+            
+            :hover, :active {
+                fill: $xenomorph-5;
+            }
+            
+            svg {
+                fill: $xenomorph-2;
+                -webkit-transition: fill 0.1s linear;
+                -moz-transition: fill 0.1s linear;
+                -o-transition: fill 0.1s linear;
+                transition: fill 0.1s linear;
+                
+            }
+            
+            &.prev {
+                left: 0.5rem;
+                
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+            
+            &.next {
+                right: 0.5rem;
+            }
+        }
+    }
+    
+    @media screen and (max-width: 700px) {
+        padding: 0;
+        
+        section.special-offer-section {
+            
+            .dots-container {
+                min-width: 100px;
+                left: calc(50% - 50px)
+            }
+        }
+    }
+    
+    section.stock-section {
+        padding-top: 0.5em;
+        
+        h3 {
+            display: block;
+            margin-left: 0.5em;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: .1rem;
+            color: $landing-headers-color;
+        }
+        
+        .container {
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            
+            .stock-wrapper {
+                box-sizing: border-box;
+                padding: 0.5em;
+                flex: 0 0 25%;
+                max-width: 25%;
+                
+                img {
+                    width: 100%;
+                }
+                
+                @media screen and (max-width: 650px) {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                    padding: 0.5em 0.2em 0.2em 0.2em;
+                }
+            }
+        }
+        
+    }
+    
+    section.boots-section {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5em 0.25em 0.25em;
+        
+        .boots-image {
+            box-sizing: border-box;
+            padding: 1.5em;
+            flex: 0 0 50%;
+            max-width: 50%;
+            
+            &:nth-child(odd) {
+                padding-right: 0.5em;
+            }
+            
+            &:nth-child(even) {
+                padding-left: 0.5em;
+            }
+            
+            img {
+                width: 100%;
+            }
+            
+            @media screen and (max-width: 650px) {
+                flex: 0 0 100%;
+                max-width: 100%;
+                &:nth-child(odd) {
+                    padding-right: 1.5em;
+                    padding-bottom: 0.5em;
+                }
+                
+                &:nth-child(even) {
+                    padding-left: 1.5em;
+                    padding-top: 0.5em;
+                }
+                
+            }
+        }
+        
+    }
+    
 }
-.hover-image-8 a img {
-    transition: filter 0.5s linear;
-    filter: brightness(2) grayscale(1) opacity(0.5);
-}
-.hover-image-8 a:hover img {
-    filter: none;
-}
+
+
+

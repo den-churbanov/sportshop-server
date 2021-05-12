@@ -23,7 +23,6 @@ const getSubSections = async (req, res) => {
     }
 }
 
-
 const getBrands = async (req, res) => {
     try {
         const data = await model.getBrands()
@@ -44,4 +43,14 @@ const getSportTypes = async (req, res) => {
     }
 }
 
-module.exports = {getSections, getSubSections, getBrands, getSportTypes}
+const getSpecialOffers = async (req, res) => {
+    try {
+        const data = await model.getSpecialOffers()
+        res.status(200).json(data)
+    } catch (e) {
+        console.log('Ошибка', e.message)
+        res.status(500).json("На сервере произошла ошибка, попробуйте снова")
+    }
+}
+
+module.exports = {getSections, getSubSections, getBrands, getSportTypes, getSpecialOffers}

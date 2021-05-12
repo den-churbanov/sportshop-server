@@ -13,7 +13,15 @@ export const useHttp = () => {
                 headers['Content-Type'] = 'application/json';
             }
             const response = await fetch(url, {method, body, headers})
-            const data = await response.json();
+            let data
+            switch (response.headers.get('content-type')) {
+                case 'image/jpeg':
+                     data = await response.blob()
+                    break
+                case 'application/json; charset=utf-8':
+                    data = await response.json()
+                    break
+            }
             if (!response.ok) {
                 if(data.errors) throw new Error(data.errors[0].msg);
                 throw new Error(data.message || 'Произошла ошибка на сервере');
@@ -22,6 +30,7 @@ export const useHttp = () => {
             setSuccess(data.message);
             return data;
         } catch (e) {
+            console.log(e)
             setLoading(false);
             setError(e.message);
             throw e;

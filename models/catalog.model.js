@@ -5,5 +5,6 @@ const getSections = getRequestProcedureCreator('select_all_section')
 const getSubsections = getRequestProcedureCreator('select_subsections')
 const getBrands = getRequestProcedureCreator('select_all_brands')
 const getSportTypes = getRequestProcedureCreator('select_all_sport_types')
+const getSpecialOffers = getRequestProcedureCreator('select_special_offers')
 
-module.exports = {getSections, getSubsections, getBrands, getSportTypes};
+module.exports = {getSections, getSubsections, getBrands, getSportTypes, getSpecialOffers};

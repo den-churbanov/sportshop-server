@@ -3,7 +3,8 @@
 /*catalog navigation component*/
 .catalog_header {
     width: 100%;
-    background-color: $xenomorph-3;
+    background-color: $xenomorph-2;
+    z-index: 5;
     
     &.fixed {
         position: fixed;
@@ -13,8 +14,14 @@
     
     .catalog_container {
         width: 90%;
-        margin: 0 4%;
+        margin: 0 auto;
         padding: 0.1em;
+        
+        &.fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
     }
     
     .catalog_nav_list {
@@ -26,18 +33,20 @@
 }
 
 .catalog_header_block {
-    position: absolute;
+    position: fixed;
     display: block;
     top: 0;
     left: -100%;
     width: 100%;
     height: 50px;
-    background-color: $xenomorph-3;
-    transition: all 0.4s ease 0s;
-
+    background-color: $xenomorph-6;
+    -webkit-transition: left 0.4s linear 0s;
+    -moz-transition: left 0.4s linear 0s;
+    -o-transition: left 0.4s linear 0s;
+    transition: left 0.4s linear 0s;
+    
     &.show {
         left: 0;
-        z-index: 5;
     }
 }
 
@@ -48,22 +57,21 @@
     align-items: center;
 }
 
-
 .catalog_button {
     box-sizing: border-box;
     display: none;
     align-items: center;
     justify-content: space-around;
     height: 40px;
-    width: 110px;
+    width: 4rem;
     padding: 0.3em;
-    border: 1px rgba(29, 47, 60, 0.42) solid;
+    border: 1px $xenomorph-6 solid;
     border-radius: 4px;
     
-    background-color: $xenomorph-2;
+    background-color: $xenomorph-6;
     color: #fff;
     text-align: center;
-    font: bold 14px Helvetica;
+    font: bold 0.7em Helvetica;
     cursor: pointer;
     
     -webkit-transition: background-color 0.1s linear;
@@ -74,45 +82,63 @@
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
     
-    &:hover, &:active {
-        background: $xenomorph-6;
+    &:active {
+        background: $button-blue-hover;
+        border: 1px solid $button-blue-hover;
     }
     
     span {
-        position: relative;
         color: #fff;
         text-transform: uppercase;
         font-weight: bold;
     }
     
-    &.active {
-        flex-direction: row-reverse;
-        z-index: 6;
+    .arrow {
+        height: 0.55rem;
+        width: 0.55rem;
+        padding-bottom: 0.3em;
+        transform: rotate(0deg);
+        
+        svg {
+            fill: #fff;
+        }
+    }
     
-        .arrow img {
-            transform: rotate(0deg);
-            padding-bottom: 0;
-            padding-top: 3px;
+    &.active {
+        left: 0.5rem;
+        position: absolute;
+        flex-direction: row-reverse;
+        z-index: 10;
+        background-color: $xenomorph-2;
+        
+        .arrow {
+            transform: rotate(180deg);
+        }
+        
+        ~ div.links_block {
+            opacity: 0;
+            -webkit-transition: opacity 0.1s linear 0.4s;
+            -moz-transition: opacity 0.1s linear 0.4s;
+            -o-transition: opacity 0.1s linear 0.4s;
+            transition: opacity 0.1s linear 0.4s;
         }
     }
 }
 
-.arrow img {
-    padding-bottom: 3px;
-    height: 1em;
-    width: 1em;
-    transform: rotate(180deg);
-}
 
 .header_logo {
     display: block;
-    flex: 0 0 60px;
+    flex: 0 0 125px;
+    
+    img {
+        width: 100%;
+    }
 }
 
 .header_logo__hidden {
     display: none;
-    flex: 0 0 60px;
 }
+
 
 .catalog_link.hide_label,
 .catalog_item input,
@@ -125,7 +151,7 @@
         .links_block {
             display: flex;
         }
-    
+        
         .catalog_container_body {
             justify-content: space-between;
         }
@@ -144,8 +170,7 @@
     
     .header_logo {
         display: flex;
-        flex: 0 0 60px;
-    
+        
         img {
             max-width: 130px;
         }
@@ -160,21 +185,24 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: $xenomorph-3;
-        transition: all 0.4s ease 0s;
+        background-color: $xenomorph-6;
+        
+        -webkit-transition: left 0.1s linear 0s;
+        -moz-transition: left 0.1s linear 0s;
+        -o-transition: left 0.1s linear 0s;
+        transition: all 0.4s linear 0s;
         
         &.active {
             left: 0;
-            top: 50px;
             overflow: scroll;
         }
-    
+        
         .catalog_item {
             display: block;
             position: relative;
             margin-left: 1em;
             width: 100%;
-    
+            
             &:last-child:hover > .submenu-list {
                 display: none;
             }
@@ -185,7 +213,7 @@
                 opacity: 1;
                 visibility: visible;
             }
-    
+            
             .submenu-list {
                 width: 50%;
                 display: none;
@@ -193,19 +221,21 @@
                 opacity: 0;
                 visibility: hidden;
             }
-    
+            
             label {
                 font-size: 0.6em;
             }
         }
-    
-        .catalog_link{
-            &:focus {
+        
+        .catalog_link {
+            color: $xenomorph-2;
+            
+            &:active {
                 cursor: pointer;
                 color: #fff;
                 background-color: $xenomorph-2;
             }
-        
+            
             &.hide_href {
                 display: none;
             }
@@ -222,7 +252,7 @@
         margin-left: 20px;
         border-radius: 5px;
         
-        &> a {
+        & > a {
             font-size: 0.6rem;
             text-align: left;
         }
@@ -245,14 +275,18 @@
     max-width: 120px;
     border-radius: 2px;
     text-decoration: none;
-    color: $text-color;
+    color: $xenomorph-3;
     text-transform: uppercase;
     padding: 1em 1.2em;
+    
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
     transition: all 300ms ease;
     
     &:hover {
         cursor: pointer;
-        background-color: $xenomorph-2;
+        background-color: $xenomorph-6;
         color: #fff;
     }
 }
@@ -264,7 +298,7 @@
 .submenu-list {
     width: 100vw;
     padding: 0.1em;
-    background-color: $xenomorph-3;
+    background-color: $xenomorph-6;
     list-style: none;
     position: absolute;
     left: 0;
@@ -274,27 +308,35 @@
     align-items: center;
     opacity: 0;
     visibility: hidden;
+    z-index: 10;
     
-    &> li {
+    & > li {
         width: auto;
         min-width: 200px;
         height: auto;
         display: block;
         text-align: center;
         align-items: center;
-        background-color: $xenomorph-3;
+    
+        @media screen and (min-width: 768px){
+            & :hover{
+                cursor: pointer;
+                color: #fff;
+                background-color: $xenomorph-2;
+            }
+        }
         
-        & :hover {
+        & :active {
             cursor: pointer;
             color: #fff;
             background-color: $xenomorph-2;
         }
         
-        &> a {
+        & > a {
             display: block;
             text-transform: uppercase;
             text-decoration: none;
-            color: $text-color;
+            color: $xenomorph-2;
             border-radius: 2px;
             padding: 1em 0.5em;
         }

@@ -1,74 +1,128 @@
 @import "colors.scss";
 
-/*Header component*/
-.header-top {
+
+header.header-top {
     width: 100%;
-    height: 80px;
+    height: 60px;
     top: 0;
     background-color: $xenomorph-2;
-    
-    .container {
-        display: block;
-        width: 92%;
-        padding: 0 4%;
-    }
     
     &.hide {
         display: none;
     }
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     
-    .search-container {
+    .container {
+        width: 92%;
+        height: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
         display: flex;
-        max-width: 220px;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        
+        /*Логотип*/
+        .img-wrapper {
+            flex: 0 0 125px;
+            align-self: flex-start;
+            
+            
+            a {
+                display: block;
+                margin-top: 5px;
+                width: 100%;
+                height: 100%;
+            }
+            
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+        
+        /*Блок контакты*/
+        .header-contacts {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 170px;
+            max-height: 55px;
+            
+            p, h6, a {
+                display: block;
+                padding-top: 0.3em;
+                font-size: 0.45rem;
+                color: #f2f2f2;
+            }
+            
+            p {
+                font-size: 0.4rem;
+            }
+            
+            .number-block {
+                display: flex;
+                position: relative;
+                margin: 0 auto;
+                
+                a {
+                    text-decoration: none;
+                    
+                    &:after {
+                        display: block;
+                        content: "";
+                        background-color: $xenomorph-6;
+                        height: 2px;
+                        width: 0%;
+                        left: 50%;
+                        position: absolute;
+                        -webkit-transition: width .3s ease-in-out;
+                        -moz--transition: width .3s ease-in-out;
+                        transition: width .3s ease-in-out;
+                        -webkit-transform: translateX(-50%);
+                        -moz-transform: translateX(-50%);
+                        transform: translateX(-50%);
+                    }
+                    
+                    @media screen and (min-width: 768px) {
+                        &:hover {
+                            color: $xenomorph-6;
+                            
+                            &:after {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    
+                    &:focus {
+                        color: $xenomorph-6;
+                        
+                        &:after {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
-/*Логотип*/
-.img-wrapper {
-    flex: 0 1 100px;
-    align-self: flex-start;
-    
-    a {
-        display: block;
-        margin-top: 5px;
-        width: 100%;
-        height: 100%;
-    }
-    
-    img {
-        height: 100%;
-        width: 100%;
-    }
-}
-
-/*Блок поиска*/
 .search-block {
-    display: inline-flex;
+    display: flex;
     align-items: stretch;
     justify-content: stretch;
-    max-width: 220px;
-    width: 100%;
-    height: 80%;
+    max-width: 210px;
     
     input[type="text"] {
         box-sizing: border-box;
         appearance: none;
         width: 80%;
+        
         outline: none;
         background-color: $input-color;
         border-radius: 6px 0 0 6px;
         border: 1px solid #ececec;
-        padding: 0.6em;
-        
-        &::-webkit-input-placeholder {
-            font-weight: bold;
-        }
+        padding: 0.5em;
         
         &:focus::-webkit-input-placeholder {
             opacity: 0.3;
@@ -76,13 +130,13 @@
     }
     
     .search-btn {
+        position: relative;
         box-sizing: border-box;
         border-radius: 0 6px 6px 0;
         width: 20%;
-        text-align: center;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-        background-color: $xenomorph-3;
-        border: 1px solid $xenomorph-4;
+        background-color: $xenomorph-6;
+        border: 1px solid $xenomorph-6;
         cursor: pointer;
         
         -webkit-transition: background-color 0.1s linear;
@@ -94,75 +148,51 @@
         -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
         
-        &:hover {
-            background-color: $xenomorph-6;
+        @media screen and (min-width: 768px) {
+            &:hover {
+                background-color: $xenomorph-3;
+                border: 1px solid $xenomorph-3;
+            }
         }
         
-        img {
-            padding-top: 15%;
-            height: 60%;
-            width: 50%;
+        &:active {
+            background-color: $xenomorph-3;
+            border: 1px solid $xenomorph-3;
         }
+        
+        svg {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 60%;
+            height: 60%;
+            margin: auto;
+            fill: $xenomorph-5;
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        input[type="text"] {
+            font-size: 0.6rem;
+        }
+        
     }
 }
 
-/*Блок контакты*/
-.header-contacts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    min-width: 170px;
-    max-height: 65px;
-    
-    p, h6, a {
-        display: block;
-        padding-top: 0.4em;
-        font-size: 0.5rem;
-        color: #f2f2f2;
-    }
-    
-    p {
-        font-size: 0.45rem;
-    }
-    
-    .number-block {
-        display: flex;
-        position: relative;
-        margin: 0 auto;
-        
-        a {
-            text-decoration: none;
-            
-            &:after {
-                display: block;
-                content: "";
-                background-color: $xenomorph-3;
-                height: 2px;
-                width: 0%;
-                left: 50%;
-                position: absolute;
-                -webkit-transition: width .3s ease-in-out;
-                -moz--transition: width .3s ease-in-out;
-                transition: width .3s ease-in-out;
-                -webkit-transform: translateX(-50%);
-                -moz-transform: translateX(-50%);
-                transform: translateX(-50%);
-            }
-            
-            &:hover {
-                color: $xenomorph-3;
-            }
-            
-            &:hover:after,
-            &:focus:after {
-                width: 100%;
-            }
-        }
-    }
-}
 
 /*Блок ссылки корзины и профиль*/
+
+.links_block {
+    opacity: 1;
+    -moz-opacity: 1;
+    visibility: visible;
+    -webkit-transition: visibility, opacity 0.1s linear 1s;
+    -moz-transition: visibility, opacity 0.1s linear 1s;
+    -o-transition: visibility, opacity 0.1s linear 1s;
+    transition: visibility, opacity 0.1s linear 1s;
+}
 
 .links_block__item {
     box-sizing: border-box;
@@ -176,22 +206,33 @@
 
 .links_block__item__link {
     display: flex;
+    position: relative;
     height: 1rem;
     width: 1rem;
     padding: 0.15rem;
     border-radius: 50%;
     cursor: pointer;
-    background-color: $xenomorph-3;
-    -webkit-transition: all 0.2s ease;
-    -o-transition: all 0.2s ease;
-    transition: all ease 0.2s;
-    position: relative;
+    background-color: $xenomorph-6;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all linear 0.2s;
     
-    &:hover {
-        background-color: $xenomorph-2;
+    
+    @media screen and (min-width: 768px) {
+        &:hover {
+            background-color: $xenomorph-2;
+            
+            svg {
+                fill: $xenomorph-6;
+            }
+        }
+    }
+    
+    &:focus {
+        color: $xenomorph-6;
         
-        svg{
-            fill: $xenomorph-3;
+        &:after {
+            width: 100%;
         }
     }
     
@@ -220,7 +261,7 @@
     right: 0%;
     width: 11%;
     min-width: 130px;
-    background: $xenomorph-3;
+    background: $xenomorph-6;
     z-index: 1;
     
     a {
@@ -248,29 +289,31 @@
 }
 
 @media (max-width: 650px) {
-    .header-content {
-        justify-content: space-around;
-    }
-    
-    .submenu_block {
-        background: $xenomorph-2;
+    header.header-top {
+        .container {
+            
+            justify-content: space-around;
+            
+            .submenu_block {
+                background: $xenomorph-2;
+            }
+        }
     }
     
     .links_block__item__link {
-        background: $xenomorph-2;
+        background: $xenomorph-6;
         
-        &:hover{
-            svg{
+        &:hover {
+            svg {
                 fill: $xenomorph-5;
             }
         }
     }
     
-    .header-content {
-        .search-container, .links_block {
-            display: none;
-        }
+    .search-block, .links_block {
+        display: none;
     }
+    
 }
 
 

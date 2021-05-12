@@ -35,7 +35,7 @@
   height: 55px;
   justify-content: space-around;
   align-items: center; }
-  .site_navigation_header_body .search-container {
+  .site_navigation_header_body .search-block {
     display: none; }
   .site_navigation_header_body .header_burger {
     display: none; }
@@ -66,15 +66,16 @@
   border: 2px solid #00d5dc;
   transition: all 300ms ease;
   box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.2); }
-  .nav_link:hover {
-    border: 2px solid #2c3e50;
-    color: white;
-    box-shadow: none; }
+  @media screen and (min-width: 1000px) {
+    .nav_link:hover {
+      border: 2px solid #2c3e50;
+      color: #f3f7f8;
+      box-shadow: none; } }
 
 @media (max-width: 650px) {
   .site_navigation_header .navigation_container .site_navigation_header_body {
     justify-content: space-between; }
-    .site_navigation_header .navigation_container .site_navigation_header_body .search-container {
+    .site_navigation_header .navigation_container .site_navigation_header_body .search-block {
       display: flex; } }
 @media (max-width: 1000px) {
   .site_navigation_header_body {
@@ -105,17 +106,17 @@
         bottom: 23%; }
       .site_navigation_header_body .header_burger.header_burger_active {
         z-index: 7;
-        background-color: #00d5dc; }
+        background-color: #00adb4; }
         .site_navigation_header_body .header_burger.header_burger_active span {
           height: 0;
           left: 8%; }
         .site_navigation_header_body .header_burger.header_burger_active::before {
           transform-origin: 90%;
-          left: 8%;
+          left: 9%;
           transform: rotate(-45deg); }
         .site_navigation_header_body .header_burger.header_burger_active::after {
           transform-origin: 90%;
-          left: 8%;
+          left: 9%;
           transform: rotate(45deg); }
     .site_navigation_header_body .site_header_list {
       display: block;
@@ -137,8 +138,9 @@
   .nav_link {
     width: 100%;
     font-size: 0.6rem; }
-    .nav_link:hover {
-      border: 2px solid #fff; }
+    .nav_link:active {
+      border: 2px solid #fff;
+      color: #f3f7f8; }
 
   .nav_item {
     display: block;

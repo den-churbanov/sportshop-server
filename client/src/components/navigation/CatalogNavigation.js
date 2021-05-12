@@ -1,49 +1,38 @@
-import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {CatalogNavigationItem} from "./CatalogNavigationItem";
-import {LinksBlock} from "./LinksBlock";
-import {fetchSections} from "../../redux/actions";
-import '../../styles/catalog-navigation.css';
-import logo from '../../images/logo-long-transper.png';
-import arrow from '../../images/arrow.png';
+import React, {useEffect, useState} from 'react'
+import {Link} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux"
+import {CatalogNavigationItem} from "./CatalogNavigationItem"
+import {LinksBlock} from "./LinksBlock"
+import {fetchSections} from "../../redux/actions"
+import '../../styles/catalog-navigation.css'
+import logo from '../../images/logo-long-transper.png'
 
 export const CatalogNavigation = () => {
-    const [menuState, setState] = useState({
-        mobileVisible: false,
-        fixed: false
-    });
-    const dispatch = useDispatch();
+    const [fixed, setFixed] = useState(false)
+    const [mobileVisible, setMobileVisible] = useState(false)
 
-    const items = useSelector(state => state.sections.items);
+    const dispatch = useDispatch()
+    const items = useSelector(state => state.sections.items)
 
     useEffect(() => {
-        if(!items)
-        dispatch(fetchSections())
-    }, []);
+        if (!items)
+            dispatch(fetchSections())
+    }, [])
 
 
     window.onscroll = () => {
-        if (window.pageYOffset > 140 & !menuState.fixed) {
-            setState(prevState => {
-                return {
-                    ...prevState,
-                    fixed: true
-                }
-            });
+        if (window.pageYOffset > 140 & !fixed) {
+            setFixed(true)
+            console.log('fixed')
         }
-        else if (window.pageYOffset < 140 & menuState.fixed) {
-            setState(prevState => {
-                return {
-                    ...prevState,
-                    fixed: false
-                }
-            });
+        else if (window.pageYOffset < 140 & fixed) {
+            setFixed(false)
+            console.log('not fixed')
         }
     }
 
     const lockBodyScroll = () => {
-        if (menuState.mobileVisible === false) {
+        if (mobileVisible === false) {
             document.body.style.overflowY = 'hidden';
         }
         else {
@@ -52,34 +41,33 @@ export const CatalogNavigation = () => {
     }
 
     const toggleMenu = () => {
-        lockBodyScroll();
-        setState(prevState => {
-            return {
-                ...prevState,
-                mobileVisible: !prevState.mobileVisible
-            }
-        });
+        lockBodyScroll()
+        setMobileVisible(prevState => !prevState)
     }
 
     return (
         <header
-            className={menuState.fixed || menuState.mobileVisible ? 'catalog_header fixed' : 'catalog_header'}>
-            <div className={`catalog_header_block ${menuState.mobileVisible ? 'show' : ''}`}/>
-            <div className="catalog_container">
+            className={`catalog_header${fixed? ' fixed' : ''}`}>
+            <div className={`catalog_header_block${mobileVisible ? ' show' : ''}`}/>
+            <div className={`catalog_container${mobileVisible ? ' fixed' : ''}`}>
                 <div className="catalog_container_body">
-                    <div className={`catalog_button ${menuState.mobileVisible ? 'active' : ''}`}
+                    <div className={`catalog_button ${mobileVisible ? 'active' : ''}`}
                          onClick={toggleMenu}>
-                        <span>{menuState.mobileVisible ? "Назад" : "Каталог"}</span>
+                        <span>{mobileVisible ? "Назад" : "Каталог"}</span>
                         <div className="arrow">
-                            <img src={arrow} alt=""/>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 55.752 55.752">
+                                <path
+                                    d="M43.006,23.916c-0.28-0.282-0.59-0.52-0.912-0.727L20.485,1.581c-2.109-2.107-5.527-2.108-7.637,0.001   c-2.109,2.108-2.109,5.527,0,7.637l18.611,18.609L12.754,46.535c-2.11,2.107-2.11,5.527,0,7.637c1.055,1.053,2.436,1.58,3.817,1.58   s2.765-0.527,3.817-1.582l21.706-21.703c0.322-0.207,0.631-0.444,0.912-0.727c1.08-1.08,1.598-2.498,1.574-3.912   C44.605,26.413,44.086,24.993,43.006,23.916z"/>
+                            </svg>
                         </div>
                     </div>
-                    <Link to="/main" className={`header_logo__hidden ${menuState.fixed ? 'header_logo' : ''}`}>
+                    <Link to="/main" className={`header_logo__hidden ${fixed && !mobileVisible ? 'header_logo' : ''}`}>
                         <img src={logo} alt="На главную"/>
                     </Link>
-                    <nav className={`catalog_nav_list ${menuState.mobileVisible ? 'active' : ''}`}>
+                    <nav className={`catalog_nav_list ${mobileVisible ? 'active' : ''}`}>
                         {items ? items.map((item, idx) => {
-                            return <CatalogNavigationItem text={item.title} id={item.id} idx = {idx} key={idx}/>
+                            return <CatalogNavigationItem text={item.title} id={item.id} idx={idx} key={idx}/>
                         }) : ""}
                     </nav>
                     <LinksBlock id={2}/>

@@ -14,13 +14,7 @@ const Footer = ({sections, brands, sport_types}) => {
 
     useEffect(() => {
         fetchSportTypes()
-        fetchBrands()
     }, [])
-
-    const fetchBrands = async () => {
-        const brands = await request('/api/catalog/brands', 'GET')
-        dispatch(addBrands(brands))
-    }
 
     const fetchSportTypes = async () => {
         const sport_types = await request('/api/catalog/sport_types', 'GET')
@@ -154,7 +148,16 @@ const Footer = ({sections, brands, sport_types}) => {
                 </div>
             </div>
             <div className="footer_copyright">
-                <span>&copy;</span><span> SPORTSHOP 2021</span>
+                <div className="footer_copyright_container">
+                    <div className="copyright_block">
+                        <span>&copy;</span>
+                        <span> SPORTSHOP 2021</span>
+                    </div>
+                    <div className="copyright_block">
+                        <p>Сайт разработан к дипломной работе студентом ФГБОУ ВО СамГТУ Чурбановым Д.В.</p>
+                        <p>Научный руководитель: доцент, к.т.н., Хрисанов Н.Н.</p>
+                    </div>
+                </div>
             </div>
         </footer>
     );

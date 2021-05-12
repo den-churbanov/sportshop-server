@@ -38,7 +38,7 @@ a {
 :focus, :active {
   outline: none; }
 
-div, button, a {
+html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 input::-ms-clear {
@@ -46,6 +46,7 @@ input::-ms-clear {
 
 body {
   width: 100vw;
+  overflow: scroll;
   overflow-x: hidden; }
 
 .wrapper {
@@ -54,7 +55,8 @@ body {
   width: 100%;
   min-height: 100vh;
   height: auto;
-  background-color: #f3f7f8; }
+  background-color: #f3f7f8;
+  overflow-y: scroll; }
   .wrapper .content-container {
     flex: 1 1 auto; }
 

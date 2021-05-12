@@ -22,6 +22,11 @@ router.get(
     '/sport_types',
     controller.getSportTypes);
 
+// api/catalog/special_offers
+router.get(
+    '/special_offers',
+    controller.getSpecialOffers);
+
 module.exports = router;
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
-import {LandingPage} from "../pages/LandingPage";
+import LandingPage from "../pages/LandingPage";
 import {AuthPage} from "../pages/AuthPage";
 import {ProfilePage} from "../pages/ProfilePage";
 import {CatalogPage} from "../pages/CatalogPage";
@@ -32,6 +32,7 @@ export const Routes = ({isAuthenticated}) => {
         <Router>
             <Switch>
                 <Route exact path="/authorization" component={AuthPage}/>
+                <Redirect to="/main"/>
             </Switch>
         </Router>
     );

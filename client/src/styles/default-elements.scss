@@ -5,14 +5,13 @@
     display: inline-block;
     min-width: 140px;
     color: #fff;
-    border-radius: 6px;
+    border-radius: 7px;
     border: 1px solid $xenomorph-2;
-    border: 1px rgba(29, 47, 60, 0.42) solid;
     padding: 0.6em 1em;
     text-align: center;
     font: bold 14px Arial, Helvetica;
     letter-spacing: 0.03rem;
-    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
     background-color: $xenomorph-6;
     outline: none;
     cursor: pointer;
@@ -27,11 +26,11 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
     @media screen and (min-width: 768px){
         &:hover{
-            background: $xenomorph-2;
+            background: $button-blue-hover;
         }
     }
     &:active{
-        background: $xenomorph-2;
+        background: $button-blue-hover;
     }
 }
 
