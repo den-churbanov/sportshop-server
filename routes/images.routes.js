@@ -22,8 +22,26 @@ router.post(
     controller.getSpecialOffersImage
 );
 
+// api/images/brands_image/logo
+router.post(
+    '/brands_image/logo',
+    [
+        check('imagepath', '').custom(imagePathValidator)
+    ],
+    controller.getBrandLogoImage
+);
+
+// api/images/brands_image/logo
+router.post(
+    '/brands_image/back',
+    [
+        check('imagepath', '').custom(imagePathValidator)
+    ],
+    controller.getBrandBackImage
+);
+
 function imagePathValidator (value) {
-    return !!value.toString().match('^\\S+[.](?:gif|jpg|png)$')[0]
+    return !!value.toString().match('^\\S+[.](?:gif|jpg|png)$')??[0]
 }
 
 module.exports = router;

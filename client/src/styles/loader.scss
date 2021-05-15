@@ -1,46 +1,55 @@
 @import "colors.scss";
 
-.svg-loader{
-    display:flex;
+.svg-loader {
+    display: flex;
     position: relative;
-    align-content: space-around;
+    align-content: center;
     justify-content: center;
-}
-
-.svg-container{
-    height:2rem;
-    width:2rem;
-}
-
-.loader-svg{
-    position: absolute;
-    left: 0; right: 0; top: 0; bottom: 0;
-    fill: none;
-    stroke-width: 8px;
-    stroke-linecap: round;
-    stroke: $xenomorph-2;
-}
-.loader-svg.bg{
-    stroke-width: 10px;
-    stroke: $xenomorph-6;
-}
-
-.animate{
-    stroke-dasharray: 242.6;
-    animation: fill-animation 1s cubic-bezier(1,1,1,1) 0s infinite;
-}
-
-@keyframes fill-animation{
-    0%{
-        stroke-dasharray: 40, 242.6;
-        stroke-dashoffset: 0;
+    
+    .svg-container {
+        height: 1.7rem;
+        width: 1.7rem;
+    
+        .loader-svg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            fill: none;
+            stroke-width: 8px;
+            stroke-linecap: round;
+            stroke: $xenomorph-2;
+            
+            &.bg {
+                stroke-width: 10px;
+                stroke: $xenomorph-6;
+            }
+            
+            &.animate {
+                stroke-dasharray: 242.6;
+                animation: fill-animation 1.5s cubic-bezier(1, 1, 1, 1) 0s infinite;
+            }
+    
+            @keyframes fill-animation {
+                0% {
+                    stroke-dasharray: 40, 242.6;
+                    stroke-dashoffset: 0;
+                }
+                50% {
+                    stroke-dasharray: 141.3;
+                    stroke-dashoffset: 141.3;
+                }
+                100% {
+                    stroke-dasharray: 40, 242.6;
+                    stroke-dashoffset: 282.6;
+                }
+            }
+        }
     }
-    50%{
-        stroke-dasharray: 141.3;
-        stroke-dashoffset: 141.3;
-    }
-    100%{
-        stroke-dasharray: 40,242.6;
-        stroke-dashoffset: 282.6;
-    }
+    
 }
+
+
+
+

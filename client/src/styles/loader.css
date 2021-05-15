@@ -3,32 +3,27 @@
 .svg-loader {
   display: flex;
   position: relative;
-  align-content: space-around;
+  align-content: center;
   justify-content: center; }
-
-.svg-container {
-  height: 2rem;
-  width: 2rem; }
-
-.loader-svg {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  fill: none;
-  stroke-width: 8px;
-  stroke-linecap: round;
-  stroke: #2c3e50; }
-
-.loader-svg.bg {
-  stroke-width: 10px;
-  stroke: #00adb4; }
-
-.animate {
-  stroke-dasharray: 242.6;
-  animation: fill-animation 1s cubic-bezier(1, 1, 1, 1) 0s infinite; }
-
+  .svg-loader .svg-container {
+    height: 1.7rem;
+    width: 1.7rem; }
+    .svg-loader .svg-container .loader-svg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      fill: none;
+      stroke-width: 8px;
+      stroke-linecap: round;
+      stroke: #2c3e50; }
+      .svg-loader .svg-container .loader-svg.bg {
+        stroke-width: 10px;
+        stroke: #00adb4; }
+      .svg-loader .svg-container .loader-svg.animate {
+        stroke-dasharray: 242.6;
+        animation: fill-animation 1.5s cubic-bezier(1, 1, 1, 1) 0s infinite; }
 @keyframes fill-animation {
   0% {
     stroke-dasharray: 40, 242.6;
@@ -37,7 +32,7 @@
     stroke-dasharray: 141.3;
     stroke-dashoffset: 141.3; }
   100% {
-    stroke-dasharray: 40,242.6;
+    stroke-dasharray: 40, 242.6;
     stroke-dashoffset: 282.6; } }
 
 /*# sourceMappingURL=loader.css.map */

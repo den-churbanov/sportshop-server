@@ -1,28 +1,15 @@
 import React, {useEffect, useMemo} from "react"
 import '../styles/footer.css'
-import {connect, useDispatch} from "react-redux"
+import {connect} from "react-redux"
 import {FooterList} from "./FooterList"
-import {useHttp} from "../hooks/http.hook"
-import {SiteNavigationLinks} from './navigation/SiteNavigationLinks'
-import {addBrands, addSportTypes} from "../redux/actions";
+import {SiteNavigationLinks} from './header/SiteNavigationLinks'
+import {fetchSportTypes} from "../redux/actions";
 import {Link} from "react-router-dom";
 
-const Footer = ({sections, brands, sport_types}) => {
-
-    const {request} = useHttp()
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        fetchSportTypes()
-    }, [])
-
-    const fetchSportTypes = async () => {
-        const sport_types = await request('/api/catalog/sport_types', 'GET')
-        dispatch(addSportTypes(sport_types))
-    }
+const FooterComponent = ({sections, brands, sport_types}) => {
 
     const randomBrands = useMemo(() => {
-        if (!brands) return undefined
+        if (!brands.length) return undefined
         const output = []
         while (output.length < 8) {
             let rnd = Math.round(brands.length * Math.random())
@@ -85,8 +72,8 @@ const Footer = ({sections, brands, sport_types}) => {
                     </ul>
                 </div>
                 <FooterList header="Каталог" items={sections} link="/catalog?section="/>
-                <FooterList header="Меню" items={SiteNavigationLinks} link={'/'}/>
-                <FooterList header="Виды спорта" items={sport_types} link="catalog?sport="/>
+                <FooterList header="Меню" items={SiteNavigationLinks} link={'/stub'}/>
+                <FooterList header="Виды спорта" items={sport_types} link="catalog?sport_type="/>
                 <FooterList header="Бренды" items={randomBrands} link="catalog?brand="/>
                 <div className="footer__column">
                     <h4>
@@ -165,10 +152,10 @@ const Footer = ({sections, brands, sport_types}) => {
 
 const mapStateToProps = state => {
     return {
-        sections: state.sections.items,
-        brands: state.brands.items,
-        sport_types: state.sport_types.items
+        sections: state.catalog.sections,
+        brands: state.catalog.brands,
+        sport_types: state.catalog.sport_types
     }
 }
 
-export default connect(mapStateToProps, null)(Footer);
+export const Footer = connect(mapStateToProps)(FooterComponent)

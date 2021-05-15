@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import '../styles/header.css';
-import logo from '../images/logo-long-transper.png';
-import {Search} from "./navigation/Search";
-import {LinksBlock} from "./navigation/LinksBlock";
+import logo from '../images/logo/logo-long-transper.png';
+import {Search} from "./header/Search";
+import {LinksBlock} from "./header/LinksBlock";
 import {Link} from "react-router-dom";
 
 export const Header = () => {

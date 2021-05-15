@@ -12,7 +12,7 @@ export const FooterList = ({items, header, link}) => {
                 {items && items.map((item, idx) =>
                     item &&
                     <li key={idx}>
-                        <Link to={link + item.id} target={'_blank'}>
+                        <Link to={`${link}${item.id ? item.id: ''}`} target={'_blank'}>
                             {item.title}
                         </Link>
                     </li>

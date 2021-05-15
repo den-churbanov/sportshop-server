@@ -1,8 +1,7 @@
 import {combineReducers} from "redux";
-import {brandsReducer, sectionsReducer, sportTypesReducer} from "./catalogReducer";
+import {catalogReducer} from "./catalogReducer";
+
 
 export const rootReducer = combineReducers({
-    sections: sectionsReducer,
-    brands: brandsReducer,
-    sport_types: sportTypesReducer
+    catalog: catalogReducer,
 });

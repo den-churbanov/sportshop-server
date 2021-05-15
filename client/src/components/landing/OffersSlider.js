@@ -4,7 +4,7 @@ import {useHttp} from "../../hooks/http.hook"
 import {Loader} from "../Loader"
 import {Link} from "react-router-dom";
 
-export const Slider = () => {
+export const OffersSlider = () => {
     const [activeIndex, setActiveIndex] = useState(0)
     const [interval, setStateInterval] = useState(null)
     const [offers, setOffers] = useState([])
@@ -12,13 +12,26 @@ export const Slider = () => {
 
     let initial = 0
 
-    useEffect(async () => {
+    useEffect(() => {
+        fetchOffers()
+    }, [])
+
+    //удаление blobObjectURL из памяти
+    useEffect(() => {
+        return () => {
+            offers.map(offer => {
+                URL.revokeObjectURL(offer.image_path)
+            })
+        }
+    }, [offers])
+
+    async function fetchOffers() {
         const offers = await request('api/catalog/special_offers')
         for (const offer of offers) {
-            offer.image_path = URL.createObjectURL(await request('api/images/special_offers', 'POST', {imagepath: offer.image_path}))
+            offer.image_path = await request('api/images/special_offers', 'POST', {imagepath: offer.image_path})
         }
         setOffers(offers)
-    }, [])
+    }
 
     useEffect(() => {
         return createInfiniteScroll()
@@ -26,7 +39,6 @@ export const Slider = () => {
 
     const createInfiniteScroll = () => {
         if (!offers.length || interval) return
-        console.log('createInfiniteScroll')
         const handler = setInterval(() => {
             setActiveIndex((current) => {
                 const res = current == offers.length - 1 ? 0 : current + 1
@@ -93,7 +105,7 @@ export const Slider = () => {
             <Link to={`/catalog${offers[activeIndex].link}`}
                   className="slider-item"
                   key={activeIndex}>
-                <img src={offers[activeIndex].image_path}/>
+                <img draggable="false" src={offers[activeIndex].image_path}/>
             </Link>
             <Link to={`/catalog${offers[nextImgIndex].link}`}
                   className="slider-item slider-item-next"

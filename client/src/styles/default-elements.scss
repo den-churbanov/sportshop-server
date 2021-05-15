@@ -1,4 +1,4 @@
-@import "colors.scss";
+//@import "colors.scss";
 
 %btn{
     box-sizing: border-box;
@@ -6,7 +6,7 @@
     min-width: 140px;
     color: #fff;
     border-radius: 7px;
-    border: 1px solid $xenomorph-2;
+    border: 1px solid $xenomorph-6;
     padding: 0.6em 1em;
     text-align: center;
     font: bold 14px Arial, Helvetica;
@@ -27,10 +27,12 @@
     @media screen and (min-width: 768px){
         &:hover{
             background: $button-blue-hover;
+            border: 1px solid $button-blue-hover;
         }
     }
     &:active{
         background: $button-blue-hover;
+        border: 1px solid $button-blue-hover;
     }
 }
 

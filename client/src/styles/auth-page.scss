@@ -1,5 +1,5 @@
-@import "colors.scss";
-@import "default-elements.scss";
+//@import "colors.scss";
+//@import "default-elements.scss";
 
 * {
     margin: 0;
@@ -44,12 +44,13 @@
             &.active {
                 background: $xenomorph-2;
             }
+            
         }
-        
+    
         & :nth-child(1) {
             border-radius: 6px 0 0 0;
         }
-        
+    
         & :nth-child(2) {
             border-radius: 0 6px 0 0;
         }

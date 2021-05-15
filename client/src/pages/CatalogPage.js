@@ -6,12 +6,15 @@ export const CatalogPage = ({location}) => {
     const {params, toURLString, deleteByKey, setByKey} = useUrlParams(location)
 
     useEffect(() => {
-        console.log(params)
+
     }, [params])
 
     return (
-        <div className="">
+        <div className="catalog_container">
             <h1>Catalog</h1>
+            <pre>
+                {JSON.stringify(params, 2)}
+            </pre>
         </div>
     );
 }

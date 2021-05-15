@@ -1,22 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom"
-import {useDispatch, useSelector} from "react-redux"
+import {connect} from "react-redux"
 import {CatalogNavigationItem} from "./CatalogNavigationItem"
 import {LinksBlock} from "./LinksBlock"
 import {fetchSections} from "../../redux/actions"
 import '../../styles/catalog-navigation.css'
-import logo from '../../images/logo-long-transper.png'
+import logo from '../../images/logo/logo-long-transper.png'
 
-export const CatalogNavigation = () => {
+const Navigation = ({sections, getSections}) => {
     const [fixed, setFixed] = useState(false)
     const [mobileVisible, setMobileVisible] = useState(false)
 
-    const dispatch = useDispatch()
-    const items = useSelector(state => state.sections.items)
-
     useEffect(() => {
-        if (!items)
-            dispatch(fetchSections())
+        if (!sections.length) getSections()
     }, [])
 
 
@@ -66,7 +62,7 @@ export const CatalogNavigation = () => {
                         <img src={logo} alt="На главную"/>
                     </Link>
                     <nav className={`catalog_nav_list ${mobileVisible ? 'active' : ''}`}>
-                        {items ? items.map((item, idx) => {
+                        {sections ? sections.map((item, idx) => {
                             return <CatalogNavigationItem text={item.title} id={item.id} idx={idx} key={idx}/>
                         }) : ""}
                     </nav>
@@ -77,4 +73,17 @@ export const CatalogNavigation = () => {
     );
 }
 
+const mapStateToProps = state => {
+    return {
+        sections: state.catalog.sections,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getSections: async () => dispatch(fetchSections())
+    }
+}
+
+export const CatalogNavigation = connect(mapStateToProps, mapDispatchToProps)(Navigation)
 

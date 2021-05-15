@@ -1,48 +1,40 @@
-import {ADD_BRANDS, ADD_SPORT_TYPES, FETCH_SECTIONS, FETCH_SUB_SECTIONS} from "./actionTypes";
+import {FETCH_BRANDS, FETCH_SPORT_TYPES, FETCH_SECTIONS, FETCH_SUB_SECTIONS} from "./actionTypes";
+import {combineReducers} from "redux";
 
-const initialState = {
-    items: undefined
-}
-
-export const sectionsReducer = (state = initialState, action) => {
+const sectionsReducer = (state = [], action) => {
     switch (action.type) {
         case FETCH_SECTIONS:
-            return {
-                ...state, items: action.payload
-            }
+            return action.payload
         case FETCH_SUB_SECTIONS:
-            const items = state.items.slice()
+            const items = state.slice()
             items[action.payload.idx] = {
                 ...items[action.payload.idx],
                 subsections: action.payload.items
             }
-            return {
-                ...state, items
-            }
+            return items
         default:
             return state
     }
 }
-
-export const brandsReducer = (state = initialState, action) => {
+const brandsReducer = (state = [], action) => {
     switch (action.type) {
-        case ADD_BRANDS:
-            return {
-                ...state, items: action.payload
-            }
+        case FETCH_BRANDS:
+            return action.payload
         default:
             return state
     }
 }
-
-export const sportTypesReducer = (state = initialState, action) => {
+const sportTypesReducer = (state = [], action) => {
     switch (action.type) {
-        case ADD_SPORT_TYPES:
-            return {
-                ...state, items: action.payload
-            }
+        case FETCH_SPORT_TYPES:
+            return action.payload
         default:
             return state
     }
 }
 
+export const catalogReducer = combineReducers({
+    sections: sectionsReducer,
+    brands: brandsReducer,
+    sport_types: sportTypesReducer
+})

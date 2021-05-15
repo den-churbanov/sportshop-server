@@ -16,14 +16,14 @@ export const useHttp = () => {
             let data
             switch (response.headers.get('content-type')) {
                 case 'image/jpeg':
-                     data = await response.blob()
+                    data = URL.createObjectURL(await response.blob())
                     break
                 case 'application/json; charset=utf-8':
                     data = await response.json()
                     break
             }
             if (!response.ok) {
-                if(data.errors) throw new Error(data.errors[0].msg);
+                if (data.errors) throw new Error(data.errors[0].msg);
                 throw new Error(data.message || 'Произошла ошибка на сервере');
             }
             setLoading(false);
@@ -33,7 +33,6 @@ export const useHttp = () => {
             console.log(e)
             setLoading(false);
             setError(e.message);
-            throw e;
         }
     }, []);
 

@@ -1,56 +1,22 @@
-const model = require('../models/catalog.model');
+const {getRequestControllerCreator} = require('./controller.request.creators')
+const model = require('../models/catalog.model')
 
-const getSections = async (req, res) => {
-    // console.log(`getSections`)
-    try {
-        const data = await model.getSections()
-        res.status(200).json(data)
-    } catch (e) {
-        console.log('Ошибка', e.message)
-        res.status(500).json("На сервере произошла ошибка, попробуйте снова")
-    }
+const getSections = getRequestControllerCreator(model.getSections)
+const getSubSections = getRequestControllerCreator(model.getSubsections)
+const getBrands = getRequestControllerCreator(model.getBrands)
+const getSportTypes = getRequestControllerCreator(model.getSportTypes)
+const getSpecialOffers = getRequestControllerCreator(model.getSpecialOffers)
+const getNewProducts = getRequestControllerCreator(model.getNewProducts)
+const getHitsProducts = getRequestControllerCreator(model.getHitsProducts)
+const getSalesProducts = getRequestControllerCreator(model.getSalesProducts)
+
+module.exports = {
+    getSections,
+    getSubSections,
+    getBrands,
+    getSportTypes,
+    getSpecialOffers,
+    getNewProducts,
+    getHitsProducts,
+    getSalesProducts
 }
-
-const getSubSections = async (req, res) => {
-    try {
-        const {id} = req.body
-        // console.log(`getSubsections with id = ${id}`)
-        const data = await model.getSubsections([id])
-        res.status(200).json(data)
-    } catch (e) {
-        console.log('Ошибка', e.message)
-        res.status(500).json("На сервере произошла ошибка, попробуйте снова")
-    }
-}
-
-const getBrands = async (req, res) => {
-    try {
-        const data = await model.getBrands()
-        res.status(200).json(data)
-    } catch (e) {
-        console.log('Ошибка', e.message)
-        res.status(500).json("На сервере произошла ошибка, попробуйте снова")
-    }
-}
-
-const getSportTypes = async (req, res) => {
-    try {
-        const data = await model.getSportTypes()
-        res.status(200).json(data)
-    } catch (e) {
-        console.log('Ошибка', e.message)
-        res.status(500).json("На сервере произошла ошибка, попробуйте снова")
-    }
-}
-
-const getSpecialOffers = async (req, res) => {
-    try {
-        const data = await model.getSpecialOffers()
-        res.status(200).json(data)
-    } catch (e) {
-        console.log('Ошибка', e.message)
-        res.status(500).json("На сервере произошла ошибка, попробуйте снова")
-    }
-}
-
-module.exports = {getSections, getSubSections, getBrands, getSportTypes, getSpecialOffers}
