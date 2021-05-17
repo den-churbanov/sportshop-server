@@ -1,3 +1,10 @@
 images
 node_modules
 .idea
+
+#scss styles
+/.sass-cache
+/src/styles/*.css.map
+/src/styles/*.css
+/*.css.map
+/*.css

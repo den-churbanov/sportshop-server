@@ -1,5 +1,5 @@
-//@import "colors.scss";
-//@import "default-elements.scss";
+@import "colors.scss";
+@import "default-elements.scss";
 
 footer.footer {
     width: 100%;
@@ -120,7 +120,7 @@ footer.footer {
                         transition: all ease 0.2s;
                         
                         .social-icon {
-                            margin: auto;
+                            margin: 0 auto;
                             width: 80%;
                             height: auto;
                             fill: $footer-social-icon-color;

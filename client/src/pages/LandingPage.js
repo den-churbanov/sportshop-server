@@ -10,16 +10,11 @@ import stock2 from "../images/landing/stocks/4_2.png"
 import stock3 from "../images/landing/stocks/4_3.png"
 import stock4 from "../images/landing/stocks/4_4.png"
 import {fetchBrands, fetchSportTypes} from "../redux/actions"
-import {Loader} from "../components/Loader"
+import {Loader} from "../components/trivia/Loader"
 import {BrandPreview} from "../components/landing/BrandPreview"
 import {ProductSlider} from "../components/landing/ProductSlider"
 
-const LandingPage = ({brands, getBrands, sport_types, getSportTypes}) => {
-
-    useEffect(() => {
-        if (!brands.length) getBrands()
-        if(!sport_types.length) getSportTypes()
-    }, [])
+const LandingPage = ({brands}) => {
 
     return (
         <div className="landing_container">
@@ -100,14 +95,7 @@ const LandingPage = ({brands, getBrands, sport_types, getSportTypes}) => {
 const mapStateToProps = state => {
     return {
         brands: state.catalog.brands,
-        sport_types: state.catalog.sport_types,
-    }
-}
-const mapDispatchToProps = dispatch => {
-    return {
-        getBrands: async () => dispatch(fetchBrands()),
-        getSportTypes: () => dispatch(fetchSportTypes())
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandingPage)
+export default connect(mapStateToProps)(LandingPage)

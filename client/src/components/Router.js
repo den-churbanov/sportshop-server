@@ -18,11 +18,11 @@ export const Routes = ({isAuthenticated}) => {
                     <Route exact path="/" component={LandingPage}/>
                     <Route exact path="/main" component={LandingPage}/>
                     <Route exact path="/profile" component={ProfilePage}/>
-                    <Route path="/catalog" component={CatalogPage}/>
                     <Route exact path="/basket" component={BasketPage}/>
-                    <Route exact path="/product" component={ProductPage}/>
+                    <Route path="/catalog/product" component={ProductPage}/>
+                    <Route path="/catalog" component={CatalogPage}/>
                     <Route exact path="/stub" component={StubPage}/>
-                    <Redirect to="/main"/>
+                    <Redirect to="/catalog"/>
                 </Switch>
             </WrapperPage>
         );
@@ -32,7 +32,7 @@ export const Routes = ({isAuthenticated}) => {
         <Router>
             <Switch>
                 <Route exact path="/authorization" component={AuthPage}/>
-                <Redirect to="/main"/>
+                <Redirect to="/catalog"/>
             </Switch>
         </Router>
     );

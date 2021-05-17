@@ -3,6 +3,7 @@ import '../styles/auth-page.css';
 import logo from '../images/logo/white-logo.jpg'
 import {useHttp} from "../hooks/http.hook";
 import {AuthContext} from "../AuthContext";
+import {Tooltip} from "../components/trivia/Tooltip";
 
 export const AuthPage = () => {
     const auth = useContext(AuthContext);
@@ -97,6 +98,7 @@ export const AuthPage = () => {
                            onChange={handleUserInput}
                            name={inputNames.password}
                            placeholder="Пароль"/>
+                           {/*<Tooltip title="?" tooltip="Информация"/>*/}
                     {
                         pageState.type === 'register' &&
                         <>

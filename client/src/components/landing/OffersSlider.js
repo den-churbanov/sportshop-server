@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Arrow} from "./Arrow"
 import {useHttp} from "../../hooks/http.hook"
-import {Loader} from "../Loader"
+import {Loader} from "../trivia/Loader"
 import {Link} from "react-router-dom";
 
 export const OffersSlider = () => {

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {useHttp} from "../../hooks/http.hook";
-import {Loader} from "../Loader";
+import {Loader} from "../trivia/Loader";
 
 export const BrandPreview = ({brand}) => {
     const [images, setImages] = useState({

@@ -1,4 +1,4 @@
-//@import "colors.scss";
+@import "colors.scss";
 
 %btn{
     box-sizing: border-box;
@@ -43,11 +43,13 @@
     
     @media screen and (min-width: 768px){
         &:hover{
+            border: 1px solid $button-red-hover;
             background: $button-red-hover;
         }
     }
     
     &:active{
+        border: 1px solid $button-red-hover;
         background: $button-red-hover;
     }
 }

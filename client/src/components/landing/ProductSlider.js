@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import {useHttp} from "../../hooks/http.hook"
-import {ProductPreview} from "../catalog/ProductPreview"
-import {Loader} from "../Loader"
+import {LandingProductPreview} from "../catalog/LandingProductPreview"
+import {Loader} from "../trivia/Loader"
 import cx from 'classnames'
 import TouchCarousel from "react-touch-carousel"
 import touchWithMouseHOC from "react-touch-carousel/lib/touchWithMouseHOC"
@@ -9,14 +9,14 @@ import touchWithMouseHOC from "react-touch-carousel/lib/touchWithMouseHOC"
 export const ProductSlider = ({productsType}) => {
 
     const {request} = useHttp()
-    const [products, setProducts] = useState()
+    const [products, setProducts] = useState([])
 
     useEffect(() => {
-        if (!products)
-            fetchProductByType()
+        fetchProductByType()
     }, [])
 
     async function fetchProductByType() {
+        console.log('fetchProducts by type')
         if (!!productsType.toString().match('^(?:new|sales|hits)$') ?? [0]) {
             const products = await request(`/api/catalog/products/${productsType}`, 'POST', {lim: 20})
             setProducts(products)
@@ -63,13 +63,13 @@ export const ProductSlider = ({productsType}) => {
 
     function renderCard(index, modIndex) {
         const product = products[modIndex]
-        return (<ProductPreview key={index} product={product}/>)
+        return (<LandingProductPreview key={index} product={product}/>)
     }
 
     const Container = touchWithMouseHOC(CarouselContainer)
 
     return (
-        products ?
+        products.length ?
             <TouchCarousel
                 component={Container}
                 cardCount={products.length}

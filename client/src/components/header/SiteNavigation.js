@@ -37,9 +37,8 @@ export const SiteNavigation = () => {
             <div className="navigation_container">
                 <div className="site_navigation_header_body">
                     <Search/>
-                    <div className={`header_burger ${menuState.mobileVisible ? 'header_burger_active' : ''}`}
-                         onClick={toggleMenu}>
-                        <span/>
+                    <div className="bars" onClick={toggleMenu}>
+                        <span className={`${menuState.mobileVisible ? 'is-active' : ''}`}/>
                     </div>
                     <nav className={`site_header_list ${menuState.mobileVisible ? 'active ' : ''}`}>
                         {SiteNavigationLinks.map((item, index) =>{

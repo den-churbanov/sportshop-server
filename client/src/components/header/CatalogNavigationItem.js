@@ -12,8 +12,8 @@ export const CatalogNavigationItemComponent = ({text, id, subsections,  getSubSe
 
     return (
         <li className="catalog_item">
-            <Link to={`/catalog?section=${id}`} className="catalog_link hide_href">{text}</Link>
-            <label htmlFor={`link-${id}`} className="catalog_link hide_label">{text}</label>
+            <Link to={`/catalog?section=${id}`} className="catalog_link">{text}</Link>
+            <label htmlFor={`link-${id}`} className="catalog_link">{text}</label>
             <input type="checkbox" id={`link-${id}`}/>
             <ul className="submenu-list">
                 {subsections ? subsections.map((item, idx) => {

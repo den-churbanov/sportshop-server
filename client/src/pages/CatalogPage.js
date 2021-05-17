@@ -1,5 +1,7 @@
-import React, {useEffect} from "react";
-import {useUrlParams} from "../hooks/URL.params.hook";
+import React, {useEffect} from "react"
+import "../styles/catalog-page.css"
+import {useUrlParams} from "../hooks/URL.params.hook"
+import {FiltersBlock} from "../components/catalog/FiltersBlock"
 
 export const CatalogPage = ({location}) => {
 
@@ -11,10 +13,12 @@ export const CatalogPage = ({location}) => {
 
     return (
         <div className="catalog_container">
-            <h1>Catalog</h1>
+            <FiltersBlock/>
+            <div className="content">
             <pre>
                 {JSON.stringify(params, 2)}
             </pre>
+            </div>
         </div>
     );
 }

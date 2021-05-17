@@ -1,4 +1,4 @@
-import {FETCH_SECTIONS, FETCH_SUB_SECTIONS, FETCH_BRANDS, FETCH_SPORT_TYPES} from "./actionTypes";
+import {FETCH_SECTIONS, FETCH_SUB_SECTIONS, FETCH_BRANDS, FETCH_SPORT_TYPES, FETCH_SIZES} from "./actionTypes";
 
 /***
  * fetch sections request
@@ -48,6 +48,14 @@ export function fetchSportTypes() {
     }
 }
 
+export function fetchSizes() {
+    return async dispatch => {
+        const response = await fetch(
+            '/api/catalog/sizes')
+        const sizes = await response.json()
+        dispatch({type: FETCH_SIZES, payload: sizes})
+    }
+}
 /***
  * user logout
  * ***/

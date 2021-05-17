@@ -1,0 +1,349 @@
+@import "default-elements";
+@import "colors";
+
+$sale-label-color: #e52940;
+$new-label-color: #145ba3;
+$hit-label-color: #1c7430;
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$cubic-transition: 0.55s $ease-in-out-cubic;
+
+.product-preview {
+    box-sizing: border-box;
+    padding: 0.2rem;
+    min-height: 10rem;
+    flex: 0 0 25%;
+    
+    .content {
+        border-radius: 10px;
+        padding: 0.5rem;
+        background: #fff;
+        min-height: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+        
+        .picture-wrapper {
+            display: block;
+            width: 100%;
+            position: relative;
+            min-height: 4rem;
+            
+            .svg-container {
+                min-height: 10rem;
+                top: 33%;
+            }
+            
+            .labels-block {
+                position: absolute;
+                margin-top: 0.5rem;
+                margin-left: 0.3rem;
+                
+                .labels-row {
+                    width: 112%;
+                    display: -webkit-flex;
+                    display: -moz-flex;
+                    display: -ms-flex;
+                    display: flex;
+                    -webkit-justify-content: space-between;
+                    justify-content: space-between;
+                    -webkit-align-items: center;
+                    align-items: center;
+                    line-height: 1.5rem;
+                    
+                    & > div {
+                        color: #fff;
+                        width: 1.45rem;
+                        height: 1.45rem;
+                        border-radius: 50%;
+                        text-align: center;
+                        vertical-align: middle;
+                        font-size: 0.5rem;
+                    }
+                    
+                    .is-sale {
+                        background-color: $sale-label-color;
+                    }
+                    
+                    .is-hit {
+                        background-color: $hit-label-color;
+                    }
+                    
+                    .is-new {
+                        background-color: $new-label-color;
+                    }
+                }
+                
+            }
+            
+            img {
+                width: 100%;
+            }
+        }
+        
+        .info-block {
+            a {
+                display: block;
+                text-decoration: none;
+                color: $footer-headers-color;
+                font-size: 0.6em;
+                white-space: pre-line;
+                padding-bottom: 0.3em;
+            }
+            
+            p {
+                display: block;
+                font-size: 0.5em;
+            }
+        }
+        
+        .price-block {
+            padding-top: 0.3rem;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: flex;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-align-items: center;
+            align-items: center;
+            
+            .product-preview-button {
+                @extend %btn;
+                background: $xenomorph-2;
+                border: 1px solid $xenomorph-2;
+                text-decoration: none;
+                min-width: 120px;
+                padding: .5rem .3rem;
+            }
+            
+            .price-container {
+                box-sizing: border-box;
+                padding-bottom: 0.2rem;
+                
+                .old-price {
+                    font-size: 0.5em;
+                    text-decoration: line-through;
+                    text-transform: uppercase;
+                    text-align: right;
+                    line-height: 2em;
+                    color: $footer-headers-color;
+                }
+                
+                .new-price {
+                    text-transform: uppercase;
+                    color: $sale-label-color;
+                    font-weight: 600;
+                    line-height: 0.8em;
+                }
+            }
+        }
+    }
+    
+    @media screen and (min-width: 1500px) {
+        flex: 0 0 20%;
+    }
+    @media screen and (max-width: 992px) {
+        flex: 0 0 50%;
+    }
+    @media screen and (max-width: 576px) {
+        flex: 0 0 100%;
+    }
+}
+
+.catalog_container {
+    
+    min-height: 70vh;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    $background-color: f6f8f9;
+    
+    .content {
+        background-color: #f6f8f9;
+        flex: 1 0 65%;
+    }
+    
+    .catalog-filters-block {
+        flex: 1 1 15%;
+        min-width: 140px;
+        padding-left: 1.5rem;
+        
+        .filters-content {
+            width: 95%;
+            height: 95%;
+            border-radius: 6px;
+            margin: 0.2rem auto;
+            
+            ul.accordion-menu {
+                width: 100%;
+                height: 100%;
+                border-radius: 6px;
+                list-style: none;
+                
+                & > li.accordion-menu-item {
+                    box-shadow: 1px 1px 2px rgba(0, 0, 0, .15);
+                    display: block;
+                    background-color: #fff;
+                    border-radius: 6px;
+                    margin: 0.5rem 0;
+                    
+                    &.open {
+                        svg {
+                            transform: rotate(180deg);
+                        }
+                    }
+                    
+                    label.dropdown_link {
+                        display: block;
+                        cursor: pointer;
+                        padding: 0.2rem 1rem;
+                        color: #212121;
+                        transition: all 0.4s ease-out;
+                        
+                        .title {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            line-height: 1.2rem;
+                            
+                            p {
+                                display: block;
+                                font-size: 0.5rem;
+                                font-weight: bold;
+                                letter-spacing: 0.04rem;
+                                word-wrap: break-word;
+                            }
+                            
+                            .accordion-arrow {
+                                padding-left: 0.2rem;
+                                
+                                svg {
+                                    fill: $xenomorph-2;
+                                    width: 0.3rem;
+                                    height: 0.3rem;
+                                    padding-bottom: 0.2em;
+                                }
+                                
+                            }
+                        }
+                        
+                        input[type="checkbox"] {
+                            display: none;
+                        }
+                        
+                    }
+                    
+                    ul.accordion-submenu-list {
+                        display: flex;
+                        flex-direction: column;
+                        overflow: hidden;
+                        list-style: none;
+                        max-height: 0;
+                        -webkit-transition: max-height .5s, padding .5s;
+                        transition: .5s max-height ease-in-out;
+                        
+                        li {
+                            display: flex;
+                            padding: 0.15rem 0;
+                            align-items: center;
+                            
+                            label {
+                                padding: 0;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                
+                                p{
+                                    font-size: 0.5rem;
+                                    
+                                }
+                                input.option-input {
+                                    $checkbox-and-radio-size: 18px;
+                                    $checkbox-check-size: calc(#{$checkbox-and-radio-size} - 3px);
+                                    -webkit-appearance: none;
+                                    -moz-appearance: none;
+                                    -ms-appearance: none;
+                                    -o-appearance: none;
+                                    appearance: none;
+                                    min-height: $checkbox-and-radio-size;
+                                    min-width: $checkbox-and-radio-size;
+                                    background: #9faab7;
+                                    border: 2px solid #2c3e50;
+                                    cursor: pointer;
+                                    margin-right: 0.5rem;
+                                    outline: none;
+                                    position: relative;
+                                    
+                                    &:hover, &:checked {
+                                        background: #00adb4;
+                                    }
+                                    
+                                    &.radio {
+                                        border-radius: 50%;
+                                        
+                                        &:before {
+                                            height: 72%;
+                                            width: 72%;
+                                            background: #2c3e50;
+                                            border-radius: 50%;
+                                            top: 14%;
+                                            left: 14%;
+                                            position: absolute;
+                                            content: "";
+                                            transform: scale(0);
+                                            transition: 0.2s all ease-in;
+                                        }
+                                        &:checked::before {
+                                            transform: scale(1);
+                                        }
+                                    }
+                                    
+                                    &.checkbox {
+                                        border-radius: 6px;
+                                        &:checked::before {
+                                            height: $checkbox-check-size;
+                                            width: $checkbox-check-size;
+                                            color: #fff;
+                                            position: absolute;
+                                            content: "✔";
+                                            display: inline-block;
+                                            font-size: $checkbox-check-size;
+                                            text-align: center;
+                                            line-height: $checkbox-check-size;
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                    
+                    input[id^="accord"]:checked + ul.accordion-submenu-list {
+                        max-height: 300px;
+                    }
+                }
+                
+                .btn-wrapper {
+                    display: flex;
+                    justify-content: space-around;
+                    
+                    button.ok-btn {
+                        @extend %btn;
+                    }
+                    
+                    button.reset-btn {
+                        @extend %btn-red;
+                    }
+                    
+                    button.button {
+                        min-width: unset;
+                        flex: 0 0 40%
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}
