@@ -9,6 +9,8 @@ const getSpecialOffers = getRequestControllerCreator(model.getSpecialOffers)
 const getNewProducts = getRequestControllerCreator(model.getNewProducts)
 const getHitsProducts = getRequestControllerCreator(model.getHitsProducts)
 const getSalesProducts = getRequestControllerCreator(model.getSalesProducts)
+const getAllSizes = getRequestControllerCreator(model.getAllSizes)
+const getProductsByFilters = getRequestControllerCreator(model.getProductsByFilters)
 
 module.exports = {
     getSections,
@@ -18,5 +20,7 @@ module.exports = {
     getSpecialOffers,
     getNewProducts,
     getHitsProducts,
-    getSalesProducts
+    getSalesProducts,
+    getAllSizes,
+    getProductsByFilters
 }

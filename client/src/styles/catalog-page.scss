@@ -6,6 +6,8 @@ $new-label-color: #145ba3;
 $hit-label-color: #1c7430;
 $ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
 $cubic-transition: 0.55s $ease-in-out-cubic;
+$background: #f6f8f9;
+$white: #fff;
 
 .product-preview {
     box-sizing: border-box;
@@ -152,25 +154,171 @@ $cubic-transition: 0.55s $ease-in-out-cubic;
 }
 
 .catalog_container {
-    
     min-height: 70vh;
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    $background-color: f6f8f9;
+    background-color: $background;
     
     .content {
-        background-color: #f6f8f9;
-        flex: 1 0 65%;
+        flex: 1 1 75%;
+        padding: 0 0.3rem 0 0.5rem;
+        .content-header {
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, .15);
+            border-radius: 6px;
+            padding: 0.2rem 1rem;
+            line-height: 1.2rem;
+            margin: 0.5rem 0;
+            background: $white;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            
+            .catalog-filters-button {
+                @extend %btn;
+                
+                border-radius: 6px;
+                padding: 0.2rem 0.5rem;
+                display: none;
+                align-items: center;
+                justify-content: flex-start;
+                cursor: pointer;
+                min-width: 90px;
+                
+                svg {
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    fill: $white;
+                }
+                
+                span {
+                    line-height: 0.7rem;
+                    font-size: 0.5rem;
+                    color: $white;
+                    padding-left: 0.2rem;
+                }
+            }
+            
+            .sort-buttons-wrapper {
+                display: flex;
+                align-items: center;
+                
+                .catalog-sort-button {
+                    border-radius: 6px;
+                    padding: 0.1rem;
+                    display: flex;
+                    cursor: pointer;
+                    margin-right: 0.3rem;
+                    
+                    input[type="radio"] {
+                        display: none;
+                        
+                        &:checked + svg {
+                            fill: $button-red;
+                        }
+                    }
+                    
+                    @media screen and (min-width: 992px) {
+                        &:hover svg {
+                            fill: $xenomorph-2;
+                        }
+                    }
+                    
+                    &:active svg {
+                        fill: $xenomorph-2;
+                    }
+                    
+                    svg {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                        fill: $xenomorph-6;
+                    }
+                }
+            }
+            
+            .show-products-count {
+                flex: 1 1 50%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                
+                label {
+                    margin-left: 0.4rem;
+                    cursor: pointer;
+                    
+                    p {
+                        font-size: 0.5rem;
+                        font-weight: bold;
+                        color: $xenomorph-2;
+                    }
+                    
+                    input[type="radio"] {
+                        display: none;
+                        
+                        &:checked + p {
+                            color: $button-red;
+                        }
+                    }
+                    
+                }
+            }
+            
+            @media screen and (max-width: 992px) {
+                margin-bottom: 0;
+                .catalog-filters-button {
+                    display: flex;
+                }
+                
+                .sort-buttons-wrapper {
+                    margin-left: 0.4rem;
+                }
+                
+            }
+        }
+        
+        .catalog-filters-block {
+            display: flex;
+            flex: 1 1 100%;
+            padding: 0;
+            min-width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s $ease-in-out-cubic;
+            
+            .filters-content {
+                flex: 1 1 100%;
+                margin: 0;
+                
+                .btn-wrapper {
+                    button.button {
+                        max-width: 230px;
+                    }
+                }
+            }
+        }
+        
+        @media screen and (max-width: 992px) {
+            .catalog-filters-block.active {
+                max-height: 300vh;
+                
+                .filters-content {
+                    ul.accordion-menu {
+                        input[id^="accord"]:checked + .accordion-submenu-list {
+                            max-height: 150px;
+                        }
+                    }
+                }
+            }
+        }
     }
     
     .catalog-filters-block {
-        flex: 1 1 15%;
-        min-width: 140px;
+        flex: 0 1 25%;
+        min-width: 200px;
+        max-width: 250px;
         padding-left: 1.5rem;
         
         .filters-content {
-            width: 95%;
             height: 95%;
             border-radius: 6px;
             margin: 0.2rem auto;
@@ -184,9 +332,9 @@ $cubic-transition: 0.55s $ease-in-out-cubic;
                 & > li.accordion-menu-item {
                     box-shadow: 1px 1px 2px rgba(0, 0, 0, .15);
                     display: block;
-                    background-color: #fff;
                     border-radius: 6px;
                     margin: 0.5rem 0;
+                    background: $white;
                     
                     &.open {
                         svg {
@@ -194,18 +342,24 @@ $cubic-transition: 0.55s $ease-in-out-cubic;
                         }
                     }
                     
-                    label.dropdown_link {
+                    div.dropdown_link {
                         display: block;
                         cursor: pointer;
-                        padding: 0.2rem 1rem;
-                        color: #212121;
+                        color: $xenomorph-2;
+                        border-radius: 6px;
                         transition: all 0.4s ease-out;
                         
                         .title {
                             display: flex;
                             align-items: center;
                             justify-content: flex-start;
+                            padding: 0.2rem 1rem;
                             line-height: 1.2rem;
+                            flex: 0 0 100%;
+                            
+                            & + input[type="checkbox"] {
+                                display: none;
+                            }
                             
                             p {
                                 display: block;
@@ -227,100 +381,115 @@ $cubic-transition: 0.55s $ease-in-out-cubic;
                                 
                             }
                         }
-                        
-                        input[type="checkbox"] {
-                            display: none;
-                        }
-                        
                     }
                     
-                    ul.accordion-submenu-list {
+                    .accordion-submenu-list {
                         display: flex;
                         flex-direction: column;
+                        margin-right: 0.3rem;
                         overflow: hidden;
                         list-style: none;
                         max-height: 0;
-                        -webkit-transition: max-height .5s, padding .5s;
-                        transition: .5s max-height ease-in-out;
+                        overflow-y: scroll;
+                        -webkit-transition: .5s max-height ease-in-out, padding-bottom .5s ease-in;
+                        transition: .5s max-height ease-in-out, padding-bottom .5s ease-in;
                         
-                        li {
+                        & > li {
                             display: flex;
-                            padding: 0.15rem 0;
                             align-items: center;
+                        }
+                        
+                        label {
+                            display: flex;
+                            padding: 0.15rem 1rem;
+                            justify-content: flex-start;
+                            align-items: center;
+                            flex: 1 0 100%;
                             
-                            label {
-                                padding: 0;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
+                            p {
+                                font-size: 0.5rem;
+                                color: $xenomorph-2;
+                            }
+                            
+                            input.option-input {
+                                $checkbox-and-radio-size: 18px;
+                                $checkbox-check-size: calc(#{$checkbox-and-radio-size} - 3px);
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                -ms-appearance: none;
+                                -o-appearance: none;
+                                appearance: none;
+                                min-height: $checkbox-and-radio-size;
+                                min-width: $checkbox-and-radio-size;
+                                background: $xenomorph-4;
+                                border: 2px solid $xenomorph-2;
+                                cursor: pointer;
+                                margin-right: 0.5rem;
+                                outline: none;
+                                position: relative;
                                 
-                                p{
-                                    font-size: 0.5rem;
-                                    
+                                &:hover, &:checked {
+                                    background: $xenomorph-6;
                                 }
-                                input.option-input {
-                                    $checkbox-and-radio-size: 18px;
-                                    $checkbox-check-size: calc(#{$checkbox-and-radio-size} - 3px);
-                                    -webkit-appearance: none;
-                                    -moz-appearance: none;
-                                    -ms-appearance: none;
-                                    -o-appearance: none;
-                                    appearance: none;
-                                    min-height: $checkbox-and-radio-size;
-                                    min-width: $checkbox-and-radio-size;
-                                    background: #9faab7;
-                                    border: 2px solid #2c3e50;
-                                    cursor: pointer;
-                                    margin-right: 0.5rem;
-                                    outline: none;
-                                    position: relative;
+                                
+                                &.radio {
+                                    border-radius: 50%;
                                     
-                                    &:hover, &:checked {
-                                        background: #00adb4;
-                                    }
-                                    
-                                    &.radio {
+                                    &:before {
+                                        height: 72%;
+                                        width: 72%;
+                                        background: #2c3e50;
                                         border-radius: 50%;
-                                        
-                                        &:before {
-                                            height: 72%;
-                                            width: 72%;
-                                            background: #2c3e50;
-                                            border-radius: 50%;
-                                            top: 14%;
-                                            left: 14%;
-                                            position: absolute;
-                                            content: "";
-                                            transform: scale(0);
-                                            transition: 0.2s all ease-in;
-                                        }
-                                        &:checked::before {
-                                            transform: scale(1);
-                                        }
+                                        top: 14%;
+                                        left: 14%;
+                                        position: absolute;
+                                        content: "";
+                                        transform: scale(0);
+                                        transition: 0.2s all ease-in;
                                     }
                                     
-                                    &.checkbox {
-                                        border-radius: 6px;
-                                        &:checked::before {
-                                            height: $checkbox-check-size;
-                                            width: $checkbox-check-size;
-                                            color: #fff;
-                                            position: absolute;
-                                            content: "✔";
-                                            display: inline-block;
-                                            font-size: $checkbox-check-size;
-                                            text-align: center;
-                                            line-height: $checkbox-check-size;
-                                        }
+                                    &:checked::before {
+                                        transform: scale(1);
                                     }
+                                    
                                 }
                                 
+                                &.checkbox {
+                                    border-radius: 6px;
+                                    
+                                    &:checked::before {
+                                        height: $checkbox-check-size;
+                                        width: $checkbox-check-size;
+                                        color: #fff;
+                                        position: absolute;
+                                        content: "✔";
+                                        display: inline-block;
+                                        font-size: $checkbox-check-size;
+                                        text-align: center;
+                                        line-height: $checkbox-check-size;
+                                    }
+                                }
                             }
                         }
                     }
                     
-                    input[id^="accord"]:checked + ul.accordion-submenu-list {
+                    input[id^="accord"]:checked + .accordion-submenu-list {
                         max-height: 300px;
+                        padding-bottom: 0.5rem;
+                        
+                        &::-webkit-scrollbar-track-piece {
+                            background: $white;
+                        }
+                        
+                        &::-webkit-scrollbar-thumb {
+                            background-color: $xenomorph-2;
+                            border-radius: 3px;
+                        }
+                        
+                        &::-webkit-scrollbar {
+                            display: block;
+                            width: 3px;
+                        }
                     }
                 }
                 
@@ -337,13 +506,19 @@ $cubic-transition: 0.55s $ease-in-out-cubic;
                     }
                     
                     button.button {
+                        padding: 0.4rem;
+                        font-size: 0.45rem;
                         min-width: unset;
                         flex: 0 0 40%
                     }
                 }
             }
         }
-        
     }
     
+    @media screen and (max-width: 992px) {
+        .catalog-filters-block {
+            display: none;
+        }
+    }
 }

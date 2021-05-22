@@ -9,6 +9,8 @@ const getSpecialOffers = getRequestProcedureCreator('select_special_offers')
 const getNewProducts = getRequestProcedureCreator('select_new_products')
 const getHitsProducts = getRequestProcedureCreator('select_hit_products')
 const getSalesProducts = getRequestProcedureCreator('select_sale_products')
+const getAllSizes = getRequestProcedureCreator('select_count_products_by_sizes')
+const getProductsByFilters = getRequestProcedureCreator('select_products_by_filters')
 
 module.exports = {
     getSections,
@@ -18,5 +20,7 @@ module.exports = {
     getSpecialOffers,
     getNewProducts,
     getHitsProducts,
-    getSalesProducts
+    getSalesProducts,
+    getAllSizes,
+    getProductsByFilters
 };

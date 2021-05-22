@@ -1,6 +1,6 @@
 import React from "react";
 import '../../styles/header.css';
-import {Icon} from "../svg-icons/Icon";
+import {Icon} from "../trivia/svg-icons/Icon";
 
 export const Search = () => {
     return (

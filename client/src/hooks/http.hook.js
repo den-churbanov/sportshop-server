@@ -18,9 +18,9 @@ export const useHttp = () => {
                 case 'image/jpeg':
                     data = URL.createObjectURL(await response.blob())
                     break
-                case 'application/json; charset=utf-8':
+                default:
+                    //application/json; charset=utf-8
                     data = await response.json()
-                    break
             }
             if (!response.ok) {
                 if (data.errors) throw new Error(data.errors[0].msg);

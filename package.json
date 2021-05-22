@@ -4,16 +4,17 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "cross-env NODE_ENV=production node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix client",
-    "develop": "concurrently \"npm run server\" \"npm run client\""
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client",
+    "develop": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "Churbanov Denis <churbanov.dv@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^14.14.21",
     "bcrypt": "^5.0.0",
     "classnames": "^2.3.1",
     "config": "^3.3.3",
@@ -26,12 +27,13 @@
     "react-touch-carousel": "^0.9.4"
   },
   "devDependencies": {
-    "@types/bcrypt": "^3.0.0",
+    "@types/bcrypt": "^5.0.0",
     "@types/config": "0.0.38",
-    "@types/cors": "^2.8.9",
+    "@types/cors": "^2.8.10",
     "@types/express": "^4.17.11",
-    "@types/mysql": "^2.15.17",
+    "@types/mysql": "^2.15.18",
     "concurrently": "^5.3.0",
+    "cross-env": "^7.0.3",
     "nodemon": "^2.0.7"
   }
 }

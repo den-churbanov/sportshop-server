@@ -24,15 +24,15 @@
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 992px){
         &:hover{
-            background: $button-blue-hover;
-            border: 1px solid $button-blue-hover;
+            background: $xenomorph-3;
+            border: 1px solid $xenomorph-3;
         }
     }
     &:active{
-        background: $button-blue-hover;
-        border: 1px solid $button-blue-hover;
+        background: $xenomorph-3;
+        border: 1px solid $xenomorph-3;
     }
 }
 
@@ -41,7 +41,7 @@
     border: 1px solid $button-red;
     background-color: $button-red;
     
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 992px){
         &:hover{
             border: 1px solid $button-red-hover;
             background: $button-red-hover;

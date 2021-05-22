@@ -1,6 +1,5 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
-import reduxLogger from 'redux-logger'
-import {rootReducer} from "./rootReducer";
+import {rootReducer} from "./rootReducer"
 
 export default configureStore({
     reducer: rootReducer,

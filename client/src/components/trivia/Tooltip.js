@@ -1,8 +1,8 @@
 import React from "react"
 import "../../styles/tooltip.css"
 
-export const Tooltip = ({tooltip, title}) => {
+export const Tooltip = ({message, title}) => {
     return (
-        <span className="tooltip" tooltip={tooltip} flow="right">{title}</span>
+        <span className="tooltip" tooltip={message} flow="down">{title}</span>
     )
 }

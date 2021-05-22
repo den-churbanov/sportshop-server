@@ -8,7 +8,7 @@ $button-blue-hover: #347689;
 .catalog_header {
     width: 100%;
     background-color: $xenomorph-2;
-    z-index: 5;
+    z-index: 6;
     
     &.fixed {
         position: fixed;
@@ -51,10 +51,11 @@ $button-blue-hover: #347689;
         height: 50px;
         justify-content: space-between;
         align-items: center;
-
+        
         .links_block {
             display: none;
         }
+        
         .catalog_nav_list {
             display: flex;
             align-items: center;
@@ -81,8 +82,8 @@ $button-blue-hover: #347689;
             input {
                 display: none;
             }
-    
-            label.catalog_link{
+            
+            label.catalog_link {
                 display: none;
             }
             
@@ -106,7 +107,7 @@ $button-blue-hover: #347689;
                     background-color: $xenomorph-6;
                     color: #fff;
                 }
-
+                
             }
             
             .submenu-list {
@@ -158,7 +159,7 @@ $button-blue-hover: #347689;
                 }
             }
         }
-
+        
         .catalog_button {
             box-sizing: border-box;
             display: none;
@@ -231,7 +232,6 @@ $button-blue-hover: #347689;
             }
         }
         
-
     }
 }
 
@@ -286,9 +286,10 @@ $button-blue-hover: #347689;
                         input[id^="link"]:checked + .submenu-list {
                             border-top: 2px solid $xenomorph-2;
                             max-height: 100vh;
+                            pointer-events: all;
                         }
                         
-                        .submenu-list {
+                        ul.submenu-list {
                             display: block;
                             width: 50%;
                             position: static;
@@ -296,13 +297,14 @@ $button-blue-hover: #347689;
                             opacity: 1;
                             visibility: visible;
                             max-height: 0;
+                            pointer-events: none;
                             transition: .5s max-height ease-in-out;
                             
                             & > li {
                                 position: static;
                                 margin-left: 20px;
                                 border-radius: 5px;
-    
+                                
                                 & :active {
                                     cursor: pointer;
                                     color: #fff;
@@ -315,10 +317,10 @@ $button-blue-hover: #347689;
                                 }
                             }
                         }
-    
+                        
                         .catalog_link {
                             color: $xenomorph-2;
-        
+                            
                             &:active {
                                 cursor: pointer;
                                 color: #fff;
@@ -326,10 +328,11 @@ $button-blue-hover: #347689;
                             }
                         }
                         
-                        a.catalog_link{
+                        a.catalog_link {
                             display: none;
                         }
-                        label.catalog_link{
+                        
+                        label.catalog_link {
                             display: block;
                             padding: 1em 0.5em;
                             font-size: 0.6em;

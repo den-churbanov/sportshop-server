@@ -3,16 +3,16 @@ import '../styles/footer.css'
 import {connect} from "react-redux"
 import {FooterList} from "./FooterList"
 import {SiteNavigationLinks} from './header/SiteNavigationLinks'
-import {fetchBrands, fetchSportTypes} from "../redux/actions";
-import {Link} from "react-router-dom";
-import {Icon} from "./svg-icons/Icon";
+import {fetchBrands, fetchSportTypes} from "../redux/actions"
+import {Link} from "react-router-dom"
+import {Icon} from "./trivia/svg-icons/Icon"
 
 const FooterComponent = ({sections, brands, sport_types, getBrands, getSportTypes}) => {
 
     useEffect(() => {
-        if (!brands.length) getBrands()
-        if(!sport_types.length) getSportTypes()
-    }, [])
+        getBrands()
+        getSportTypes()
+    }, [getBrands, getSportTypes])
 
 
     const randomBrands = useMemo(() => {
@@ -52,15 +52,30 @@ const FooterComponent = ({sections, brands, sport_types, getBrands, getSportType
                         Мы в соцсетях
                     </h6>
                     <ul className="social-menu">
-                        <li><a href="https://t.me/den_churbanov" className="tg-icon" target="_blank">
-                            <Icon name="tg" className="social-icon"/>
-                        </a></li>
-                        <li><a href="https://vk.com/den_churbanov" className="vk-icon" target="_blank">
-                            <Icon name="vk" className="social-icon"/>
-                        </a></li>
-                        <li><a href="https://instagram.com/den_churbanov" className="ig-icon" target="_blank">
-                            <Icon name="ig" className="social-icon"/>
-                        </a></li>
+                        <li>
+                            <a href="https://t.me/den_churbanov"
+                               className="tg-icon"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <Icon name="tg" className="social-icon"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://vk.com/den_churbanov"
+                               className="vk-icon"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <Icon name="vk" className="social-icon"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/den_churbanov"
+                               className="ig-icon"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <Icon name="ig" className="social-icon"/>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <FooterList header="Каталог" items={sections} link="/catalog?section="/>
@@ -133,8 +148,8 @@ const FooterComponent = ({sections, brands, sport_types, getBrands, getSportType
                         <span> SPORTSHOP 2021</span>
                     </div>
                     <div className="copyright_block">
-                        <p>Сайт разработан к дипломной работе студентом ФГБОУ ВО СамГТУ Чурбановым Д.В.</p>
-                        <p>Научный руководитель: доцент, к.т.н., Хрисанов Н.Н.</p>
+                        <p>Сайт разработан к дипломной работе студентом ФГБОУ ВО СамГТУ <br/>Чурбановым Д.В.</p>
+                        <p>Научный руководитель: доцент, к.т.н., <br/>Хрисанов Н.Н.</p>
                     </div>
                 </div>
             </div>

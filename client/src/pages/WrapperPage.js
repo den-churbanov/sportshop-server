@@ -1,8 +1,8 @@
-import React from "react";
-import {Header} from "../components/Header";
-import {SiteNavigation} from "../components/header/SiteNavigation";
-import {CatalogNavigation} from "../components/header/CatalogNavigation";
-import {Footer} from "../components/Footer";
+import React from "react"
+import {Header} from "../components/Header"
+import {SiteNavigation} from "../components/header/SiteNavigation"
+import {CatalogNavigation} from "../components/header/CatalogNavigation"
+import {Footer} from "../components/Footer"
 
 export const WrapperPage = ({children}) => {
     return (
@@ -15,5 +15,5 @@ export const WrapperPage = ({children}) => {
             </div>
             <Footer/>
         </div>
-    );
+    )
 }

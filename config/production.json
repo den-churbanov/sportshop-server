@@ -1,0 +1,14 @@
+{
+  "host": "localhost",
+  "port": 5000,
+
+  "connectionURI": {
+    "host": "localhost",
+    "port": 3306,
+    "user": "administrator",
+    "password": "Tynby42041",
+    "database": "site_database"
+  },
+
+  "jwtSecret": "sport shop secret jwt"
+}

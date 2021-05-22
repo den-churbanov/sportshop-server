@@ -1,0 +1,9 @@
+@import "colors";
+@import "default-elements";
+
+div.profile-page-container {
+    .logout-btn{
+        @extend %btn-red;
+    }
+
+}

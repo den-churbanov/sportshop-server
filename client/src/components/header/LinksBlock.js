@@ -1,23 +1,15 @@
-import React, {useContext} from "react";
-import '../../styles/header.css';
-import {AuthContext} from "../../AuthContext";
-import {Link} from "react-router-dom";
-import {Icon} from "../svg-icons/Icon";
+import React from "react"
+import '../../styles/header.css'
+import {Link} from "react-router-dom"
+import {Icon} from "../trivia/svg-icons/Icon"
 
-export const LinksBlock = ({id}) => {
-    const {logout} = useContext(AuthContext)
-
+export const LinksBlock = () => {
     return (
         <div className="links_block">
             <div className="links_block__item">
-                <label className="links_block__item__link" htmlFor={`link_label-${id}`}>
+                <Link className="links_block__item__link" to="/profile">
                     <Icon name="user"/>
-                    <input type="checkbox" id={`link_label-${id}`}/>
-                    <div className="submenu_block">
-                        <Link className="submenu_block__button" to="/profile">В личный кабинет</Link>
-                        <Link className="submenu_block__button" to="/authorization" onClick={logout}>Выйти</Link>
-                    </div>
-                </label>
+                </Link>
             </div>
 
             <div className="links_block__item">

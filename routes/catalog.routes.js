@@ -27,7 +27,6 @@ router.get(
     '/special_offers',
     controller.getSpecialOffers)
 
-
 // api/catalog/products/new
 router.post(
     '/products/new',
@@ -43,6 +42,15 @@ router.post(
     '/products/hits',
     controller.getHitsProducts)
 
+// api/catalog/sizes
+router.get(
+    '/sizes',
+    controller.getAllSizes)
+
+// api/catalog/products/by_filters
+router.post(
+    '/products/by_filters',
+    controller.getProductsByFilters)
 module.exports = router
 
 

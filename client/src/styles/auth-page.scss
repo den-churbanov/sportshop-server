@@ -1,5 +1,5 @@
-//@import "colors.scss";
-//@import "default-elements.scss";
+@import "colors.scss";
+@import "default-elements.scss";
 
 * {
     margin: 0;
@@ -9,50 +9,57 @@
 .auth_container {
     box-sizing: border-box;
     width: 100vw;
-    height: 100vh;
-    background: rgb(44,62,80);
-    background: linear-gradient(45deg, rgba(44,62,80,1) 0%, rgba(0,213,220,1) 100%);
+    min-height: 100vh;
+    background: rgb(44, 62, 80);
+    //background: radial-gradient( rgba(44, 62, 80, 1) 0%, rgba(0, 213, 220, 1) 100%);
+    background: linear-gradient(45deg, rgba(44, 62, 80, 1) 0%, rgba(0, 213, 220, 1) 100%);
     overflow-x: hidden;
     overflow-y: hidden;
     
-    .logo {
-        position: absolute;
-        overflow: hidden;
-        border-radius: 25%;
-        top: 10px;
-        left: 10px;
-        width: 30vw;
-        height: auto;
-        text-align: center;
-        
-        img {
-            vertical-align: middle;
-            width: 100%;
-        }
-    }
-    
     .auth_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         box-sizing: border-box;
-        min-width: 280px;
+        min-width: 260px;
         width: 26%;
         margin: 0 auto;
-        padding-top: calc(30vh);
+        padding-top: 10vh;
+    
+        &>p{
+            color: $xenomorph-5;
+            text-align: center;
+            font-size: 0.5rem;
+            max-width: 260px;
+            padding-bottom: 0.5rem;
+        }
         
-        .auth-button {
+        .back-btn{
             @extend %btn;
-            
-            &.active {
-                background: $xenomorph-2;
+            min-width: 260px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .auth-button-wrapper{
+            .auth-button {
+                @extend %btn;
+                min-width: 130px;
+                border-top: 1px solid $xenomorph-2;
+                &.active {
+                    background: $xenomorph-2;
+                    border: 1px solid $xenomorph-2;
+                }
             }
-            
-        }
+            .auth-button:nth-child(1) {
+                border-radius: 6px 0 0 0;
+                border-left: 1px solid $xenomorph-2;
+            }
     
-        & :nth-child(1) {
-            border-radius: 6px 0 0 0;
-        }
-    
-        & :nth-child(2) {
-            border-radius: 0 6px 0 0;
+            .auth-button:nth-child(2) {
+                border-right: 1px solid $xenomorph-2;
+                border-radius: 0 6px 0 0;
+            }
         }
         
         .auth_form {
@@ -65,6 +72,18 @@
             width: inherit;
             min-width: inherit;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            
+            div {
+                position: relative;
+                
+                span.tooltip {
+                    position: absolute;
+                    right: -2%;
+                    top: 45%;
+                }
+            }
             
             h1 {
                 color: #fff;

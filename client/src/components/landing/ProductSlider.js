@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react"
+import React, {useCallback, useEffect, useState} from "react"
 import {useHttp} from "../../hooks/http.hook"
-import {LandingProductPreview} from "../catalog/LandingProductPreview"
+import {LandingProductPreview} from "./LandingProductPreview"
 import {Loader} from "../trivia/Loader"
 import cx from 'classnames'
 import TouchCarousel from "react-touch-carousel"
@@ -11,17 +11,16 @@ export const ProductSlider = ({productsType}) => {
     const {request} = useHttp()
     const [products, setProducts] = useState([])
 
-    useEffect(() => {
-        fetchProductByType()
-    }, [])
-
-    async function fetchProductByType() {
-        console.log('fetchProducts by type')
+    const fetchProductByType = useCallback(async () => {
         if (!!productsType.toString().match('^(?:new|sales|hits)$') ?? [0]) {
             const products = await request(`/api/catalog/products/${productsType}`, 'POST', {lim: 20})
             setProducts(products)
         }
-    }
+    }, [productsType, request, setProducts])
+
+    useEffect(() => {
+        fetchProductByType()
+    }, [fetchProductByType])
 
     const carouselWidth = window.innerWidth;
     let cardSize =

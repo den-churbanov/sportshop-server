@@ -1,4 +1,4 @@
-import {FETCH_BRANDS, FETCH_SPORT_TYPES, FETCH_SECTIONS, FETCH_SUB_SECTIONS} from "./actionTypes";
+import {FETCH_BRANDS, FETCH_SPORT_TYPES, FETCH_SECTIONS, FETCH_SUB_SECTIONS, FETCH_ALL_SIZES} from "./actionTypes";
 import {combineReducers} from "redux";
 
 const sectionsReducer = (state = [], action) => {
@@ -32,9 +32,18 @@ const sportTypesReducer = (state = [], action) => {
             return state
     }
 }
+const sizesReducer = (state = [], action) => {
+    switch (action.type) {
+        case FETCH_ALL_SIZES:
+            return action.payload
+        default:
+            return state
+    }
+}
 
 export const catalogReducer = combineReducers({
     sections: sectionsReducer,
     brands: brandsReducer,
-    sport_types: sportTypesReducer
+    sport_types: sportTypesReducer,
+    sizes: sizesReducer
 })

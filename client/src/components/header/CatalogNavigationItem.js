@@ -1,14 +1,14 @@
-import React, {useEffect} from "react";
-import {Link} from "react-router-dom";
-import '../../styles/catalog-navigation.css';
-import {connect} from "react-redux";
-import {fetchSubSections} from "../../redux/actions";
+import React, {useEffect} from "react"
+import {Link} from "react-router-dom"
+import '../../styles/catalog-navigation.css'
+import {connect} from "react-redux"
+import {fetchSubSections} from "../../redux/actions"
 
-export const CatalogNavigationItemComponent = ({text, id, subsections,  getSubSections}) => {
+export const CatalogNavigationItemComponent = ({text, id, subsections, getSubsections, hideMobileMenu}) => {
 
     useEffect(() => {
-        if (!subsections) getSubSections()
-    }, []);
+        getSubsections()
+    }, [getSubsections])
 
     return (
         <li className="catalog_item">
@@ -17,7 +17,9 @@ export const CatalogNavigationItemComponent = ({text, id, subsections,  getSubSe
             <input type="checkbox" id={`link-${id}`}/>
             <ul className="submenu-list">
                 {subsections ? subsections.map((item, idx) => {
-                    return <li key={idx}><Link to={`/catalog?subsection=${item.id}`}>{item.title}</Link></li>;
+                    return <li key={idx}><Link to={`/catalog?subsection=${item.id}`}
+                                               onClick={hideMobileMenu}>{item.title}</Link>
+                    </li>;
                 }) : ""
                 }
             </ul>
@@ -30,11 +32,15 @@ const mapStateToProps = (state, props) => {
         subsections: state.catalog.sections[props.idx].subsections,
     }
 }
-
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        getSubSections: async () => dispatch(fetchSubSections(props.id, props.idx))
+        getSubsections: async () => dispatch(fetchSubSections(props.id, props.idx)),
     }
 }
 
-export const CatalogNavigationItem = connect(mapStateToProps, mapDispatchToProps)(CatalogNavigationItemComponent)
+const propsAreEqual = (prevProps, nextProps) => prevProps.subsections === nextProps.subsections
+export const CatalogNavigationItem = React.memo(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(CatalogNavigationItemComponent), propsAreEqual)

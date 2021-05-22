@@ -38,10 +38,11 @@ header.header-top {
       min-width: 170px;
       max-height: 55px; }
       header.header-top .container .header-contacts p, header.header-top .container .header-contacts h6, header.header-top .container .header-contacts a {
+        line-height: 0.7rem;
         display: block;
-        padding-top: 0.3em;
         font-size: 0.45rem;
-        color: #f2f2f2; }
+        color: #f2f2f2;
+        letter-spacing: 0.03rem; }
       header.header-top .container .header-contacts p {
         font-size: 0.4rem; }
       header.header-top .container .header-contacts .number-block {
@@ -106,7 +107,7 @@ header.header-top {
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08); }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 992px) {
       .search-block .search-btn:hover {
         background-color: #00d5dc;
         border: 1px solid #00d5dc; } }
@@ -170,7 +171,7 @@ header.header-top {
   .links_block__item__link svg {
     width: 95%;
     height: auto;
-    margin: auto;
+    margin: 0 auto;
     fill: #f3f7f8; }
   .links_block__item__link input[id^="link_label"]:checked > .submenu_block {
     display: block; }

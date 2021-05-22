@@ -1,11 +1,12 @@
-import React, {useState} from "react";
-import '../styles/header.css';
-import logo from '../images/logo/logo-long-transper.png';
-import {Search} from "./header/Search";
-import {LinksBlock} from "./header/LinksBlock";
-import {Link} from "react-router-dom";
+import React, {useState} from "react"
+import '../styles/header.css'
+import logo from '../images/logo/logo-long-transper.png'
+import {Search} from "./header/Search"
+import {LinksBlock} from "./header/LinksBlock"
+import {Link} from "react-router-dom"
 
 export const Header = () => {
+
     const [visible, setVisible] = useState(true)
 
     window.onscroll = () => {
@@ -33,7 +34,7 @@ export const Header = () => {
                     </div>
                     <p>Ежедневно с 8:00 до 24:00 (Самара)</p>
                 </div>
-                <LinksBlock id={1}/>
+                <LinksBlock/>
             </div>
         </header>
     );

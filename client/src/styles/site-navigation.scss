@@ -127,6 +127,7 @@ $nav-item-delay: 0.05s;
             width: $bar-length;
             height: $bar-length;
             border-radius: 50%;
+            z-index: 6;
             
             &>span{
                 position: absolute;

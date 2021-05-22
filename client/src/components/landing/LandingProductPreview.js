@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useCallback, useEffect, useState} from "react"
 import {Link} from "react-router-dom"
 import {connect} from "react-redux"
 import {Loader} from "../trivia/Loader"
@@ -8,22 +8,20 @@ const ProductPreviewComponent = ({product, sport_types}) => {
 
     const [image, setImage] = useState(false)
     const {request} = useHttp()
+    const fetchImage = useCallback(async () => {
+        const image = await request('api/images/products', 'POST', {imagepath: product.main_image_path})
+        setImage(image)
+    }, [request, product, setImage])
 
     useEffect(() => {
-        if (!image)
-            fetchImage()
-    }, [])
+        fetchImage()
+    }, [fetchImage])
 
     useEffect(() => {
         return () => {
             URL.revokeObjectURL(image)
         }
     }, [image])
-
-    async function fetchImage() {
-        const image = await request('api/images/products', 'POST', {imagepath: product.main_image_path})
-        setImage(image)
-    }
 
     return (
         <div className="product-preview">
@@ -33,14 +31,14 @@ const ProductPreviewComponent = ({product, sport_types}) => {
                         <div className="labels-row">
                             {product.new_price ?
                                 <div className="is-sale">
-                                    {Math.round((product.new_price / product.sale_price) * 100) + '%'}
+                                    {Math.round((product.sale_price - product.new_price) / product.sale_price * 100) + '%'}
                                 </div> : null
                             }
                             {product.is_hit ? <div className="is-hit">HIT</div> : null}
                             {product.is_new && <div className="is-new">NEW</div>}
                         </div>
                     </div>
-                    {image ? <img src={image} draggable="false"/> : <Loader/>}
+                    {image ? <img src={image} draggable="false" alt={product.name}/> : <Loader/>}
                 </Link>
                 <div className="info-block">
                     <Link to={`catalog/product?product_id=${product.id}`}>{product.name}</Link>

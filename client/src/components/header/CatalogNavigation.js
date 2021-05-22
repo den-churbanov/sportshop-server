@@ -6,64 +6,69 @@ import {LinksBlock} from "./LinksBlock"
 import {fetchSections} from "../../redux/actions"
 import '../../styles/catalog-navigation.css'
 import logo from '../../images/logo/logo-long-transper.png'
-import {Icon} from "../svg-icons/Icon"
+import {Icon} from "../trivia/svg-icons/Icon"
 
 const Navigation = ({sections, getSections}) => {
     const [fixed, setFixed] = useState(false)
-    const [mobileVisible, setMobileVisible] = useState(false)
+    const [mobileActive, setMobileActive] = useState(false)
 
     useEffect(() => {
-        if (!sections.length) getSections()
-    }, [])
-
+        getSections()
+    }, [getSections])
 
     window.onscroll = () => {
         if (window.pageYOffset > 140 & !fixed) {
             setFixed(true)
-            console.log('fixed')
         }
         else if (window.pageYOffset < 140 & fixed) {
             setFixed(false)
-            console.log('not fixed')
-        }
-    }
-
-    const lockBodyScroll = () => {
-        if (mobileVisible === false) {
-            document.body.style.overflowY = 'hidden';
-        }
-        else {
-            document.body.style.overflowY = 'scroll';
         }
     }
 
     const toggleMenu = () => {
-        lockBodyScroll()
-        setMobileVisible(prevState => !prevState)
+        document.body.style.overflowY = document.body.style.overflowY === 'hidden' ? 'scroll' : 'hidden'
+        setMobileActive(prevState => !prevState)
+    }
+
+    const hideMobileMenu = () => {
+        setMobileActive(prevState => {
+            if (prevState) {
+                document.body.style.overflowY = 'scroll'
+                return !prevState
+            }
+            return prevState
+        })
+
     }
 
     return (
         <header
-            className={`catalog_header${fixed? ' fixed' : ''}`}>
-            <div className={`catalog_header_block${mobileVisible ? ' show' : ''}`}/>
-            <div className={`catalog_nav_container${mobileVisible ? ' fixed' : ''}`}>
+            className={`catalog_header${fixed ? ' fixed' : ''}`}>
+            <div className={`catalog_header_block${mobileActive ? ' show' : ''}`}/>
+            <div className={`catalog_nav_container${mobileActive ? ' fixed' : ''}`}>
                 <div className="catalog_container_body">
-                    <div className={`catalog_button ${mobileVisible ? 'active' : ''}`}
+                    <div className={`catalog_button ${mobileActive ? 'active' : ''}`}
                          onClick={toggleMenu}>
-                        <span>{mobileVisible ? "Назад" : "Каталог"}</span>
+                        <span>{mobileActive ? "Назад" : "Каталог"}</span>
                         <div className="arrow">
                             <Icon name="right-arrow"/>
                         </div>
                     </div>
-                    <Link to="/main" className={`header_logo__hidden ${fixed && !mobileVisible ? 'header_logo' : ''}`}>
+                    <Link to="/main"
+                          className={`header_logo__hidden ${fixed && !mobileActive ? 'header_logo' : ''}`}>
                         <img src={logo} alt="На главную"/>
                     </Link>
-                    <nav className={`catalog_nav_list ${mobileVisible ? 'active' : ''}`}>
+                    <nav className={`catalog_nav_list ${mobileActive ? 'active' : ''}`}>
                         {sections ? sections.map((item, idx) => {
-                            return <CatalogNavigationItem text={item.title} id={item.id} idx={idx} key={idx}/>
+                            return <CatalogNavigationItem text={item.title}
+                                                          id={item.id}
+                                                          idx={idx}
+                                                          key={idx}
+                                                          hideMobileMenu={hideMobileMenu}
+                            />
                         }) : ""}
                     </nav>
-                    <LinksBlock id={2}/>
+                    <LinksBlock/>
                 </div>
             </div>
         </header>
@@ -83,4 +88,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export const CatalogNavigation = connect(mapStateToProps, mapDispatchToProps)(Navigation)
-
