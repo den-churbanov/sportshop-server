@@ -25,7 +25,6 @@ function getImages(req, res, route) {
             route,
             imagepath
         )
-        //console.log(filePath)
         fs.stat(filePath, (err, stats) => {
             if (err && err.code === 'ENOENT') {
                 return res.status(404).json({

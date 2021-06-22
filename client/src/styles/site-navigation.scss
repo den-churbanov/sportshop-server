@@ -1,7 +1,6 @@
 @import "colors.scss";
 /*site header component*/
 
-
 $bar-length: 25px;
 $bar-thickness: 3px;
 $nav-item-delay: 0.05s;
@@ -9,10 +8,15 @@ $nav-item-delay: 0.05s;
 .site_navigation_header {
     width: 100%;
     background-color: $xenomorph-2;
+    z-index: 1;
+    position: relative;
+    
+    &.z-index-top{
+        z-index: 5;
+    }
     
     &.site_navigation__fixed {
         position: fixed;
-        z-index: 10;
     }
     
     .site_header_block {
@@ -23,13 +27,13 @@ $nav-item-delay: 0.05s;
         width: 100%;
         height: 50px;
         background-color: $xenomorph-2;
-        z-index: 6;
         display: none;
         align-items: center;
         justify-content: center;
         
         &.site_header_block_show {
             display: flex;
+            z-index: 11;
         }
         
         h4 {
@@ -38,7 +42,6 @@ $nav-item-delay: 0.05s;
     }
     
     .navigation_container {
-        position: relative;
         display: block;
         margin: 0 4%;
         width: 92%;
@@ -46,7 +49,6 @@ $nav-item-delay: 0.05s;
 }
 
 .site_navigation_header_body {
-    position: relative;
     display: flex;
     height: 55px;
     justify-content: space-around;
@@ -61,7 +63,6 @@ $nav-item-delay: 0.05s;
     }
     
     .site_header_list {
-        position: relative;
         display: flex;
         align-items: flex-start;
         justify-content: stretch;
@@ -117,7 +118,6 @@ $nav-item-delay: 0.05s;
 
 @media (max-width: 1000px) {
     .site_navigation_header_body {
-        position: relative;
         height: 50px;
         justify-content: flex-end;
         
@@ -127,9 +127,21 @@ $nav-item-delay: 0.05s;
             width: $bar-length;
             height: $bar-length;
             border-radius: 50%;
-            z-index: 6;
             
-            &>span{
+            &.is-active {
+                z-index: 12;
+                
+                span {
+                    transform: rotate(-45deg);
+                    
+                    &:before,
+                    &:after {
+                        transform: translateX(0) rotate(-90deg);
+                    }
+                }
+            }
+            
+            & > span {
                 position: absolute;
                 width: $bar-length;
                 height: $bar-thickness;
@@ -156,21 +168,11 @@ $nav-item-delay: 0.05s;
                 &:before {
                     transform: translateY(-8px);
                 }
-    
+                
                 &:after {
                     transform: translateY(8px);
                 }
-    
-                &.is-active {
-                    z-index: 7;
-                    transform: rotate(-45deg);
-        
-                    &:before,
-                    &:after {
-                        transform: translateX(0) rotate(-90deg);
-                    }
-        
-                }
+                
             }
         }
         
@@ -182,14 +184,14 @@ $nav-item-delay: 0.05s;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 5;
+            z-index: 10;
             overflow: auto;
             background-color: $xenomorph-2;
-            transition: all 0.4s ease 0s;
+            transition: all 1s ease 0s;
             
             &.active {
-                z-index: 6;
-                top: 50px;
+                top: 0;
+                padding-top: 50px;
                 overflow: hidden;
             }
         }

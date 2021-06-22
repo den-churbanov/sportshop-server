@@ -14,6 +14,7 @@ export const useAuth = () => {
             userID: id,
             token: jwtToken
         }))
+        console.log('login')
         redirectPreviewPage && redirectPreviewPage()
     }, [])
 
@@ -21,15 +22,36 @@ export const useAuth = () => {
         setToken(null)
         setUserID(null)
         localStorage.removeItem(STORAGE_NAME)
+        console.log('logout')
+    }, [])
+
+    const checkTokenExpiresIn = useCallback(async () => {
+        const data = JSON.parse(localStorage.getItem(STORAGE_NAME))
+        if (data && data.token) {
+            try {
+                const response = await fetch(
+                    '/api/user/check_jwt_expires',
+                    {
+                        method: 'GET',
+                        headers: {
+                            'content-type': 'application/json',
+                            'Authorization': `Bearer ${data.token}`
+                        }
+                    })
+                setReady(true)
+                response.status === 401? logout(): login(data.token, data.userID)
+                return response.status === 401
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        setReady(true)
+        return true
     }, [])
 
     useEffect(() => {
-        const data = JSON.parse(localStorage.getItem(STORAGE_NAME))
-        if (data && data.token) {
-            login(data.token, data.userID)
-        }
-        setReady(true)
-    }, [login])
+        checkTokenExpiresIn()
+    }, [checkTokenExpiresIn])
 
-    return {login, logout, token, userID, ready}
+    return {login, logout, checkTokenExpiresIn, token, userID, ready}
 }

@@ -1,4 +1,4 @@
-import {createContext} from "react";
+import {createContext} from "react"
 
 function noop() {}
 
@@ -7,6 +7,7 @@ export const AuthContext = createContext({
     userID: null,
     login: noop,
     logout: noop,
-    isAuthenticated: false
-});
+    checkTokenExpiresIn: noop,
+    isAuthenticated: false,
+})
 

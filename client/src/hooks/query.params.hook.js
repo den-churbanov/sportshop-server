@@ -5,7 +5,7 @@ import queryString from "query-string"
 export const useQueryParams = () => {
     const location = useLocation()
 
-    const parseSearchLocationToParams = useCallback(()=> {
+    const parseSearchLocationToParams = useCallback(() => {
         return queryString.parse(location.search, {
             parseNumbers: true,
             parseBooleans: true,
@@ -18,16 +18,32 @@ export const useQueryParams = () => {
     const [params, setParams] = useState(parseSearchLocationToParams())
 
     useEffect(() => {
-        console.debug('useEffect  setParams(parseSearchLocationToParams())')
+        console.debug('parseSearchLocationToParams useEffect called')
         setParams(parseSearchLocationToParams())
     }, [location.search, parseSearchLocationToParams])
+
+    const getRequestParams = useCallback((limit, excludeProducts) => {
+        return {
+            is_new: params.new ? params.new : null,
+            is_sale: params.sale ? params.sale : null,
+            is_hit: params.hit ? params.hit : null,
+            gender: params.gender ? Array.isArray(params.gender) ? '\'' + params.gender.join('\', \'') + '\'' : `'${params.gender}'` : null,
+            brands: params.brand ? Array.isArray(params.brand) ? params.brand.join(',') : params.brand.toString() : null,
+            sections: params.section ? Array.isArray(params.section) ? params.section.join(',') : params.section.toString() : null,
+            subsection: params.subsection ? params.subsection.toString() : null,
+            sizes: params.size ? Array.isArray(params.size) ? params.size.join(',') : params.size.toString() : null,
+            sport_types: params.sport_type ? Array.isArray(params.sport_type) ? params.sport_type.join(',') : params.sport_type.toString() : null,
+            excludeProducts: Array.isArray(excludeProducts) ? excludeProducts.length ? excludeProducts.join(',') : null : null,
+            limit: limit.toString()
+        }
+    }, [params])
 
     const deleteByKey = useCallback((key, value) => {
         if (!Number.isNaN(Number.parseInt(value))) {
             value = Number.parseInt(value)
         }
-        value = params[key].filter(item => item !== value)
-        if(value.length === 1) value = value[0]
+        value = Array.isArray(params[key]) ? params[key].filter(item => item !== value) : params[key]
+        if (value.length === 1) value = value[0]
         if (Array.isArray(params[key])) {
             setParams(prevParams => (
                 {...prevParams, [key]: value}
@@ -80,5 +96,5 @@ export const useQueryParams = () => {
         })).toString()
     }, [params])
 
-    return {params, parseToQueryString, deleteByKey, setByKey, setByKeyRadio}
+    return {params, parseToQueryString, getRequestParams, deleteByKey, setByKey, setByKeyRadio}
 }

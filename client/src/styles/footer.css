@@ -2,6 +2,41 @@
 /*footer*/
 /*auth-form*/
 /*footer*/
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+:root {
+  font-size: calc(22px + 5 * (100vw / 1280)); }
+
+@media (max-width: 767px) {
+  :root {
+    font-size: calc(22px + (5 + 5 * 0.7) * (100vw - 320px) / 1280); } }
+h1 {
+  font-size: 1rem; }
+
+h2 {
+  font-size: 0.9rem; }
+
+h3 {
+  font-size: 0.8rem; }
+
+h4 {
+  font-size: 0.7rem; }
+
+p {
+  font-size: 0.7rem; }
+
+input[type="button"] {
+  font-size: 0.6rem; }
+
+input[type="text"], span {
+  font-size: 0.55rem; }
+
+a, h1, h2, h3, h4, h5, h6, p, li, span {
+  font-family: 'PT Sans', sans-serif; }
+
+a {
+  font-size: 0.5rem;
+  font-weight: bold !important; }
+
 footer.footer .footer__container .footer__column .subscribe-form button[type="submit"] {
   box-sizing: border-box;
   display: inline-block;
@@ -11,7 +46,7 @@ footer.footer .footer__container .footer__column .subscribe-form button[type="su
   border: 1px solid #00adb4;
   padding: 0.6em 1em;
   text-align: center;
-  font: bold 14px Arial, Helvetica;
+  font: bold 0.5rem 'PT Sans', sans-serif;
   letter-spacing: 0.03rem;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   background-color: #00adb4;
@@ -24,11 +59,14 @@ footer.footer .footer__container .footer__column .subscribe-form button[type="su
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08); }
+  footer.footer .footer__container .footer__column .subscribe-form button[type="submit"]:disabled {
+    opacity: 0.75;
+    cursor: auto; }
   @media screen and (min-width: 992px) {
-    footer.footer .footer__container .footer__column .subscribe-form button[type="submit"]:hover {
+    footer.footer .footer__container .footer__column .subscribe-form button[type="submit"]:hover:enabled {
       background: #00d5dc;
       border: 1px solid #00d5dc; } }
-  footer.footer .footer__container .footer__column .subscribe-form button[type="submit"]:active {
+  footer.footer .footer__container .footer__column .subscribe-form button[type="submit"]:active:enabled {
     background: #00d5dc;
     border: 1px solid #00d5dc; }
 
@@ -36,10 +74,10 @@ footer.footer .footer__container .footer__column .subscribe-form button[type="su
   border: 1px solid #e52940;
   background-color: #e52940; }
   @media screen and (min-width: 992px) {
-    footer.footer .footer__container .footer__column .subscribe-form button[type="submit"]:hover {
+    footer.footer .footer__container .footer__column .subscribe-form button[type="submit"]:hover:enabled {
       border: 1px solid #eb5669;
       background: #eb5669; } }
-  footer.footer .footer__container .footer__column .subscribe-form button[type="submit"]:active {
+  footer.footer .footer__container .footer__column .subscribe-form button[type="submit"]:active:enabled {
     border: 1px solid #eb5669;
     background: #eb5669; }
 
@@ -52,31 +90,6 @@ footer.footer .footer__container .footer__column .subscribe-form input[type="ema
   border-radius: 5px;
   border: 1px solid #ececec;
   padding: 0.45em 0.3em; }
-
-.message_block {
-  display: inline-block;
-  margin-top: 5px;
-  box-sizing: border-box;
-  padding: 15px 15px;
-  border-radius: 6px;
-  width: inherit;
-  min-width: inherit;
-  height: auto;
-  text-align: center; }
-  .message_block.error {
-    border: 2px solid rgba(255, 0, 0, 0.67);
-    background: #b40000;
-    background: rgba(255, 0, 0, 0.3); }
-  .message_block.success {
-    border: 2px solid rgba(0, 217, 11, 0.81);
-    background: lime;
-    background: rgba(0, 255, 0, 0.3); }
-  .message_block span {
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    color: #ffffff;
-    font-family: "PT Sans", Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: bold; }
 
 footer.footer {
   width: 100%;

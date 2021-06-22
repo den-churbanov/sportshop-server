@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 import '../styles/header.css'
 import logo from '../images/logo/logo-long-transper.png'
 import {Search} from "./header/Search"
@@ -7,19 +7,8 @@ import {Link} from "react-router-dom"
 
 export const Header = () => {
 
-    const [visible, setVisible] = useState(true)
-
-    window.onscroll = () => {
-        if (window.pageYOffset > 140) {
-            setVisible(false);
-        }
-        else if (window.pageYOffset < 30) {
-            setVisible(true);
-        }
-    }
-
     return (
-        <header className={visible ? 'header-top' : 'header-top hide'}>
+        <header className="header-top">
             <div className="container">
                 <div className="img-wrapper">
                     <Link to="/main">

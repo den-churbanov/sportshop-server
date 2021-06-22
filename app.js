@@ -9,6 +9,8 @@ app.use(express.json({extended: true}))
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/catalog', require('./routes/catalog.routes'))
 app.use('/api/images', require('./routes/images.routes'))
+app.use('/api/user', require('./routes/user.routes'))
+app.use('/api/basket', require('./routes/basket.routes'))
 
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'client', 'build')))
@@ -23,6 +25,5 @@ async function startServer() {
         console.log(`Server listening on port ${PORT}...`)
     })
 }
-
 
 startServer()

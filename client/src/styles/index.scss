@@ -1,6 +1,6 @@
 @import "colors.scss";
 @import "fonts.scss";
-
+$background: #f6f8f9;
 :focus, :active {
     outline: none;
 }
@@ -18,8 +18,11 @@ input::-ms-clear {
 }
 
 body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
     width: 100vw;
-    overflow: scroll;
+    overflow-y: scroll;
     overflow-x: hidden;
 }
 
@@ -43,5 +46,6 @@ body {
     
     .content-container {
         flex: 1 1 auto;
+        background: $background;
     }
 }

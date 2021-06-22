@@ -14,7 +14,6 @@ const FooterComponent = ({sections, brands, sport_types, getBrands, getSportType
         getSportTypes()
     }, [getBrands, getSportTypes])
 
-
     const randomBrands = useMemo(() => {
         if (!brands.length) return undefined
         const output = []
@@ -169,7 +168,6 @@ const mapDispatchToProps = dispatch => {
     return {
         getBrands: async () => dispatch(fetchBrands()),
         getSportTypes: async () => dispatch(fetchSportTypes()),
-
     }
 }
 

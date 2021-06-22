@@ -36,6 +36,7 @@ div.landing_container {
     section.special-offer-section {
         position: relative;
         min-height: 3rem;
+        overflow-x: hidden;
         
         &> .svg-loader{
             position: absolute;
@@ -46,7 +47,6 @@ div.landing_container {
         .slider {
             box-sizing: border-box;
             overflow: hidden;
-            position: relative;
             width: 100%;
             display: flex;
             align-items: center;
@@ -287,7 +287,7 @@ div.landing_container {
                     line-height: 120px;
                     text-align: center;
                     background-size: cover;
-                    z-index: 2;
+                    z-index: 1;
                     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
                     
                     .svg-loader {

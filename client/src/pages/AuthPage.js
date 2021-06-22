@@ -7,7 +7,7 @@ import '../styles/auth-page.css'
 import {useHttp} from "../hooks/http.hook"
 import {AuthContext} from "../AuthContext"
 import {Tooltip} from "../components/trivia/Tooltip"
-import {Helmet} from "react-helmet"
+import {Helmet} from "react-helmet-async"
 
 export const AuthPage = () => {
     const auth = useContext(AuthContext)
@@ -115,12 +115,12 @@ export const AuthPage = () => {
                             <>
                                 <input type="text"
                                        onChange={handleUserInput}
-                                       name={inputNames.firstname}
-                                       placeholder="Имя"/>
-                                <input type="text"
-                                       onChange={handleUserInput}
                                        name={inputNames.lastname}
                                        placeholder="Фамилия"/>
+                                <input type="text"
+                                       onChange={handleUserInput}
+                                       name={inputNames.firstname}
+                                       placeholder="Имя"/>
                                 <input type="text"
                                        onChange={handleUserInput}
                                        name={inputNames.patronymic}

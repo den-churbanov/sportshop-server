@@ -11,7 +11,6 @@ header.header-top {
         display: none;
     }
     
-    
     .container {
         width: 92%;
         height: 100%;
@@ -132,11 +131,11 @@ header.header-top {
     }
     
     .search-btn {
-        position: relative;
         box-sizing: border-box;
         border-radius: 0 6px 6px 0;
         width: 20%;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+        text-align: center;
+        line-height: 1rem;
         background-color: $xenomorph-6;
         border: 1px solid $xenomorph-6;
         cursor: pointer;
@@ -163,14 +162,10 @@ header.header-top {
         }
         
         svg {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 60%;
-            height: 60%;
-            margin: auto;
+            vertical-align: middle;
+            width: 0.8rem;
+            height: 0.8rem;
+            margin: 0 auto;
             fill: $xenomorph-5;
         }
     }
@@ -208,7 +203,6 @@ header.header-top {
 
 .links_block__item__link {
     display: flex;
-    position: relative;
     height: 1rem;
     width: 1rem;
     padding: 0.15rem;

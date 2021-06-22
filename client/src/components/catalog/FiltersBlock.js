@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from "react"
+import React, {useEffect, useMemo} from "react"
 import {AccordionItemRadioType} from "./AccordionItemRadioType"
 import {connect} from "react-redux"
 import {fetchAllSizes} from "../../redux/actions"
@@ -6,7 +6,7 @@ import {AccordionItemCheckboxType} from "./AccordionItemCheckboxType"
 import {useQueryParams} from "../../hooks/query.params.hook"
 import {useHistory} from "react-router-dom"
 
-const FiltersBlockComponent = ({sections, brands, sport_types, sizes, getAllSizes, isActive, toggleActive}) => {
+const FiltersBlockComponent = ({sections, brands, sport_types, sizes, getAllSizes, isActive, toggleActive, loading}) => {
 
     useEffect(() => {
         getAllSizes()
@@ -48,7 +48,7 @@ const FiltersBlockComponent = ({sections, brands, sport_types, sizes, getAllSize
         },
         {
             title: 'Виды спорта',
-            key: 'sport_types',
+            key: 'sport_type',
             items: sport_types,
             type: "checkbox"
         },
@@ -73,25 +73,25 @@ const FiltersBlockComponent = ({sections, brands, sport_types, sizes, getAllSize
         },
         {
             title: 'Бренд',
-            key: 'brands',
+            key: 'brand',
             items: brands,
             type: "checkbox"
         },
         {
             title: 'Категория товаров',
-            key: 'sections',
+            key: 'section',
             items: sections,
             type: "checkbox"
         },
         {
             title: 'Размеры',
-            key: 'sizes',
+            key: 'size',
             items: sizes,
             type: "checkbox"
         }]), [sections, sport_types, sizes, brands])
 
     const toggleMenu = () => {
-        toggleActive(prevState => !prevState)
+        toggleActive && toggleActive(prevState => !prevState)
     }
 
     const resetHandler = () => {
@@ -105,7 +105,7 @@ const FiltersBlockComponent = ({sections, brands, sport_types, sizes, getAllSize
 
     return (
         <div className={`catalog-filters-block${isActive? ' active':''}`}>
-            <div className="filters-content">
+            <div className= {`filters-content`}>
                 <ul className="accordion-menu">
                     {accordions.map((filter, idx) => {
                         if (filter.type === 'checkbox')
@@ -122,12 +122,12 @@ const FiltersBlockComponent = ({sections, brands, sport_types, sizes, getAllSize
                                                        setByKeyRadio={setByKeyRadio}/>
                     })}
                     <div className="btn-wrapper">
-                        <button className="button reset-btn"
-                                onClick={resetHandler}>Сбросить
-                        </button>
-                        <button className="button ok-btn"
-                                onClick={submitHandler}>Применить
-                        </button>
+                        <button className="filter-button reset-btn"
+                                disabled={loading}
+                                onClick={resetHandler}>Сбросить</button>
+                        <button className="filter-button ok-btn"
+                                disabled={loading}
+                                onClick={submitHandler}>Применить</button>
                     </div>
                 </ul>
             </div>

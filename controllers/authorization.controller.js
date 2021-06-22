@@ -46,20 +46,22 @@ const signin = async (req, res) => {
 
         let data = await model.check_signin([login])
         const userID = data[0]
-        if ( userID == -1) {
+        if ( userID === -1) {
             return res.status(400).json({message: "Пользователь не найден"})
         }
 
         data = await model.signin([login])
         const dbpassword = data[0]
+        console.log(dbpassword)
+        console.log(password)
         const isMatch = bCrypt.compareSync(password, dbpassword)
         if (!isMatch) {
             return res.status(400).json({message: 'Неверный логин или пароль, попробуйте снова'})
         }
         const token = jwt.sign(
-            {accessID: userID},
+            {userID: userID},
             config.get('jwtSecret'),
-            {expiresIn: '1h'}
+            {expiresIn: '12h'}
         )
         res.status(200).json({
             token,

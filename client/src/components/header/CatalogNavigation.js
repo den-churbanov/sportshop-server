@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {Link} from "react-router-dom"
 import {connect} from "react-redux"
 import {CatalogNavigationItem} from "./CatalogNavigationItem"
@@ -7,21 +7,29 @@ import {fetchSections} from "../../redux/actions"
 import '../../styles/catalog-navigation.css'
 import logo from '../../images/logo/logo-long-transper.png'
 import {Icon} from "../trivia/svg-icons/Icon"
+import {AuthContext} from "../../AuthContext"
 
 const Navigation = ({sections, getSections}) => {
     const [fixed, setFixed] = useState(false)
     const [mobileActive, setMobileActive] = useState(false)
+
+    //fixed window.onscroll when auth changed
+    useContext(AuthContext)
 
     useEffect(() => {
         getSections()
     }, [getSections])
 
     window.onscroll = () => {
-        if (window.pageYOffset > 140 & !fixed) {
-            setFixed(true)
+        if (window.pageYOffset > 110) {
+            if (!fixed) {
+                setFixed(true)
+            }
         }
-        else if (window.pageYOffset < 140 & fixed) {
-            setFixed(false)
+        else if (window.pageYOffset < 110) {
+            if (fixed) {
+                setFixed(false)
+            }
         }
     }
 
@@ -38,7 +46,6 @@ const Navigation = ({sections, getSections}) => {
             }
             return prevState
         })
-
     }
 
     return (

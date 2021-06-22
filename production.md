@@ -51,7 +51,7 @@
 18. Запускаем `npm install`
 19. Запускаем `npm run client:install`
 20. Запускаем `npm run client:build`
-21. Исправляем `config`. Перейти в папку config (`cd confgig`)
+21. Исправляем `config`. Перейти в папку config (`cd config`)
 22. Открыть `nano production.json`
 23. Port: `80`, host `<купленный домен, указанный на сервере>`, сохранить и выйти
 24. Не забыть про шаг 5 выше

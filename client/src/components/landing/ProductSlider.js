@@ -13,7 +13,7 @@ export const ProductSlider = ({productsType}) => {
 
     const fetchProductByType = useCallback(async () => {
         if (!!productsType.toString().match('^(?:new|sales|hits)$') ?? [0]) {
-            const products = await request(`/api/catalog/products/${productsType}`, 'POST', {lim: 20})
+            const products = await request(`/api/catalog/products/${productsType}`, 'POST', {lim: 14})
             setProducts(products)
         }
     }, [productsType, request, setProducts])

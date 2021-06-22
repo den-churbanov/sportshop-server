@@ -10,17 +10,18 @@ import {HelmetProvider} from 'react-helmet-async'
 import {Loader} from "./components/trivia/Loader"
 
 function App() {
-    const {token, login, logout, userID, ready} = useAuth()
+    const {token, login, logout, checkTokenExpiresIn, userID, ready} = useAuth()
     const isAuthenticated = !!token
+
     if (!ready) return <Loader/>
     return (
         <Provider store={store}>
             <AuthContext.Provider value={
-                {token, login, logout, userID, isAuthenticated, ready}
+                {token, login, logout, userID, isAuthenticated, checkTokenExpiresIn, ready}
             }>
                 <HelmetProvider>
                     <Router>
-                        <Routes isAuthenticated={isAuthenticated}/>
+                        <Routes isAuthenticated={isAuthenticated} token={token}/>
                     </Router>
                 </HelmetProvider>
             </AuthContext.Provider>

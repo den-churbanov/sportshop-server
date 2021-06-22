@@ -51,6 +51,21 @@ router.get(
 router.post(
     '/products/by_filters',
     controller.getProductsByFilters)
+
+// api/catalog/products/count/by_filters
+router.post(
+    '/products/count/by_filters',
+    controller.getCountPreviewsByFilters)
+
+// api/catalog/products/product_info
+router.post(
+    '/products/product_info',
+    controller.getFullProductInfo)
+
+// api/catalog/products/product_sizes
+router.post(
+    '/products/product_sizes',
+    controller.getProductSizes)
 module.exports = router
 
 

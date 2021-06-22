@@ -12,7 +12,6 @@ async function connectDB() {
                 `USE ${mysqlConfig.database};`,
                 (err, result) => {
                     if (err) throw err
-
                 }
             )
         })

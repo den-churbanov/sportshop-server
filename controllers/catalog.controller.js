@@ -11,6 +11,17 @@ const getHitsProducts = getRequestControllerCreator(model.getHitsProducts)
 const getSalesProducts = getRequestControllerCreator(model.getSalesProducts)
 const getAllSizes = getRequestControllerCreator(model.getAllSizes)
 const getProductsByFilters = getRequestControllerCreator(model.getProductsByFilters)
+const getCountPreviewsByFilters = getRequestControllerCreator(model.getCountPreviewsByFilters)
+
+const addProductInfo = async (data, params) => {
+    const product = data[0]
+    product.images = await model.getAllProductImages(params)
+    product.sizes = await model.getAllProductSizes(params)
+    product.pageCount = 1
+    return product
+}
+const getFullProductInfo = getRequestControllerCreator(model.getFullProductInfo,null, addProductInfo)
+const getProductSizes = getRequestControllerCreator(model.getAllProductSizes)
 
 module.exports = {
     getSections,
@@ -22,5 +33,8 @@ module.exports = {
     getHitsProducts,
     getSalesProducts,
     getAllSizes,
-    getProductsByFilters
+    getProductsByFilters,
+    getCountPreviewsByFilters,
+    getFullProductInfo,
+    getProductSizes
 }

@@ -29,7 +29,7 @@ const LandingPageComponent = ({brands}) => {
                 <section className="new-products-section">
                     <div className="headers">
                         <h4>Новинки</h4>
-                        <Link to="/catalog/new">Все новинки</Link>
+                        <Link to="/catalog?new=true">Все новинки</Link>
                     </div>
 
                     <ProductSlider productsType="new"/>
@@ -38,9 +38,9 @@ const LandingPageComponent = ({brands}) => {
                 <section className="sales-products-section">
                     <div className="headers">
                         <h4>Скидки</h4>
-                        <Link to="/catalog/sales">Все скидки</Link>
+                        <Link to="/catalog?sale=true">Все скидки</Link>
                     </div>
-                    <ProductSlider productsType = "sales"/>
+                    <ProductSlider productsType="sales"/>
                 </section>
 
                 <section className="boots-section">
@@ -55,9 +55,9 @@ const LandingPageComponent = ({brands}) => {
                 <section className="hit-products-section">
                     <div className="headers">
                         <h4>Хиты продаж</h4>
-                        <Link to="/catalog/hits">Все хиты</Link>
+                        <Link to="/catalog?hit=true">Все хиты</Link>
                     </div>
-                    <ProductSlider productsType = "hits"/>
+                    <ProductSlider productsType="hits"/>
                 </section>
 
                 <section className="stock-section">

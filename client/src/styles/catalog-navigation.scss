@@ -8,8 +8,8 @@ $button-blue-hover: #347689;
 .catalog_header {
     width: 100%;
     background-color: $xenomorph-2;
-    z-index: 6;
-    
+    z-index: 2;
+
     &.fixed {
         position: fixed;
         top: 0;
@@ -61,6 +61,7 @@ $button-blue-hover: #347689;
             align-items: center;
             justify-content: space-around;
             flex: 1 1 95%;
+            z-index: 10;
         }
         
         .header_logo {
@@ -123,7 +124,6 @@ $button-blue-hover: #347689;
                 align-items: center;
                 opacity: 0;
                 visibility: hidden;
-                z-index: 10;
                 
                 & > li {
                     width: auto;
@@ -201,7 +201,6 @@ $button-blue-hover: #347689;
                 height: 0.55rem;
                 width: 0.55rem;
                 line-height: 0.55rem;
-                transform: rotate(0deg);
                 
                 svg {
                     vertical-align: middle;
@@ -266,7 +265,7 @@ $button-blue-hover: #347689;
                     height: 100%;
                     overflow: auto;
                     background-color: $xenomorph-6;
-                    
+
                     -webkit-transition: left 0.1s linear 0s;
                     -moz-transition: left 0.1s linear 0s;
                     -o-transition: left 0.1s linear 0s;
@@ -285,13 +284,12 @@ $button-blue-hover: #347689;
                         
                         input[id^="link"]:checked + .submenu-list {
                             border-top: 2px solid $xenomorph-2;
-                            max-height: 100vh;
+                            max-height: 200vh;
                             pointer-events: all;
                         }
                         
                         ul.submenu-list {
                             display: block;
-                            width: 50%;
                             position: static;
                             overflow: hidden;
                             opacity: 1;
