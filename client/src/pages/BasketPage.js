@@ -9,12 +9,12 @@ import {
     updateProductsPreviewCount,
     updateProductsPreviewInfo
 } from "../redux/actions"
-import {useHttp} from "../hooks/http.hook";
-import {useBasket} from "../hooks/basket.hook";
-import {AuthContext} from "../AuthContext";
-import {BasketPositionPreview} from "../components/basket/BasketPositionPreview";
-import {Loader} from "../components/trivia/Loader";
-import {MessagePopup} from "../components/trivia/MessagePopup";
+import {useHttp} from "../hooks/http.hook"
+import {useBasket} from "../hooks/basket.hook"
+import {AuthContext} from "../AuthContext"
+import {BasketPositionPreview} from "../components/basket/BasketPositionPreview"
+import {Loader} from "../components/trivia/Loader"
+import {MessagePopup} from "../components/trivia/MessagePopup"
 
 const BasketPageComponent = ({previews, order_products, addPreviews}) => {
 

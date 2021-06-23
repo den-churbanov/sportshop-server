@@ -116,7 +116,7 @@ a {
     border: 1px solid #eb5669;
     background: #eb5669; }
 
-.row, .basket-page .basket-page-container .profile-header .profile-header-content {
+.row, .basket-page, .basket-page .basket-page-container .profile-header .profile-header-content {
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
@@ -156,6 +156,9 @@ a {
 .basket-page {
   width: 100%;
   min-height: 80vh; }
+  .basket-page .text-wrapper {
+    text-align: center;
+    flex: 0 1 50%; }
   .basket-page .basket-page-container {
     margin: 0.5em; }
     .basket-page .basket-page-container .profile-header .profile-header-content {

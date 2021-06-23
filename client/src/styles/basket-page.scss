@@ -51,6 +51,12 @@ $hit-label-color: #1c7430;
 .basket-page {
     width: 100%;
     min-height: 80vh;
+    @extend %flex-center-nowrap-row;
+    
+    .text-wrapper{
+        text-align: center;
+        flex: 0 1 50%;
+    }
     
     .basket-page-container {
         margin: 0.5em;

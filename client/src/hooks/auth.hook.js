@@ -14,7 +14,6 @@ export const useAuth = () => {
             userID: id,
             token: jwtToken
         }))
-        console.log('login')
         redirectPreviewPage && redirectPreviewPage()
     }, [])
 
@@ -22,7 +21,6 @@ export const useAuth = () => {
         setToken(null)
         setUserID(null)
         localStorage.removeItem(STORAGE_NAME)
-        console.log('logout')
     }, [])
 
     const checkTokenExpiresIn = useCallback(async () => {
@@ -42,8 +40,9 @@ export const useAuth = () => {
                 response.status === 401? logout(): login(data.token, data.userID)
                 return response.status === 401
             } catch (e) {
-                console.log(e)
+                //console.log(e)
             }
+
         }
         setReady(true)
         return true

@@ -18,7 +18,6 @@ export const useQueryParams = () => {
     const [params, setParams] = useState(parseSearchLocationToParams())
 
     useEffect(() => {
-        console.debug('parseSearchLocationToParams useEffect called')
         setParams(parseSearchLocationToParams())
     }, [location.search, parseSearchLocationToParams])
 

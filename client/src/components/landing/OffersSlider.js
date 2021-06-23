@@ -49,7 +49,6 @@ export const OffersSlider = () => {
 
     const clearInfiniteScroll = () => {
         if (!interval) return
-        console.log('clearInfiniteScroll')
         clearInterval(interval)
         setStateInterval(null)
     }

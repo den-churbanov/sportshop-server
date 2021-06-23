@@ -33,7 +33,7 @@ export const useHttp = () => {
             setSuccess(data.message)
             return data;
         } catch (e) {
-            console.log(e)
+            // console.log(e)
             setLoading(false)
             setError(e.message)
         }

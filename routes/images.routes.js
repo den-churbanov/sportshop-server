@@ -41,7 +41,11 @@ router.post(
 );
 
 function imagePathValidator (value) {
-    return !!value.toString().match('^\\S+[.](?:gif|jpg|jpeg|png)$')??[0]
+    try {
+        return !!value.toString().match('^\\S+[.](?:gif|jpg|jpeg|png)$')[0]
+    }catch (e) {
+        return false
+    }
 }
 
 module.exports = router;
