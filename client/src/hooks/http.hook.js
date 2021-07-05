@@ -17,12 +17,12 @@ export const useHttp = () => {
             setStatus(response.status)
             let data
             if(response.status === 500) setError('Произошла непредвиденная ошибка, перезагрузите страницу')
+            if(url === '/api/images/brands_image/logo/') response.headers.get('content-type')
             switch (response.headers.get('content-type')) {
                 case 'image/jpeg':
                     data = URL.createObjectURL(await response.blob())
                     break
                 default:
-                    //application/json; charset=utf-8
                     data = await response.json()
             }
             if (!response.ok) {

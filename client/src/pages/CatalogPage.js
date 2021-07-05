@@ -100,7 +100,7 @@ const CatalogPageComponent = ({
 
     useEffect(() => {
         addProductsByFilters()
-    }, [currentPage])
+    }, [currentPage, showProductsCount])
 
     useEffect(() => {
         sortPreviews(sortByPrice)

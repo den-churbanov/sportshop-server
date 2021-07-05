@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path')
+const imageTo64 = require('image-to-base64')
 
 const getProductsImage = async (req, res) => {
     await getImages(req, res, '/images/products')
@@ -19,12 +20,16 @@ const getBrandBackImage = async (req, res) => {
 
 function getImages(req, res, route) {
     try {
-        const {imagepath} = req.body;
+        const {imagepath} = req.body
         const filePath = path.join(
             __dirname.replace('\\controllers', ''),
             route,
             imagepath
         )
+        let options = {
+            root: path.join(__dirname.replace('\\controllers', ''), route),
+            dotfiles: 'allow'
+        }
         fs.stat(filePath, (err, stats) => {
             if (err && err.code === 'ENOENT') {
                 return res.status(404).json({
@@ -34,7 +39,15 @@ function getImages(req, res, route) {
             res.set({
                 'Content-Type': 'image/jpeg'
             })
-            res.sendFile(filePath)
+            res.sendFile(imagepath, options, err=>{
+                if (err) {
+                    console.log(err)
+                    res.status(err.status).end()
+                }
+                else {
+                    console.log('Sent:', filePath)
+                }
+            })
         })
     } catch (e) {
         console.log('Ошибка', e.message)

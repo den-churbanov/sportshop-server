@@ -1,8 +1,8 @@
-const controller = require('../controllers/images.controller');
-const {check} = require('express-validator');
+const controller = require('../controllers/images.controller')
+const {check} = require('express-validator')
 const {Router} = require('express')
 
-const router = Router();
+const router = Router()
 
 // api/images/products
 router.post(
@@ -11,7 +11,7 @@ router.post(
         check('imagepath', '').custom(imagePathValidator)
     ],
     controller.getProductsImage
-);
+)
 
 // api/images/special_offers
 router.post(
@@ -20,7 +20,7 @@ router.post(
         check('imagepath', '').custom(imagePathValidator)
     ],
     controller.getSpecialOffersImage
-);
+)
 
 // api/images/brands_image/logo
 router.post(
@@ -29,7 +29,7 @@ router.post(
         check('imagepath', '').custom(imagePathValidator)
     ],
     controller.getBrandLogoImage
-);
+)
 
 // api/images/brands_image/logo
 router.post(
@@ -38,7 +38,7 @@ router.post(
         check('imagepath', '').custom(imagePathValidator)
     ],
     controller.getBrandBackImage
-);
+)
 
 function imagePathValidator (value) {
     try {
@@ -48,4 +48,4 @@ function imagePathValidator (value) {
     }
 }
 
-module.exports = router;
+module.exports = router

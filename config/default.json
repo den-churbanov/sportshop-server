@@ -3,11 +3,11 @@
   "port": 5000,
 
   "connectionURI": {
-    "host": "localhost",
+    "host": "freedb.tech",
     "port": 3306,
-    "user": "administrator",
-    "password": "Tynby42041",
-    "database": "site_database"
+    "user": "freedbtech_denchurbanov",
+    "password": "9e7Pt8gh",
+    "database": "freedbtech_sportshopdb"
   },
 
   "jwtSecret": "sport shop secret jwt"
